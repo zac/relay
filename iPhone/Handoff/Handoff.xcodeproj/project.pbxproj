@@ -11,6 +11,7 @@
 		11BC223C117A50D500F87F30 /* HOItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BC223B117A50D500F87F30 /* HOItemTableViewController.m */; };
 		11BC22B4117A58FB00F87F30 /* HOItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BC22B3117A58FB00F87F30 /* HOItemTableViewCell.m */; };
 		11BC23B1117A72D000F87F30 /* icon-test.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BC23B0117A72D000F87F30 /* icon-test.png */; };
+		11BC241C117A798800F87F30 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BC241B117A798800F87F30 /* MediaPlayer.framework */; };
 		11E40B6F1179634100F21A68 /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E40B2D1179634100F21A68 /* IPAddress.m */; };
 		11E40B701179634100F21A68 /* MYDNSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E40B2F1179634100F21A68 /* MYDNSService.m */; };
 		11E40B711179634100F21A68 /* MYAddressLookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E40B311179634100F21A68 /* MYAddressLookup.m */; };
@@ -55,7 +56,6 @@
 		28D7ACF80DDB3853001CB0EB /* HandoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* HandoffViewController.m */; };
 		97ACF028117A2DB1005F4046 /* HandNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 97ACF027117A2DB1005F4046 /* HandNetwork.m */; };
 		97ACF0E7117A68C1005F4046 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 97ACF0E6117A68C1005F4046 /* Base64.m */; };
-		97BA338111796736003490D3 /* HandItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BA338011796736003490D3 /* HandItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +66,7 @@
 		11BC22B2117A58FB00F87F30 /* HOItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOItemTableViewCell.h; sourceTree = "<group>"; };
 		11BC22B3117A58FB00F87F30 /* HOItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOItemTableViewCell.m; sourceTree = "<group>"; };
 		11BC23B0117A72D000F87F30 /* icon-test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-test.png"; path = "Resources/icon-test.png"; sourceTree = "<group>"; };
+		11BC241B117A798800F87F30 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		11E40B2C1179634100F21A68 /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPAddress.h; path = ../../mynetwork/IPAddress.h; sourceTree = SOURCE_ROOT; };
 		11E40B2D1179634100F21A68 /* IPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPAddress.m; path = ../../mynetwork/IPAddress.m; sourceTree = SOURCE_ROOT; };
 		11E40B2E1179634100F21A68 /* MYDNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYDNSService.h; path = ../../mynetwork/PortMapper/MYDNSService.h; sourceTree = SOURCE_ROOT; };
@@ -149,8 +150,6 @@
 		97ACF027117A2DB1005F4046 /* HandNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandNetwork.m; sourceTree = "<group>"; };
 		97ACF0E5117A68C1005F4046 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		97ACF0E6117A68C1005F4046 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
-		97BA337F11796736003490D3 /* HandItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandItem.h; path = Classes/HandItem.h; sourceTree = "<group>"; };
-		97BA338011796736003490D3 /* HandItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HandItem.m; path = Classes/HandItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +162,7 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				11E40BD21179654800F21A68 /* Security.framework in Frameworks */,
 				11E40BD41179654E00F21A68 /* CFNetwork.framework in Frameworks */,
+				11BC241C117A798800F87F30 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +367,7 @@
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 				11E40BD11179654800F21A68 /* Security.framework */,
 				11E40BD31179654E00F21A68 /* CFNetwork.framework */,
+				11BC241B117A798800F87F30 /* MediaPlayer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -374,8 +375,6 @@
 		97ACF00A1179706C005F4046 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				97BA337F11796736003490D3 /* HandItem.h */,
-				97BA338011796736003490D3 /* HandItem.m */,
 				97ACF026117A2DB1005F4046 /* HandNetwork.h */,
 				97ACF027117A2DB1005F4046 /* HandNetwork.m */,
 				97ACF0E5117A68C1005F4046 /* Base64.h */,
@@ -446,7 +445,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* HandoffAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* HandoffViewController.m in Sources */,
-				97BA338111796736003490D3 /* HandItem.m in Sources */,
 				11E40B6F1179634100F21A68 /* IPAddress.m in Sources */,
 				11E40B701179634100F21A68 /* MYDNSService.m in Sources */,
 				11E40B711179634100F21A68 /* MYAddressLookup.m in Sources */,

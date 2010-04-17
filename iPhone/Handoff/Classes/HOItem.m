@@ -8,18 +8,23 @@
 
 #import "HOItem.h"
 
+NSString *const HOItemCommandTypeSong = @"song";
+NSString *const HOItemCommandTypeWebpage = @"webpage";
+NSString *const HOItemCommandTypeClipboard = @"clipboard";
+NSString *const HOItemCommandTypeDocument = @"document";
 
 @implementation HOItem
 
-@synthesize itemIcon, itemTitle, itemDescription, actionURL, context;
+@synthesize command, itemIcon, itemTitle, itemDescription, properties, body;
 
 - (void)dealloc {
 	
+	self.command = nil;
 	self.itemIcon = nil;
 	self.itemTitle = nil;
 	self.itemDescription = nil;
-	self.actionURL = nil;
-	self.context = nil;
+	self.properties = nil;
+	self.body = nil;
 	
 	[super dealloc];
 }

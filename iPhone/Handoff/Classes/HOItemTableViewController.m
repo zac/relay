@@ -11,10 +11,13 @@
 #import "HOItemTableViewCell.h"
 
 #import "HOItem.h"
+#import "HandNetwork.h"
+
+#import <MediaPlayer/MediaPlayer.h>
 
 @implementation HOItemTableViewController
 
-@synthesize items;
+@synthesize items, networkController;
 
 #pragma mark -
 #pragma mark Initialization
@@ -37,7 +40,42 @@
 	
 	self.tableView.rowHeight = 65.0;
 	
+	self.networkController = [[[HandNetwork alloc] init] autorelease];
+	
 	return self;
+}
+
+- (void)discoverCurrentSong {
+	MPMusicPlayerController *iPodPlayer = [MPMusicPlayerController iPodMusicPlayer];
+	MPMediaItem *currentItem = iPodPlayer.nowPlayingItem;
+	
+	if (!currentItem) return;
+	
+	HOItem *nowPlayingItem = [[HOItem alloc] init];
+	nowPlayingItem.command = HOItemCommandTypeSong;
+	nowPlayingItem.itemDescription = [currentItem valueForProperty:MPMediaItemPropertyTitle];
+	nowPlayingItem.itemTitle = @"Current iPod Song";
+	MPMediaItemArtwork *artwork = [currentItem valueForProperty:MPMediaItemPropertyArtwork];
+	nowPlayingItem.itemIcon = [artwork imageWithSize:CGSizeMake(45.0, 45.0)];
+	
+	
+	//make it the first object.
+	[self.items insertObject:nowPlayingItem atIndex:0];
+	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+}
+
+- (void)discoverCurrentClipboard {
+//	HOItem *nowPlayingItem = [[HOItem alloc] init];
+//	nowPlayingItem.command = HOItemCommandTypeSong;
+//	nowPlayingItem.itemDescription = [currentItem valueForProperty:MPMediaItemPropertyTitle];
+//	nowPlayingItem.itemTitle = @"Current iPod Song";
+//	MPMediaItemArtwork *artwork = [currentItem valueForProperty:MPMediaItemPropertyArtwork];
+//	nowPlayingItem.itemIcon = [artwork imageWithSize:CGSizeMake(45.0, 45.0)];
+//	
+//	
+//	//make it the first object.
+//	[self.items insertObject:nowPlayingItem atIndex:0];
+//	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];	
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -46,6 +84,10 @@
 }
 
 - (void)viewDidLoad {
+	
+	[self discoverCurrentSong];
+	[self discoverCurrentClipboard];
+	
 	[super viewDidLoad];
 }
 

@@ -13,7 +13,7 @@
 
 @interface HandoffViewController : UIViewController {
 	HOItemTableViewController *tableViewController;
-
+	
 	IBOutlet UITextField *textField;
 	
 	HandNetwork *network;
