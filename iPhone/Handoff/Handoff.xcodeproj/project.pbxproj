@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		11BC222F117A4D5A00F87F30 /* HOItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BC222E117A4D5A00F87F30 /* HOItem.m */; };
 		11BC223C117A50D500F87F30 /* HOItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BC223B117A50D500F87F30 /* HOItemTableViewController.m */; };
+		11BC22B4117A58FB00F87F30 /* HOItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BC22B3117A58FB00F87F30 /* HOItemTableViewCell.m */; };
+		11BC23B1117A72D000F87F30 /* icon-test.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BC23B0117A72D000F87F30 /* icon-test.png */; };
 		11E40B6F1179634100F21A68 /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E40B2D1179634100F21A68 /* IPAddress.m */; };
 		11E40B701179634100F21A68 /* MYDNSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E40B2F1179634100F21A68 /* MYDNSService.m */; };
 		11E40B711179634100F21A68 /* MYAddressLookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E40B311179634100F21A68 /* MYAddressLookup.m */; };
@@ -61,6 +63,9 @@
 		11BC222E117A4D5A00F87F30 /* HOItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOItem.m; sourceTree = "<group>"; };
 		11BC223A117A50D500F87F30 /* HOItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOItemTableViewController.h; sourceTree = "<group>"; };
 		11BC223B117A50D500F87F30 /* HOItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOItemTableViewController.m; sourceTree = "<group>"; };
+		11BC22B2117A58FB00F87F30 /* HOItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOItemTableViewCell.h; sourceTree = "<group>"; };
+		11BC22B3117A58FB00F87F30 /* HOItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOItemTableViewCell.m; sourceTree = "<group>"; };
+		11BC23B0117A72D000F87F30 /* icon-test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-test.png"; path = "Resources/icon-test.png"; sourceTree = "<group>"; };
 		11E40B2C1179634100F21A68 /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPAddress.h; path = ../../mynetwork/IPAddress.h; sourceTree = SOURCE_ROOT; };
 		11E40B2D1179634100F21A68 /* IPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPAddress.m; path = ../../mynetwork/IPAddress.m; sourceTree = SOURCE_ROOT; };
 		11E40B2E1179634100F21A68 /* MYDNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYDNSService.h; path = ../../mynetwork/PortMapper/MYDNSService.h; sourceTree = SOURCE_ROOT; };
@@ -176,6 +181,8 @@
 				11BC223B117A50D500F87F30 /* HOItemTableViewController.m */,
 				11BC222D117A4D5A00F87F30 /* HOItem.h */,
 				11BC222E117A4D5A00F87F30 /* HOItem.m */,
+				11BC22B2117A58FB00F87F30 /* HOItemTableViewCell.h */,
+				11BC22B3117A58FB00F87F30 /* HOItemTableViewCell.m */,
 				11E40B5D1179634100F21A68 /* MYUtilities */,
 				11E40B2A1179634100F21A68 /* MYNetwork */,
 			);
@@ -343,6 +350,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11BC23B0117A72D000F87F30 /* icon-test.png */,
 				11E40C1811796E5600F21A68 /* imac.png */,
 				2899E5210DE3E06400AC0155 /* HandoffViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -424,6 +432,7 @@
 				11E40BA8117963C900F21A68 /* MYUtilities_Debug.xcconfig in Resources */,
 				11E40BA9117963C900F21A68 /* MYUtilities_Release.xcconfig in Resources */,
 				11E40C1911796E5600F21A68 /* imac.png in Resources */,
+				11BC23B1117A72D000F87F30 /* icon-test.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +480,7 @@
 				97ACF0E7117A68C1005F4046 /* Base64.m in Sources */,
 				11BC222F117A4D5A00F87F30 /* HOItem.m in Sources */,
 				11BC223C117A50D500F87F30 /* HOItemTableViewController.m in Sources */,
+				11BC22B4117A58FB00F87F30 /* HOItemTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
