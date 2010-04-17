@@ -97,6 +97,7 @@
     label.text = [NSString stringWithFormat: @"Echoed:\n“%@”",message];
     [request respondWithData: request.body contentType: request.contentType];
 	[message release];
+	return YES;
 }
 
 - (void) connectionDidClose: (TCPConnection*)connection;

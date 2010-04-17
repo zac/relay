@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HandNetwork.h"
+#import "HONetwork.h"
 
 @class HOItemTableViewController;
 
@@ -16,14 +16,14 @@
 	
 	IBOutlet UITextField *textField;
 	
-	HandNetwork *network;
+	HONetwork *network;
 }
 
 @property (nonatomic, retain) HOItemTableViewController *tableViewController;
 
 @property (nonatomic, retain) UITextField *textField;
 
-@property (nonatomic, retain) HandNetwork *network;
+@property (nonatomic, retain) HONetwork *network;
 
 
 @end

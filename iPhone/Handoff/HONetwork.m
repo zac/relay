@@ -6,11 +6,11 @@
 //  Copyright 2010 Gravity Mobile. All rights reserved.
 //
 
-#import "HandNetwork.h"
+#import "HONetwork.h"
 #import "BLIP.h"
 
 
-@implementation HandNetwork
+@implementation HONetwork
 
 @synthesize string;
 

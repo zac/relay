@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BLIPConnection.h"
 
-@interface HandNetwork : NSObject <TCPListenerDelegate, BLIPConnectionDelegate> {
+@interface HONetwork : NSObject <TCPListenerDelegate, BLIPConnectionDelegate> {
 
 	NSString *string;
     BLIPListener *_listener;
