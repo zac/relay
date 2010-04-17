@@ -29,6 +29,9 @@
 	return self;
 }
 
+- (void)updateString {
+	
+}
 
 #pragma mark BLIP Listener Delegate:
 
@@ -57,12 +60,13 @@
                   connection.address,error];
 }
 
-- (void) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request
+- (BOOL) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request
 {
     NSString *message = [[NSString alloc] initWithData: request.body encoding: NSUTF8StringEncoding];
     self.string = [NSString stringWithFormat: @"Echoed:\n“%@”",message];
     [request respondWithData: request.body contentType: request.contentType];
 	[message release];
+	return YES;
 }
 
 - (void) connectionDidClose: (TCPConnection*)connection;
