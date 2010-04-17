@@ -10,7 +10,9 @@
 
 
 @interface HOItemTableViewController : UITableViewController {
-
+	NSMutableArray *items;
 }
+
+@property (nonatomic, retain) NSMutableArray *items;
 
 @end

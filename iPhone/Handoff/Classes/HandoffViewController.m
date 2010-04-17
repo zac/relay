@@ -14,9 +14,28 @@
 
 @synthesize tableViewController;
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+	if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) return nil;
+	
+	return self;
+}
+
+- (void)viewDidLoad {
+	
+	[super viewDidLoad];
+		
+	if (!self.tableViewController) {
+		self.tableViewController = [[[HOItemTableViewController alloc] init] autorelease];
+	}
+	
+	self.tableViewController.view.frame = CGRectMake(0, 0, 300, 1004);
+	
+	[self.view addSubview:self.tableViewController.view];
+}
+
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
+    return (interfaceOrientation == UIDeviceOrientationPortrait);
 }
 
 - (void)didReceiveMemoryWarning {
