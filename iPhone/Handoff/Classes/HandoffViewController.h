@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HandoffViewController : UIViewController {
-
+@interface HandoffViewController : UIViewController <UITableViewDataSource> {
+	IBOutlet UITableView *leftTableView;
+	IBOutlet UITableView *rightTableView;
 }
+
+@property (nonatomic, retain) UITableView *leftTableView;
+@property (nonatomic, retain) UITableView *rightTableView;
 
 @end
 

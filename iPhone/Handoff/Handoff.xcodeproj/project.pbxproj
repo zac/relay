@@ -40,6 +40,7 @@
 		11E40BAE117963D300F21A68 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E40BAD117963D300F21A68 /* GTMNSData+zlib.m */; };
 		11E40BD21179654800F21A68 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E40BD11179654800F21A68 /* Security.framework */; };
 		11E40BD41179654E00F21A68 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E40BD31179654E00F21A68 /* CFNetwork.framework */; };
+		11E40C1911796E5600F21A68 /* imac.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E40C1811796E5600F21A68 /* imac.png */; };
 		1D3623260D0F684500981E51 /* HandoffAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* HandoffAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -116,6 +117,7 @@
 		11E40BAD117963D300F21A68 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSData+zlib.m"; sourceTree = "<group>"; };
 		11E40BD11179654800F21A68 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		11E40BD31179654E00F21A68 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		11E40C1811796E5600F21A68 /* imac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imac.png; path = Resources/imac.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* HandoffAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoffAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* HandoffAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoffAppDelegate.m; sourceTree = "<group>"; };
@@ -150,12 +152,12 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				11E40B5D1179634100F21A68 /* MYUtilities */,
-				11E40B2A1179634100F21A68 /* MYNetwork */,
 				1D3623240D0F684500981E51 /* HandoffAppDelegate.h */,
 				1D3623250D0F684500981E51 /* HandoffAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* HandoffViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* HandoffViewController.m */,
+				11E40B5D1179634100F21A68 /* MYUtilities */,
+				11E40B2A1179634100F21A68 /* MYNetwork */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -321,6 +323,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11E40C1811796E5600F21A68 /* imac.png */,
 				2899E5210DE3E06400AC0155 /* HandoffViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Handoff-Info.plist */,
@@ -386,6 +389,7 @@
 				2899E5220DE3E06400AC0155 /* HandoffViewController.xib in Resources */,
 				11E40BA8117963C900F21A68 /* MYUtilities_Debug.xcconfig in Resources */,
 				11E40BA9117963C900F21A68 /* MYUtilities_Release.xcconfig in Resources */,
+				11E40C1911796E5600F21A68 /* imac.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
