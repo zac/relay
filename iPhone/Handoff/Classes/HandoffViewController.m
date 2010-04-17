@@ -7,12 +7,12 @@
 //
 
 #import "HandoffViewController.h"
-
 #import "HOItemTableViewController.h"
+
 
 @implementation HandoffViewController
 
-@synthesize tableViewController;
+@synthesize tableViewController, textField, network;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) return nil;

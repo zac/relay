@@ -7,14 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HandNetwork.h"
 
 @class HOItemTableViewController;
 
 @interface HandoffViewController : UIViewController {
 	HOItemTableViewController *tableViewController;
+
+	IBOutlet UITextField *textField;
+	
+	HandNetwork *network;
 }
 
 @property (nonatomic, retain) HOItemTableViewController *tableViewController;
+
+@property (nonatomic, retain) UITextField *textField;
+
+@property (nonatomic, retain) HandNetwork *network;
+
 
 @end
 
