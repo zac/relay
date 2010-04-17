@@ -7,14 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HandNetwork.h"
 
-@interface HandoffViewController : UIViewController <UITableViewDataSource> {
+@interface HandoffViewController : UIViewController <UITableViewDataSource, UITextFieldDelegate> {
 	IBOutlet UITableView *leftTableView;
 	IBOutlet UITableView *rightTableView;
+	
+	IBOutlet UITextField *textField;
+	
+	HandNetwork *network;
+	
 }
 
 @property (nonatomic, retain) UITableView *leftTableView;
 @property (nonatomic, retain) UITableView *rightTableView;
+
+@property (nonatomic, retain) UITextField *textField;
+
+@property (nonatomic, retain) HandNetwork *network;
 
 @end
 

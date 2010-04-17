@@ -10,7 +10,9 @@
 
 @implementation HandoffViewController
 
-@synthesize leftTableView, rightTableView;
+@synthesize leftTableView, rightTableView, textField, network;
+
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
