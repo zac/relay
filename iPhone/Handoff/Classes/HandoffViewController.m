@@ -8,31 +8,11 @@
 
 #import "HandoffViewController.h"
 
+#import "HOItemTableViewController.h"
+
 @implementation HandoffViewController
 
-@synthesize leftTableView, rightTableView;
-
-
-- (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSString *reuseIdentifier = @"";
-	
-	//if(indexPath.row >= filteredProfile.count) return nil;
-	
-    UITableViewCell *cell = (UITableViewCell *)[theTableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:reuseIdentifier] autorelease];
-    }
-		
-	cell.textLabel.text = @"blah";
-	
-    return cell;
-	
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 20;
-}
-
+@synthesize tableViewController;
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -53,6 +33,9 @@
 
 
 - (void)dealloc {
+	
+	self.tableViewController = nil;
+	
     [super dealloc];
 }
 
