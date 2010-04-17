@@ -25,5 +25,6 @@
 
 @property (nonatomic, retain) HandNetwork *network;
 
+
 @end
 
