@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11BC222F117A4D5A00F87F30 /* HOItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BC222E117A4D5A00F87F30 /* HOItem.m */; };
+		11BC223C117A50D500F87F30 /* HOItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BC223B117A50D500F87F30 /* HOItemTableViewController.m */; };
 		11E40B6F1179634100F21A68 /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E40B2D1179634100F21A68 /* IPAddress.m */; };
 		11E40B701179634100F21A68 /* MYDNSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E40B2F1179634100F21A68 /* MYDNSService.m */; };
 		11E40B711179634100F21A68 /* MYAddressLookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E40B311179634100F21A68 /* MYAddressLookup.m */; };
@@ -55,6 +57,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11BC222D117A4D5A00F87F30 /* HOItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOItem.h; sourceTree = "<group>"; };
+		11BC222E117A4D5A00F87F30 /* HOItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOItem.m; sourceTree = "<group>"; };
+		11BC223A117A50D500F87F30 /* HOItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOItemTableViewController.h; sourceTree = "<group>"; };
+		11BC223B117A50D500F87F30 /* HOItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOItemTableViewController.m; sourceTree = "<group>"; };
 		11E40B2C1179634100F21A68 /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPAddress.h; path = ../../mynetwork/IPAddress.h; sourceTree = SOURCE_ROOT; };
 		11E40B2D1179634100F21A68 /* IPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPAddress.m; path = ../../mynetwork/IPAddress.m; sourceTree = SOURCE_ROOT; };
 		11E40B2E1179634100F21A68 /* MYDNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYDNSService.h; path = ../../mynetwork/PortMapper/MYDNSService.h; sourceTree = SOURCE_ROOT; };
@@ -166,6 +172,10 @@
 				28D7ACF60DDB3853001CB0EB /* HandoffViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* HandoffViewController.m */,
 				97ACF00A1179706C005F4046 /* Network */,
+				11BC223A117A50D500F87F30 /* HOItemTableViewController.h */,
+				11BC223B117A50D500F87F30 /* HOItemTableViewController.m */,
+				11BC222D117A4D5A00F87F30 /* HOItem.h */,
+				11BC222E117A4D5A00F87F30 /* HOItem.m */,
 				11E40B5D1179634100F21A68 /* MYUtilities */,
 				11E40B2A1179634100F21A68 /* MYNetwork */,
 			);
@@ -459,6 +469,8 @@
 				11E40BAE117963D300F21A68 /* GTMNSData+zlib.m in Sources */,
 				97ACF028117A2DB1005F4046 /* HandNetwork.m in Sources */,
 				97ACF0E7117A68C1005F4046 /* Base64.m in Sources */,
+				11BC222F117A4D5A00F87F30 /* HOItem.m in Sources */,
+				11BC223C117A50D500F87F30 /* HOItemTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
