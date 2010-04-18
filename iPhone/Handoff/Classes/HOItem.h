@@ -31,6 +31,7 @@ NSString *const HOItemCommandTypeDocument;
 }
 
 - (id) initWithBLIPMessage: (BLIPMessage*)message;
+- (BLIPProperties *)getBLIPProperties;
 
 @property (nonatomic, retain) UIImage *itemIcon;
 
