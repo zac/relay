@@ -18,7 +18,7 @@
 
 @synthesize string, delegate, myServiceBrowser, serviceList;
 
-- (id) initWithDelegate:(id <HONetworkDelegate>)theDelegate
+- (id) initWithDelegate:(NSObject<HONetworkDelegate> *)theDelegate
 {
 	self = [super init];
     if (self != nil) {
@@ -58,7 +58,9 @@
 /* Receive the response to the BLIP request */
 - (void) gotResponse: (BLIPResponse*)response
 {
-	NSLog(@"Got Response: %@", response);
+	if ( [self.delegate respondsToSelector:@selector(network:didReceiveResponse:)]) {
+		[self.delegate network:self didReceiveResponse:response];
+	}
 }
 
 - (MYBonjourBrowser*) myServiceBrowser {
@@ -144,8 +146,8 @@
 /* Opens a BLIP connection to the given address. */
 - (void)openConnection: (MYBonjourService*)service 
 {
-    myConnection = [[BLIPConnection alloc] initToBonjourService: service];
-	//myConnection = [[BLIPConnection alloc] initToAddress:[[IPAddress alloc] initWithHostname:@"192.168.97.164" port:12345]];
+    //myConnection = [[BLIPConnection alloc] initToBonjourService: service];
+	myConnection = [[BLIPConnection alloc] initToAddress:[[IPAddress alloc] initWithHostname:@"192.168.96.219" port:12345]];
     if( myConnection ) {
         myConnection.delegate = self;
         [myConnection open];

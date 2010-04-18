@@ -67,6 +67,7 @@
 	clipboardItem.itemTitle = @"Clipboard";
 	UIPasteboard *general = [UIPasteboard generalPasteboard];
 	clipboardItem.itemDescription = [general string];
+	clipboardItem.properties = [NSDictionary dictionaryWithObject:[general string] forKey:@"string"];
 	
 	[self.builtInItems addObject:clipboardItem];
 	[clipboardItem release];
@@ -111,16 +112,16 @@
     if (cell == nil) {
         cell = [[[HOItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
 	cell.parentController = self;
 	
 	if (indexPath.section == 0) {
 		//we're in the built in section.
 		cell.item = (HOItem *)[self.builtInItems objectAtIndex:indexPath.row];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	} else {
 		cell.item = (HOItem *)[self.items objectAtIndex:indexPath.row];
+		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 	}
 	
     return cell;
@@ -133,8 +134,14 @@
 	HOItemTableViewCell *tableCell = (HOItemTableViewCell *)[theTableView cellForRowAtIndexPath:indexPath];
 	
 	HOItem *theItem = nil;
-	if (indexPath.section == 1) [self.items objectAtIndex:indexPath.row];
-	else [self.builtInItems objectAtIndex:indexPath.row];
+	if (indexPath.section == 1) {
+		theItem = [self.items objectAtIndex:indexPath.row];
+		[self performActionForItem:theItem];
+		return;
+	} else {
+		theItem = [self.builtInItems objectAtIndex:indexPath.row];
+	}
+	
 	
 	UIWindow *flyWindow = [tableCell windowForCell];
 	
@@ -166,19 +173,33 @@
 	
 	NSLog(@"GOT ITEM: %@", theItem);
 	
-	[self.items addObject:theItem];
+	//do special actions for the clipboard or the song.
+	BOOL builtIn = [theItem.command isEqualToString:HOItemCommandTypeClipboard] || [theItem.command isEqualToString:HOItemCommandTypeSong];
+	NSUInteger indexOfItem = 0;
+	NSIndexPath *lastPath = nil;
+	CGRect rowRect;
+	if (builtIn) {
+		indexOfItem = [self.builtInItems count]-1;
+	} else {
+		[self.items count]-1;
+		[self.items addObject:theItem];
+		
+		lastPath = [NSIndexPath indexPathForRow:indexOfItem inSection:builtIn?0:1];
+		[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:lastPath]
+							  withRowAnimation:UITableViewRowAnimationRight];
+		
+		rowRect = [[self.view window] convertRect:[self.tableView rectForRowAtIndexPath:lastPath]
+													fromView:self.tableView];
+	}
 	
-	NSIndexPath *lastPath = [NSIndexPath indexPathForRow:[self.items count]-1 inSection:0];
-	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:lastPath]
-						  withRowAnimation:UITableViewRowAnimationRight];
-	CGRect lastRowRect = [[self.view window] convertRect:[self.tableView rectForRowAtIndexPath:lastPath]
-												fromView:self.tableView];
+	
+	
 	
 	HOItemTableViewCell *tableCell = (HOItemTableViewCell *)[self.tableView cellForRowAtIndexPath:lastPath];
 	
 	UIWindow *flyWindow = [tableCell windowForCell];
 	
-	[tableCell hideContents];
+	if (!builtIn) [tableCell hideContents];
 	
 	//convert to the window's coordinate system.
 	CGRect rowFrame = [[self.tableView window] convertRect:[self.tableView rectForRowAtIndexPath:lastPath] fromView:self.tableView];
@@ -196,14 +217,16 @@
 	[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
 	
 	flyWindow.transform = CGAffineTransformMakeScale(1.0, 1.0);
-	flyWindow.frame = lastRowRect;
+	flyWindow.frame = rowRect;
 	flyWindow.alpha = 1.0;
 	
     [UIView commitAnimations];	
 	
 	[flyWindow makeKeyAndVisible];
-	
-	//[self performActionForItem:theItem];
+}
+
+- (void)network:(HONetwork *)theNetwork didReceiveResponse:(BLIPResponse *)theResponse {
+	//we got a response.
 }
 
 - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
