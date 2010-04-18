@@ -150,12 +150,16 @@
 }
 
 - (void)network:(HONetwork *)theNetwork didReceiveItem:(HOItem *)theItem {
+	
+	NSLog(@"GOT ITEM: %@", theItem);
+	
 	[self.items addObject:theItem];
 	
 	NSIndexPath *lastPath = [NSIndexPath indexPathForRow:[self.items count]-1 inSection:0];
 	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:lastPath]
 						  withRowAnimation:UITableViewRowAnimationTop];
 	CGRect lastRowRect = [self.tableView rectForRowAtIndexPath:lastPath];
+	lastRowRect = CGRectMake(-lastRowRect.size.width, lastRowRect.origin.y, lastRowRect.size.width, lastRowRect.size.height);
 	
 	HOItemTableViewCell *tableCell = (HOItemTableViewCell *)[self.tableView cellForRowAtIndexPath:lastPath];
 	
@@ -183,6 +187,8 @@
     [UIView commitAnimations];	
 	
 	[flyWindow makeKeyAndVisible];
+	
+	//[self performActionForItem:theItem];
 }
 
 - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
@@ -196,8 +202,16 @@
 //HOItemCommandTypeDocument
 
 - (void)performActionForItem:(HOItem *)theItem {
+	
+	NSLog(@"command: %@", theItem.command);
+	
 	if ([theItem.command isEqualToString:HOItemCommandTypeWebpage]) {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[theItem.properties objectForKey:@"actionURL"]]];
+		
+		NSString *urlString = [theItem.properties objectForKey:@"actionURL"];
+		
+		NSLog(@"theString: %@", urlString);
+		
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 	}
 }
 

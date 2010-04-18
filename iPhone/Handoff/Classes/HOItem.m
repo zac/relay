@@ -42,11 +42,14 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	self.itemDescription = [props valueOfProperty:HOItemPropertyKeyDescription];
 	
 	NSMutableDictionary *restOfProperties = [[NSMutableDictionary alloc] initWithDictionary:[props allProperties]];
+	
 	[restOfProperties removeObjectsForKeys:[NSArray arrayWithObjects:HOItemPropertyKeyCommand,
 											HOItemPropertyKeyTitle,
 											HOItemPropertyKeyDescription,
 											HOItemPropertyKeyIconData,
 											nil]];
+	
+	self.properties = restOfProperties;
 	
 	return self;
 }
@@ -60,8 +63,9 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	
 	NSString *iconString = [Base64 encode:self.itemIconData];
 	if (self.itemIconData) [requestProperties setObject:iconString forKey:HOItemPropertyKeyIconData];
-	if (self.properties) [requestProperties addEntriesFromDictionary:self.properties];
 	
+	if (self.properties) [requestProperties addEntriesFromDictionary:self.properties];
+		
 	BLIPRequest *message = [BLIPRequest requestWithBody:self.body properties:requestProperties];
 	
 	return message;

@@ -38,7 +38,7 @@
 }
 
 - (BOOL) sendItem:(HOItem *)item {
-	
+		
 	if ( !myConnection ) {
 		[self makeConnection];
 	}
@@ -144,8 +144,8 @@
 /* Opens a BLIP connection to the given address. */
 - (void)openConnection: (MYBonjourService*)service 
 {
-    //myConnection = [[BLIPConnection alloc] initToBonjourService: service];
-	myConnection = [[BLIPConnection alloc] initToAddress:[[IPAddress alloc] initWithHostname:@"192.168.97.164" port:12345]];
+    myConnection = [[BLIPConnection alloc] initToBonjourService: service];
+	//myConnection = [[BLIPConnection alloc] initToAddress:[[IPAddress alloc] initWithHostname:@"192.168.97.164" port:12345]];
     if( myConnection ) {
         myConnection.delegate = self;
         [myConnection open];
