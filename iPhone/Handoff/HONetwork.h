@@ -15,7 +15,10 @@
 @protocol HONetworkDelegate
 
 - (void)network:(HONetwork *)theNetwork didReceiveItem:(HOItem *)theItem;
+
 - (void)didDropConnectionOnNetwork:(HONetwork *)theNetwork;
+
+- (void)network:(HONetwork *)theNetwork didReceiveResponse:(BLIPResponse *)theResponse;
 
 @end
 
@@ -30,7 +33,7 @@
 	
 	NSArray *serviceList;
 	
-	id <HONetworkDelegate> delegate;
+	NSObject<HONetworkDelegate> *delegate;
 	
 	NSArray *theThing;
 	
@@ -40,13 +43,13 @@
 
 @property (nonatomic, copy) NSString *string;
 
-@property (nonatomic, retain) id <HONetworkDelegate> delegate;
+@property (nonatomic, retain) NSObject<HONetworkDelegate> *delegate;
 
 @property (nonatomic, retain) MYBonjourBrowser *myServiceBrowser;
 
 @property (nonatomic, copy) NSArray *serviceList;
 
-- (id) initWithDelegate:(id <HONetworkDelegate>)delegate;
+- (id) initWithDelegate:(NSObject<HONetworkDelegate> *)delegate;
 
 - (BOOL) isConnected;
 

@@ -21,7 +21,7 @@
 
 @implementation HOItemTableViewController
 
-@synthesize items, networkController;
+@synthesize items, builtInItems, networkController;
 
 #pragma mark -
 #pragma mark Initialization
@@ -29,9 +29,8 @@
 - (id)init {
 	if (!(self = [self initWithNibName:nil bundle:nil])) return nil;
 	
-	NSMutableArray *itemArray = [NSMutableArray array];
-	
-	self.items = itemArray;
+	self.items = [NSMutableArray array];
+	self.builtInItems = [NSMutableArray array];
 	
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	self.tableView.backgroundColor = [UIColor colorWithWhite:.9 alpha:1.0];
@@ -73,10 +72,10 @@
 	MPMediaItemArtwork *artwork = [currentItem valueForProperty:MPMediaItemPropertyArtwork];
 	nowPlayingItem.itemIconData = UIImagePNGRepresentation([artwork imageWithSize:CGSizeMake(45.0, 45.0)]);
 	
-	
 	//make it the first object.
-	[self.items insertObject:nowPlayingItem atIndex:0];
-	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+	[self.builtInItems insertObject:nowPlayingItem atIndex:0];
+	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]]
+						  withRowAnimation:UITableViewRowAnimationTop];
 }
 
 - (void)discoverCurrentClipboard {
@@ -86,11 +85,12 @@
 	clipboardItem.itemTitle = @"Clipboard";
 	UIPasteboard *general = [UIPasteboard generalPasteboard];
 	clipboardItem.itemDescription = [general string];
+	clipboardItem.properties = [NSDictionary dictionaryWithObject:[general string] forKey:@"string"];
 	
-	[self.items addObject:clipboardItem];
+	[self.builtInItems addObject:clipboardItem];
 	[clipboardItem release];
 	
-	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.items.count-1 inSection:0]]
+	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.builtInItems.count-1 inSection:0]]
 						  withRowAnimation:UITableViewRowAnimationTop];
 }
 
@@ -110,11 +110,16 @@
 #pragma mark -
 #pragma mark Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return [self.items count];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)theTableView {
+	return 2;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+	if (section == 1) return [self.items count];
+	
+	return [self.builtInItems count];
+}
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -125,13 +130,18 @@
     if (cell == nil) {
         cell = [[[HOItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
-	cell.item = (HOItem *)[self.items objectAtIndex:indexPath.row];
+	cell.parentController = self;
 	
-    // Configure the cell...
-    
+	if (indexPath.section == 0) {
+		//we're in the built in section.
+		cell.item = (HOItem *)[self.builtInItems objectAtIndex:indexPath.row];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	} else {
+		cell.item = (HOItem *)[self.items objectAtIndex:indexPath.row];
+		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+	}
+	
     return cell;
 }
 
@@ -140,17 +150,27 @@
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	HOItemTableViewCell *tableCell = (HOItemTableViewCell *)[theTableView cellForRowAtIndexPath:indexPath];
-		
+	
+	HOItem *theItem = nil;
+	if (indexPath.section == 1) {
+		theItem = [self.items objectAtIndex:indexPath.row];
+		[self performActionForItem:theItem];
+		return;
+	} else {
+		theItem = [self.builtInItems objectAtIndex:indexPath.row];
+	}
+	
+	
 	UIWindow *flyWindow = [tableCell windowForCell];
 	
 	//convert to the window's coordinate system.
 	CGRect rowFrame = [[self.view window] convertRect:[theTableView rectForRowAtIndexPath:indexPath] fromView:theTableView];
 	flyWindow.frame = rowFrame;
 	
-	[self.networkController sendItem:[self.items objectAtIndex:indexPath.row]];
+	[self.networkController sendItem:theItem];
 	
 	CGAffineTransform transform = CGAffineTransformMakeScale(.3, .3);
-		
+	
 	[UIView beginAnimations:nil context:[[NSArray arrayWithObjects:flyWindow, tableCell, nil] retain]];
     [UIView setAnimationDuration:.5];
     [UIView setAnimationDelegate:self];
@@ -163,7 +183,7 @@
 	flyWindow.alpha = .5;
 	
     [UIView commitAnimations];	
-		
+	
 	[flyWindow makeKeyAndVisible];
 }
 
@@ -171,19 +191,33 @@
 	
 	NSLog(@"GOT ITEM: %@", theItem);
 	
-	[self.items addObject:theItem];
+	//do special actions for the clipboard or the song.
+	BOOL builtIn = [theItem.command isEqualToString:HOItemCommandTypeClipboard] || [theItem.command isEqualToString:HOItemCommandTypeSong];
+	NSUInteger indexOfItem = 0;
+	NSIndexPath *lastPath = nil;
+	CGRect rowRect;
+	if (builtIn) {
+		indexOfItem = [self.builtInItems count]-1;
+	} else {
+		[self.items count]-1;
+		[self.items addObject:theItem];
+		
+		lastPath = [NSIndexPath indexPathForRow:indexOfItem inSection:builtIn?0:1];
+		[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:lastPath]
+							  withRowAnimation:UITableViewRowAnimationRight];
+		
+		rowRect = [[self.view window] convertRect:[self.tableView rectForRowAtIndexPath:lastPath]
+													fromView:self.tableView];
+	}
 	
-	NSIndexPath *lastPath = [NSIndexPath indexPathForRow:[self.items count]-1 inSection:0];
-	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:lastPath]
-						  withRowAnimation:UITableViewRowAnimationRight];
-	CGRect lastRowRect = [[self.view window] convertRect:[self.tableView rectForRowAtIndexPath:lastPath]
-												fromView:self.tableView];
+	
+	
 	
 	HOItemTableViewCell *tableCell = (HOItemTableViewCell *)[self.tableView cellForRowAtIndexPath:lastPath];
 	
 	UIWindow *flyWindow = [tableCell windowForCell];
 	
-	[tableCell hideContents];
+	if (!builtIn) [tableCell hideContents];
 	
 	//convert to the window's coordinate system.
 	CGRect rowFrame = [[self.tableView window] convertRect:[self.tableView rectForRowAtIndexPath:lastPath] fromView:self.tableView];
@@ -201,14 +235,18 @@
 	[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
 	
 	flyWindow.transform = CGAffineTransformMakeScale(1.0, 1.0);
-	flyWindow.frame = lastRowRect;
+	flyWindow.frame = rowRect;
 	flyWindow.alpha = 1.0;
 	
     [UIView commitAnimations];	
 	
 	[flyWindow makeKeyAndVisible];
 	
-	//[self performActionForItem:theItem];
+	if (builtIn) [self performActionForItem:theItem];
+}
+
+- (void)network:(HONetwork *)theNetwork didReceiveResponse:(BLIPResponse *)theResponse {
+	//we got a response.
 }
 
 - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
@@ -240,6 +278,33 @@
 		NSLog(@"theString: %@", urlString);
 		
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+	} else if ([theItem.command isEqualToString:HOItemCommandTypeSong]) {
+		NSString *artist = [theItem.properties objectForKey:@"artist"];
+		NSString *track = [theItem.properties objectForKey:@"track"];
+		
+		NSInteger seconds = [[theItem.properties objectForKey:@"seconds"] integerValue];
+		BOOL playing = [[theItem.properties objectForKey:@"playbackState"] isEqualToString:@"1"];
+		
+		MPMediaPropertyPredicate *artistPredicate = [MPMediaPropertyPredicate predicateWithValue: artist
+																					 forProperty: MPMediaItemPropertyArtist];
+		MPMediaPropertyPredicate *trackPredicate = [MPMediaPropertyPredicate predicateWithValue: track
+																					forProperty: MPMediaItemPropertyTitle];
+		
+		MPMediaQuery *songQuery = [[MPMediaQuery alloc] init];
+		
+		[songQuery addFilterPredicate: artistPredicate];
+		[songQuery addFilterPredicate: trackPredicate];
+		
+		[[MPMusicPlayerController iPodMusicPlayer] setQueueWithQuery:songQuery];
+		[songQuery release];
+		
+		[[MPMusicPlayerController iPodMusicPlayer] setCurrentPlaybackTime:(NSTimeInterval)seconds];
+		if (playing) [[MPMusicPlayerController iPodMusicPlayer] play];
+		
+	} else if ([theItem.command isEqualToString:HOItemCommandTypeClipboard]) {
+		[[UIPasteboard generalPasteboard] setValue:[theItem.properties objectForKey:@"string"] forPasteboardType:@"public.utf8-plain-text"];
+		[self.builtInItems removeLastObject];
+		[self discoverCurrentClipboard];
 	}
 }
 
@@ -261,6 +326,7 @@
 
 - (void)dealloc {
 	
+	self.builtInItems = nil;
 	self.items = nil;
 	
     [super dealloc];

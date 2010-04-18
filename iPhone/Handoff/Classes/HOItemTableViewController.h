@@ -11,12 +11,16 @@
 
 
 @interface HOItemTableViewController : UITableViewController <HONetworkDelegate> {
+	NSMutableArray *builtInItems;
 	NSMutableArray *items;
 	
 	HONetwork *networkController;
 }
 
+- (void)performActionForItem:(HOItem *)theItem;
+
 @property (nonatomic, retain) HONetwork *networkController;
+@property (nonatomic, retain) NSMutableArray *builtInItems;
 @property (nonatomic, retain) NSMutableArray *items;
 
 @end

@@ -118,7 +118,7 @@ url_list"
 		[props setObject:[Base64 encode:resizedData] forKey:HOItemPropertyKeyIconData];
 		
 		[resizedImage release];
-	}	
+	}
 	
 	iTunesEPlS playerState = [iTunes playerState];
 	
