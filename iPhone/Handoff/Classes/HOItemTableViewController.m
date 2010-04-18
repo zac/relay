@@ -193,16 +193,28 @@
 	
 	//do special actions for the clipboard or the song.
 	BOOL builtIn = [theItem.command isEqualToString:HOItemCommandTypeClipboard] || [theItem.command isEqualToString:HOItemCommandTypeSong];
-	NSUInteger indexOfItem = 0;
+	NSInteger indexOfItem = 0;
 	NSIndexPath *lastPath = nil;
 	CGRect rowRect;
+	
 	if (builtIn) {
 		indexOfItem = [self.builtInItems count]-1;
+		
+		BOOL goingToSong = [theItem.command isEqualToString:HOItemCommandTypeSong];
+		
+		lastPath = [NSIndexPath indexPathForRow:goingToSong?0:1 inSection:0];
+		
+		rowRect = [[self.view window] convertRect:[self.tableView rectForRowAtIndexPath:lastPath]
+										 fromView:self.tableView];
+		
 	} else {
-		[self.items count]-1;
+		
 		[self.items addObject:theItem];
 		
-		lastPath = [NSIndexPath indexPathForRow:indexOfItem inSection:builtIn?0:1];
+		indexOfItem = [self.items count]-1;
+		
+		lastPath = [NSIndexPath indexPathForRow:indexOfItem inSection:1];
+		
 		[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:lastPath]
 							  withRowAnimation:UITableViewRowAnimationRight];
 		
@@ -216,6 +228,7 @@
 	HOItemTableViewCell *tableCell = (HOItemTableViewCell *)[self.tableView cellForRowAtIndexPath:lastPath];
 	
 	UIWindow *flyWindow = [tableCell windowForCell];
+	NSLog(@"tableCell: %@ flyWindow: %@", tableCell, flyWindow);
 	
 	if (!builtIn) [tableCell hideContents];
 	
@@ -282,6 +295,8 @@
 		NSString *artist = [theItem.properties objectForKey:@"artist"];
 		NSString *track = [theItem.properties objectForKey:@"track"];
 		
+		NSLog(@"Performing action with song: %@ by %@", track, artist);
+		
 		NSInteger seconds = [[theItem.properties objectForKey:@"seconds"] integerValue];
 		BOOL playing = [[theItem.properties objectForKey:@"playbackState"] isEqualToString:@"1"];
 		
@@ -300,11 +315,15 @@
 		
 		[[MPMusicPlayerController iPodMusicPlayer] setCurrentPlaybackTime:(NSTimeInterval)seconds];
 		if (playing) [[MPMusicPlayerController iPodMusicPlayer] play];
+				
+		HOItemTableViewCell *cell = (HOItemTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+		[cell setItem:theItem];
 		
 	} else if ([theItem.command isEqualToString:HOItemCommandTypeClipboard]) {
 		[[UIPasteboard generalPasteboard] setValue:[theItem.properties objectForKey:@"string"] forPasteboardType:@"public.utf8-plain-text"];
-		[self.builtInItems removeLastObject];
-		[self discoverCurrentClipboard];
+		
+		HOItemTableViewCell *cell = (HOItemTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+		[cell setItem:theItem];
 	}
 }
 

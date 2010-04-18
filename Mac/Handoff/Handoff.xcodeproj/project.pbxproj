@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11BDB64E117BA7350043C3C1 /* HONetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BDB64D117BA7350043C3C1 /* HONetwork.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -18,7 +19,6 @@
 		BC088183117A2BFA0083B777 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC088182117A2BFA0083B777 /* Carbon.framework */; };
 		BC088220117A53AB0083B777 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC08821F117A53AB0083B777 /* ApplicationServices.framework */; };
 		BC08833D117A778B0083B777 /* HOAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BC08833C117A778B0083B777 /* HOAppInfo.m */; };
-		BC0883B2117AC0B50083B777 /* HONetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0883AF117AC0B50083B777 /* HONetwork.m */; };
 		BC0883B3117AC0B50083B777 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0883B0117AC0B50083B777 /* Base64.m */; };
 		BC0883B6117AC0C30083B777 /* HOItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0883B4117AC0C30083B777 /* HOItem.m */; };
 		BCED94ED117AD0F900608A28 /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = BCED94A8117AD0F900608A28 /* IPAddress.m */; };
@@ -59,6 +59,8 @@
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		11BDB64C117BA7350043C3C1 /* HONetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HONetwork.h; sourceTree = "<group>"; };
+		11BDB64D117BA7350043C3C1 /* HONetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HONetwork.m; sourceTree = "<group>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -80,8 +82,6 @@
 		BC08833B117A778B0083B777 /* HOAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOAppInfo.h; sourceTree = "<group>"; };
 		BC08833C117A778B0083B777 /* HOAppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOAppInfo.m; sourceTree = "<group>"; };
 		BC08839B117ABD620083B777 /* Safari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Safari.h; sourceTree = "<group>"; };
-		BC0883AE117AC0B50083B777 /* HONetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HONetwork.h; path = ../../iPhone/Handoff/HONetwork.h; sourceTree = SOURCE_ROOT; };
-		BC0883AF117AC0B50083B777 /* HONetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HONetwork.m; path = ../../iPhone/Handoff/HONetwork.m; sourceTree = SOURCE_ROOT; };
 		BC0883B0117AC0B50083B777 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = ../../iPhone/Handoff/Base64.m; sourceTree = SOURCE_ROOT; };
 		BC0883B1117AC0B50083B777 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = ../../iPhone/Handoff/Base64.h; sourceTree = SOURCE_ROOT; };
 		BC0883B4117AC0C30083B777 /* HOItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HOItem.m; path = ../../iPhone/Handoff/Classes/HOItem.m; sourceTree = SOURCE_ROOT; };
@@ -176,10 +176,10 @@
 			children = (
 				BCED968A117ADF4B00608A28 /* iTunes.h */,
 				BC08839B117ABD620083B777 /* Safari.h */,
+				11BDB64C117BA7350043C3C1 /* HONetwork.h */,
+				11BDB64D117BA7350043C3C1 /* HONetwork.m */,
 				BC0883B5117AC0C30083B777 /* HOItem.h */,
 				BC0883B4117AC0C30083B777 /* HOItem.m */,
-				BC0883AE117AC0B50083B777 /* HONetwork.h */,
-				BC0883AF117AC0B50083B777 /* HONetwork.m */,
 				BC0883B1117AC0B50083B777 /* Base64.h */,
 				BC0883B0117AC0B50083B777 /* Base64.m */,
 				BC08833B117A778B0083B777 /* HOAppInfo.h */,
@@ -462,7 +462,6 @@
 				BC088079117A250F0083B777 /* PTHotKey.m in Sources */,
 				BC08807A117A250F0083B777 /* PTKeyCombo.m in Sources */,
 				BC08833D117A778B0083B777 /* HOAppInfo.m in Sources */,
-				BC0883B2117AC0B50083B777 /* HONetwork.m in Sources */,
 				BC0883B3117AC0B50083B777 /* Base64.m in Sources */,
 				BC0883B6117AC0C30083B777 /* HOItem.m in Sources */,
 				BCED94ED117AD0F900608A28 /* IPAddress.m in Sources */,
@@ -494,6 +493,7 @@
 				BCED9507117AD0F900608A28 /* Logging.m in Sources */,
 				BCED950B117AD0F900608A28 /* Target.m in Sources */,
 				BCED950C117AD0F900608A28 /* Test.m in Sources */,
+				11BDB64E117BA7350043C3C1 /* HONetwork.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

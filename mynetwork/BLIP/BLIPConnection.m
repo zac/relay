@@ -83,27 +83,23 @@ NSError *BLIPMakeError( int errorCode, NSString *message, ... )
 - (void) _dispatchRequest: (BLIPRequest*)request
 {
     LogTo(BLIP,@"Received all of %@",request.descriptionWithProperties);
-    @try{
-        BOOL handled;
-        if( request._flags & kBLIP_Meta )
-            handled =[self _dispatchMetaRequest: request];
-        else {
-            handled = [self.dispatcher dispatchMessage: request];
-            if (!handled && [_delegate respondsToSelector: @selector(connection:receivedRequest:)])
-                handled = [_delegate connection: self receivedRequest: request];
-        }
-        
-        if (!handled) {
-            LogTo(BLIP,@"No handler found for incoming %@",request);
-            [request respondWithErrorCode: kBLIPError_NotFound message: @"No handler was found"];
-        } else if( ! request.noReply && ! request.repliedTo ) {
-            LogTo(BLIP,@"Returning default empty response to %@",request);
-            [request respondWithData: nil contentType: nil];
-        }
-    }@catch( NSException *x ) {
-        MYReportException(x,@"Dispatching BLIP request");
-        [request respondWithException: x];
-    }
+	
+	BOOL handled;
+	if( request._flags & kBLIP_Meta )
+		handled =[self _dispatchMetaRequest: request];
+	else {
+		handled = [self.dispatcher dispatchMessage: request];
+		if (!handled && [_delegate respondsToSelector: @selector(connection:receivedRequest:)])
+			handled = [_delegate connection: self receivedRequest: request];
+	}
+	
+	if (!handled) {
+		LogTo(BLIP,@"No handler found for incoming %@",request);
+		[request respondWithErrorCode: kBLIPError_NotFound message: @"No handler was found"];
+	} else if( ! request.noReply && ! request.repliedTo ) {
+		LogTo(BLIP,@"Returning default empty response to %@",request);
+		[request respondWithData: nil contentType: nil];
+	}
 }
 
 - (void) _dispatchResponse: (BLIPResponse*)response

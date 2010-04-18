@@ -59,9 +59,13 @@ url_list"
 		SafariWindow *window = [windows objectAtIndex:0];
 		SBElementArray *tabs = [window tabs];
 		NSMutableArray *tabURLs = [NSMutableArray arrayWithCapacity:[tabs count]];
+		
+		NSInteger index = 0;
 		for (SafariTab *tab in tabs)
 		{
 			[tabURLs addObject:[tab URL]];
+			[properties setObject:[tab URL] forKey:[NSString stringWithFormat:@"actionURL%d", index]];
+			index++;
 		}
 		[properties setObject:[tabURLs objectAtIndex:0] forKey:@"actionURL"];
 		
