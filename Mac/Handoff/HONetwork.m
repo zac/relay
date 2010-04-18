@@ -163,7 +163,7 @@
 - (void)openConnection: (MYBonjourService*)service 
 {
     //myConnection = [[BLIPConnection alloc] initToBonjourService: service];
-	myConnection = [[BLIPConnection alloc] initToAddress:[[IPAddress alloc] initWithHostname:@"192.168.99.214" port:12345]];
+	myConnection = [[BLIPConnection alloc] initToAddress:[[IPAddress alloc] initWithHostname:@"192.168.96.219" port:12345]];
     if( myConnection ) {
         myConnection.delegate = self;
         [myConnection open];

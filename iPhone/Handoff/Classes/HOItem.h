@@ -33,6 +33,7 @@ NSString *const HOItemCommandTypeDocument;
 	NSData *body;
 }
 
++ (NSArray *)itemsWithBLIPRequest:(BLIPRequest *)request;
 - (id)initWithBLIPRequest: (BLIPRequest *)message;
 - (BLIPRequest *)blipRequest;
 

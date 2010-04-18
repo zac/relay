@@ -54,6 +54,30 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	return self;
 }
 
++ (NSArray *)itemsWithBLIPRequest:(BLIPRequest *)request {
+	
+	NSMutableArray *allItems = [[NSMutableArray alloc] init];
+	
+	NSDictionary *props = [[request properties] allProperties];
+	NSArray *propKeys = [props allKeys];
+	int tabCounter = 1;
+	for (int i = 0; i < [propKeys count]; i++) {
+		if ([[propKeys objectAtIndex:i] rangeOfString:@"actionURL"].location != NSNotFound) {
+			if ([[propKeys objectAtIndex:i] length] == 9) continue;
+			HOItem *newItem = [[HOItem alloc] init];
+			newItem.command = HOItemCommandTypeWebpage;
+			newItem.itemTitle = [NSString stringWithFormat:@"Tab %d", tabCounter];
+			newItem.itemDescription = [props objectForKey:[propKeys objectAtIndex:i]];
+			newItem.properties = [NSDictionary dictionaryWithObject:newItem.itemDescription forKey:@"actionURL"];
+			
+			[allItems addObject:newItem];
+			[newItem release];
+			tabCounter++;
+		}
+	}
+	return [allItems autorelease];
+}
+
 - (BLIPRequest *)blipRequest {
 	
 	NSMutableDictionary *requestProperties = [NSMutableDictionary dictionary];
