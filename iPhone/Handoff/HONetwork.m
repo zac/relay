@@ -12,6 +12,7 @@
 #import "BLIP.h"
 #import "Target.h"
 
+#import "HOItem.h"
 
 @implementation HONetwork
 
@@ -36,14 +37,16 @@
 	return self;
 }
 
-- (BOOL) sendMessage:(NSString*)message {
+- (BOOL) sendItem:(HOItem *)item {
+	
 	if ( !myConnection ) {
 		[self makeConnection];
 	}
 	
-	BLIPRequest *r = [myConnection request];
-    r.bodyString = message;
-    BLIPResponse *response = [r send];
+	BLIPRequest *requestToSend = [item blipRequest];
+	[requestToSend setConnection:myConnection];
+	
+    BLIPResponse *response = [requestToSend send];
     if (response) {
 		response.onComplete = $target(self,gotResponse:);
 		
@@ -55,7 +58,7 @@
 /* Receive the response to the BLIP request */
 - (void) gotResponse: (BLIPResponse*)response
 {
-	
+	NSLog(@"Got Response: %@", response);
 }
 
 - (MYBonjourBrowser*) myServiceBrowser {
@@ -118,12 +121,12 @@
 
 - (BOOL) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request
 {
-    NSString *message = [[NSString alloc] initWithData: request.body encoding: NSUTF8StringEncoding];
-    self.string = [NSString stringWithFormat: @"Echoed:\n“%@”",message];
+    HOItem *theItem = [[HOItem alloc] initWithBLIPRequest:request];
+	
 	if ( self.delegate ) {
-		[self.delegate messageReceived: self.string];
+		[self.delegate network:self didReceiveItem:theItem];
 	}
-    [request respondWithData: request.body contentType: request.contentType];
+	
 	return YES;
 }
 

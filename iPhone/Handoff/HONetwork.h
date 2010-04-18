@@ -10,9 +10,11 @@
 #import "BLIPConnection.h"
 #import "MYBonjourBrowser.h"
 
+@class HONetwork, HOItem;
+
 @protocol HONetworkDelegate
 
-- (void) messageReceived:(NSString*)message;
+- (void)network:(HONetwork *)theNetwork didReceiveItem:(HOItem *)theItem;
 
 @end
 
@@ -41,7 +43,7 @@
 
 - (id) initWithDelegate:(id <HONetworkDelegate>)delegate;
 
-- (BOOL) sendMessage:(NSString*)message;
+- (BOOL) sendItem:(HOItem *)item;
 
 - (void) gotResponse: (BLIPResponse*)response;
 

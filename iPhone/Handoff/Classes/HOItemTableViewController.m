@@ -126,17 +126,14 @@
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	HOItemTableViewCell *tableCell = (HOItemTableViewCell *)[theTableView cellForRowAtIndexPath:indexPath];
-	
-	NSString *message = [NSString stringWithFormat:@"Flying item: %@", tableCell.item.itemTitle];
-	NSLog(@"%@", message);
-	[self.networkController sendMessage: message];
-	
+		
 	UIWindow *flyWindow = [tableCell windowForCell];
 	
 	//convert to the window's coordinate system.
 	CGRect rowFrame = [[self.view window] convertRect:[theTableView rectForRowAtIndexPath:indexPath] fromView:theTableView];
 	flyWindow.frame = rowFrame;
 	
+	[self.networkController sendItem:[self.items objectAtIndex:indexPath.row]];
 	
 	CGAffineTransform transform = CGAffineTransformMakeScale(.3, .3);
 	
@@ -158,6 +155,43 @@
 
 - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
 	[(UIWindow *)context removeFromSuperview];
+}
+
+- (void)network:(HONetwork *)theNetwork didReceiveItem:(HOItem *)theItem {
+	[self.items addObject:theItem];
+	
+	NSIndexPath *lastPath = [NSIndexPath indexPathForRow:[self.items count]-1 inSection:0];
+	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:lastPath]
+						  withRowAnimation:UITableViewRowAnimationTop];
+	CGRect lastRowRect = [self.tableView rectForRowAtIndexPath:lastPath];
+	
+	HOItemTableViewCell *tableCell = (HOItemTableViewCell *)[self.tableView cellForRowAtIndexPath:lastPath];
+	
+	UIWindow *flyWindow = [tableCell windowForCell];
+	
+	//convert to the window's coordinate system.
+	CGRect rowFrame = [[self.tableView window] convertRect:[self.tableView rectForRowAtIndexPath:lastPath] fromView:self.tableView];
+	flyWindow.frame = rowFrame;
+	
+	flyWindow.frame = CGRectMake(768, 502, flyWindow.frame.size.width, flyWindow.frame.size.height);
+	flyWindow.transform = CGAffineTransformMakeScale(.3, .3);
+	flyWindow.alpha = 0.5;
+	
+	[UIView beginAnimations:nil context:flyWindow];
+    [UIView setAnimationDuration:.5];
+    [UIView setAnimationDelegate:self];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+	
+	flyWindow.frame = lastRowRect;
+	flyWindow.transform = CGAffineTransformMakeScale(.3, .3);
+	flyWindow.alpha = 1.0;
+	
+    [UIView commitAnimations];	
+	
+	[flyWindow makeKeyAndVisible];
+	
 }
 
 #pragma mark -

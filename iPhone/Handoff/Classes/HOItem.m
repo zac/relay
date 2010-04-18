@@ -54,11 +54,11 @@ NSString *const HOItemCommandTypeDocument = @"document";
 - (BLIPRequest *)blipRequest {
 	
 	NSMutableDictionary *requestProperties = [NSMutableDictionary dictionary];
-	[requestProperties setObject:self.command forKey:HOItemPropertyKeyCommand];
-	[requestProperties setObject:self.itemTitle forKey:HOItemPropertyKeyTitle];
-	[requestProperties setObject:self.itemDescription forKey:HOItemPropertyKeyDescription];
-	[requestProperties setObject:self.itemIcon forKey:HOItemPropertyKeyIconData];
-	[requestProperties addEntriesFromDictionary:self.properties];
+	if (self.command) [requestProperties setObject:self.command forKey:HOItemPropertyKeyCommand];
+	if (self.itemTitle) [requestProperties setObject:self.itemTitle forKey:HOItemPropertyKeyTitle];
+	if (self.itemDescription) [requestProperties setObject:self.itemDescription forKey:HOItemPropertyKeyDescription];
+	if (self.itemIcon) [requestProperties setObject:self.itemIcon forKey:HOItemPropertyKeyIconData];
+	if (self.properties) [requestProperties addEntriesFromDictionary:self.properties];
 	
 	BLIPRequest *message = [BLIPRequest requestWithBody:self.body properties:requestProperties];
 	
