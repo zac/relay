@@ -223,6 +223,8 @@
     [UIView commitAnimations];	
 	
 	[flyWindow makeKeyAndVisible];
+	
+	if (builtIn) [self performActionForItem:theItem];
 }
 
 - (void)network:(HONetwork *)theNetwork didReceiveResponse:(BLIPResponse *)theResponse {
@@ -258,6 +260,33 @@
 		NSLog(@"theString: %@", urlString);
 		
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+	} else if ([theItem.command isEqualToString:HOItemCommandTypeSong]) {
+		NSString *artist = [theItem.properties objectForKey:@"artist"];
+		NSString *track = [theItem.properties objectForKey:@"track"];
+		
+		NSInteger seconds = [[theItem.properties objectForKey:@"seconds"] integerValue];
+		BOOL playing = [[theItem.properties objectForKey:@"playbackState"] isEqualToString:@"1"];
+		
+		MPMediaPropertyPredicate *artistPredicate = [MPMediaPropertyPredicate predicateWithValue: artist
+																					 forProperty: MPMediaItemPropertyArtist];
+		MPMediaPropertyPredicate *trackPredicate = [MPMediaPropertyPredicate predicateWithValue: track
+																					forProperty: MPMediaItemPropertyTitle];
+		
+		MPMediaQuery *songQuery = [[MPMediaQuery alloc] init];
+		
+		[songQuery addFilterPredicate: artistPredicate];
+		[songQuery addFilterPredicate: trackPredicate];
+		
+		[[MPMusicPlayerController iPodMusicPlayer] setQueueWithQuery:songQuery];
+		[songQuery release];
+		
+		[[MPMusicPlayerController iPodMusicPlayer] setCurrentPlaybackTime:(NSTimeInterval)seconds];
+		if (playing) [[MPMusicPlayerController iPodMusicPlayer] play];
+		
+	} else if ([theItem.command isEqualToString:HOItemCommandTypeClipboard]) {
+		[[UIPasteboard generalPasteboard] setValue:[theItem.properties objectForKey:@"string"] forPasteboardType:@"public.utf8-plain-text"];
+		[self.builtInItems removeLastObject];
+		[self discoverCurrentClipboard];
 	}
 }
 
