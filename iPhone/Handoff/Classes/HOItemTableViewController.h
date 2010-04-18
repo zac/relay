@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HONetwork.h"
 
-@class HONetwork;
 
-@interface HOItemTableViewController : UITableViewController {
+@interface HOItemTableViewController : UITableViewController <HONetworkDelegate> {
 	NSMutableArray *items;
 	
 	HONetwork *networkController;
@@ -18,5 +18,7 @@
 
 @property (nonatomic, retain) HONetwork *networkController;
 @property (nonatomic, retain) NSMutableArray *items;
+
+- (void) messageReceived:(NSString*)message;
 
 @end

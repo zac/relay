@@ -7,12 +7,15 @@
 //
 
 #import "HONetwork.h"
+#import "MYBonjourService.h"
+#import "IPAddress.h"
 #import "BLIP.h"
+#import "Target.h"
 
 
 @implementation HONetwork
 
-@synthesize string, delegate;
+@synthesize string, delegate, myServiceBrowser, serviceList;
 
 - (id) initWithDelegate:(id <HONetworkDelegate>)theDelegate
 {
@@ -20,16 +23,69 @@
     if (self != nil) {
 		self.string = @"Opening listener socket...";
 		
-		_listener = [[BLIPListener alloc] initWithPort: 12345];
-		_listener.delegate = self;
-		_listener.pickAvailablePort = YES;
-		_listener.bonjourServiceType = @"_blipecho._tcp";
-		[_listener open];
+		myListener = [[BLIPListener alloc] initWithPort: 12345];
+		myListener.delegate = self;
+		myListener.pickAvailablePort = YES;
+		myListener.bonjourServiceType = @"_blipecho._tcp";
+		[myListener open];
+		
+		[self.myServiceBrowser start];
 		
 		self.delegate = theDelegate;
 	}
 	return self;
 }
+
+- (BOOL) sendMessage:(NSString*)message {
+	if ( !myConnection ) {
+		[self makeConnection];
+	}
+	
+	BLIPRequest *r = [myConnection request];
+    r.bodyString = message;
+    BLIPResponse *response = [r send];
+    if (response) {
+		response.onComplete = $target(self,gotResponse:);
+		
+    }
+	
+	return YES;
+}
+
+/* Receive the response to the BLIP request */
+- (void) gotResponse: (BLIPResponse*)response
+{
+	
+}
+
+- (MYBonjourBrowser*) myServiceBrowser {
+    if (!myServiceBrowser)
+        myServiceBrowser = [[MYBonjourBrowser alloc] initWithServiceType: @"_blipecho._tcp."];
+    return myServiceBrowser;
+}
+
+- (NSArray*) serviceList {
+    return [myServiceBrowser.services.allObjects sortedArrayUsingSelector: @selector(compare:)];
+}
+
++ (NSArray*) keyPathsForValuesAffectingServiceList {
+    return [NSArray arrayWithObject: @"serviceBrowser.services"];
+}
+
+- (void) makeConnection {
+	if ( self.serviceList ) {
+		MYBonjourService *service = [self.serviceList objectAtIndex:0];
+		if ( service ) {
+			[self openConnection: service];
+			NSLog(@"%@", service.fullName);
+		} else {
+			NSLog(@"No Bonjour Found.");
+		}
+	} else {
+		NSLog(@"No Bonjour Started.");
+	}
+}
+
 
 #pragma mark BLIP Listener Delegate:
 
@@ -52,6 +108,8 @@
     connection.delegate = self;
 }
 
+#pragma mark BLIP Connection Delegate
+
 - (void) connection: (TCPConnection*)connection failedToOpen: (NSError*)error
 {
     self.string = [NSString stringWithFormat: @"Failed to open connection from %@: %@",
@@ -66,7 +124,6 @@
 		[self.delegate messageReceived: self.string];
 	}
     [request respondWithData: request.body contentType: request.contentType];
-	[message release];
 	return YES;
 }
 
@@ -74,6 +131,35 @@
 {
     self.string = [NSString stringWithFormat: @"Connection closed from %@",
                   connection.address];
+}
+
+
+
+#pragma mark -
+#pragma mark BLIPConnection support
+
+/* Opens a BLIP connection to the given address. */
+- (void)openConnection: (MYBonjourService*)service 
+{
+    //myConnection = [[BLIPConnection alloc] initToBonjourService: service];
+	myConnection = [[BLIPConnection alloc] initToAddress:[[IPAddress alloc] initWithHostname:@"192.168.97.164" port:12345]];
+    if( myConnection ) {
+        myConnection.delegate = self;
+        [myConnection open];
+    }
+}
+
+/* Closes the currently open BLIP connection. */
+- (void)closeConnection
+{
+    [myConnection close];
+}
+
+/** Called after the connection successfully opens. */
+- (void) connectionDidOpen: (TCPConnection*)connection {
+    if (myConnection==connection) {
+
+    }
 }
 
 @end

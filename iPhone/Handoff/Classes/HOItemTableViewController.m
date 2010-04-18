@@ -33,9 +33,13 @@
 	self.tableView.backgroundColor = [UIColor colorWithWhite:.9 alpha:1.0];
 	self.tableView.rowHeight = 65.0;
 	
-	self.networkController = [[[HONetwork alloc] init] autorelease];
-	
+	self.networkController = [[[HONetwork alloc] initWithDelegate:self] autorelease];
+
 	return self;
+}
+
+- (void) messageReceived:(NSString*)message {
+
 }
 
 - (void)discoverCurrentSong {
@@ -122,6 +126,10 @@
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	HOItemTableViewCell *tableCell = (HOItemTableViewCell *)[theTableView cellForRowAtIndexPath:indexPath];
+	
+	NSString *message = [NSString stringWithFormat:@"Flying item: %@", tableCell.item.itemTitle];
+	NSLog(@"%@", message);
+	[self.networkController sendMessage: message];
 	
 	UIWindow *flyWindow = [tableCell windowForCell];
 	
