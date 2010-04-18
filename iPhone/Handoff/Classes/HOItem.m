@@ -8,10 +8,13 @@
 
 #import "HOItem.h"
 
+#import "Base64.h"
+
 NSString *const HOTypeCommand = @"command";
 NSString *const HOTypeActionUrl = @"webpage";
-NSString *const HOTypeIconData = @"iconData";
 NSString *const HOTypeTitle = @"title";
+NSString *const HOTypeDescription = @"description";
+NSString *const HOTypeIconData = @"icon";
 
 NSString *const HOItemCommandTypeSong = @"song";
 NSString *const HOItemCommandTypeWebpage = @"webpage";
@@ -20,7 +23,35 @@ NSString *const HOItemCommandTypeDocument = @"document";
 
 @implementation HOItem
 
-@synthesize command, itemIcon, itemTitle, itemDescription, properties, body, actionUrl;
+@synthesize command, itemIcon, itemTitle, itemDescription, properties, body;
+
+- (id)initWithBLIPMessage:(BLIPMessage *)message
+{		
+	if (!(self = [super init])) return nil;
+	
+	BLIPProperties *props = [message properties];
+	
+	self.body = message.body;
+	
+	self.command = [props valueOfProperty:HOTypeCommand];
+	
+	NSString *iconDataString = [props valueOfProperty:HOTypeIconData];
+	NSData *decodedData = [Base64 decode:iconDataString];
+	self.itemIcon = [UIImage imageWithData:decodedData];
+	
+	self.itemTitle = [props valueOfProperty:HOTypeIconData];
+	self.itemDescription = [props valueOfProperty:HOTypeDescription];
+	
+	NSMutableDictionary *restOfProperties = [[NSMutableDictionary alloc] initWithDictionary:[props allProperties]];
+	[restOfProperties removeObjectsForKeys:[NSArray arrayWithObjects:HOTypeCommand, HOTypeTitle, HOTypeDescription, HOTypeIconData, nil]];
+	
+	return self;
+}
+
+- (BLIPMessage *)blipMessage {
+	//fill out the blip message.
+	return nil;
+}
 
 - (void)dealloc {
 	
@@ -30,33 +61,10 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	self.itemDescription = nil;
 	self.properties = nil;
 	self.body = nil;
-	self.actionUrl = nil;
 	
 	[super dealloc];
 }
-- (id)initWithBLIPMessage:(BLIPMessage *)message
-{
-	BLIPProperties *props = [message properties];
-	
-	self.body = message.body;
-	
-	self.command = [props valueOfProperty:HOTypeCommand];
-	
-	self.properties = [props allProperties];
-	
-	//String iconData = [props valueOfProperty:HOTypeIconData];
-	//self.itemIcon = 
-	self.itemTitle = [props valueOfProperty:HOTypeTitle];
-	
-	if(self.command == HOItemCommandTypeSong)
-	{
-		
-	}
-	else if(command == HOItemCommandTypeWebpage)
-	{
-		self.actionUrl = [props valueOfProperty:HOTypeActionUrl];
-	}
-}
+
 
 - (BLIPProperties *)getBLIPProperties
 {
