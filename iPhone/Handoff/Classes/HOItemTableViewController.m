@@ -11,7 +11,7 @@
 #import "HOItemTableViewCell.h"
 
 #import "HOItem.h"
-#import "HandNetwork.h"
+#import "HONetwork.h"
 
 #import <MediaPlayer/MediaPlayer.h>
 
@@ -40,7 +40,7 @@
 	
 	self.tableView.rowHeight = 65.0;
 	
-	self.networkController = [[[HandNetwork alloc] init] autorelease];
+	self.networkController = [[[HONetwork alloc] init] autorelease];
 	
 	return self;
 }

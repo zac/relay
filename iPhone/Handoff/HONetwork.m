@@ -1,5 +1,5 @@
 //
-//  HandNetwork.m
+//  HONetwork.m
 //  Handoff
 //
 //  Created by Barry Burton on 4/17/10.

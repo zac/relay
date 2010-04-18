@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class HandNetwork;
+@class HONetwork;
 
 @interface HOItemTableViewController : UITableViewController {
 	NSMutableArray *items;
 	
-	HandNetwork *networkController;
+	HONetwork *networkController;
 }
 
-@property (nonatomic, retain) HandNetwork *networkController;
+@property (nonatomic, retain) HONetwork *networkController;
 @property (nonatomic, retain) NSMutableArray *items;
 
 @end
