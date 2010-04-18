@@ -74,6 +74,7 @@ NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 -(IBAction)showPrefsWindow:(id)sender
 {
 	[preferencesWindow makeKeyAndOrderFront:sender];
+	[preferencesWindow becomeKeyWindow];
 }
 -(IBAction)pasteToiPad:(id)sender
 {
@@ -205,8 +206,16 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 						case screenEdgeLeftChoice:
 							if (focusedWindowLocation.x < 0.0)
 							{
-								self.inPaste = YES;
 								[self.network sendItem:[HOAppInfo draggedAppInfo]];
+								CGPoint newLocation; //lower left
+								newLocation.x = screenRect.size.width/2 - focusedWindowSize.width/2;
+								newLocation.y = screenRect.size.height/2 - focusedWindowSize.height/2 - 22;
+								_position = (CFTypeRef)(AXValueCreate(kAXValueCGPointType, (const void *)&newLocation));
+								if(AXUIElementSetAttributeValue((AXUIElementRef)_focusedWindow,
+																(CFStringRef)NSAccessibilityPositionAttribute,
+																(CFTypeRef*)_position) != kAXErrorSuccess){
+									NSLog(@"Location cannot be modified");
+								}
 							}
 							else 
 							{
@@ -216,8 +225,17 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 						case screenEdgeRightChoice:
 							if (focusedWindowLocation.x+focusedWindowSize.width > screenRect.size.width)
 							{
-								self.inPaste = YES;
 								[self.network sendItem:[HOAppInfo draggedAppInfo]];
+								CGPoint newLocation; //lower left
+								newLocation.x = screenRect.size.width/2 - focusedWindowSize.width/2;
+								newLocation.y = screenRect.size.height/2 - focusedWindowSize.height/2 - 22;
+								_position = (CFTypeRef)(AXValueCreate(kAXValueCGPointType, (const void *)&newLocation));
+								if(AXUIElementSetAttributeValue((AXUIElementRef)_focusedWindow,
+																(CFStringRef)NSAccessibilityPositionAttribute,
+																(CFTypeRef*)_position) != kAXErrorSuccess){
+									NSLog(@"Location cannot be modified");
+								}
+								
 
 							}
 							else 
@@ -226,10 +244,19 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 							}
 							break;
 						case screenEdgeBottomChoice:
-							if (focusedWindowLocation.y < 0.0)
+							if (focusedWindowLocation.y + focusedWindowSize.height > screenRect.size.height)
 							{
-								self.inPaste = YES;
 								[self.network sendItem:[HOAppInfo draggedAppInfo]];
+								CGPoint newLocation; //lower left
+								newLocation.x = screenRect.size.width/2 - focusedWindowSize.width/2;
+								newLocation.y = screenRect.size.height/2 - focusedWindowSize.height/2 - 22;
+								_position = (CFTypeRef)(AXValueCreate(kAXValueCGPointType, (const void *)&newLocation));
+								if(AXUIElementSetAttributeValue((AXUIElementRef)_focusedWindow,
+																(CFStringRef)NSAccessibilityPositionAttribute,
+																(CFTypeRef*)_position) != kAXErrorSuccess){
+									NSLog(@"Location cannot be modified");
+								}
+								
 							}
 							else 
 							{
