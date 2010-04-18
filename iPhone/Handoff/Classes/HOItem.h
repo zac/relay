@@ -13,10 +13,14 @@ NSString *const HOItemCommandTypeWebpage;
 NSString *const HOItemCommandTypeClipboard;
 NSString *const HOItemCommandTypeDocument;
 
+#import "BLIP.h"
+
+
 @interface HOItem : NSObject {
 	UIImage *itemIcon;
 	
 	NSString *command;
+	NSString *actionUrl;
 	
 	NSString *itemTitle;
 	NSString *itemDescription;
@@ -26,9 +30,12 @@ NSString *const HOItemCommandTypeDocument;
 	NSData *body;
 }
 
+- (id) initWithBLIPMessage: (BLIPMessage*)message;
+
 @property (nonatomic, retain) UIImage *itemIcon;
 
 @property (nonatomic, copy) NSString *command;
+@property (nonatomic, copy) NSString *actionUrl;
 
 @property (nonatomic, copy) NSString *itemTitle;
 @property (nonatomic, copy) NSString *itemDescription;
