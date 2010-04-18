@@ -15,6 +15,7 @@
 @protocol HONetworkDelegate
 
 - (void)network:(HONetwork *)theNetwork didReceiveItem:(HOItem *)theItem;
+- (void)didDropConnectionOnNetwork:(HONetwork *)theNetwork;
 
 @end
 
@@ -31,23 +32,27 @@
 	
 	id <HONetworkDelegate> delegate;
 	
+	NSArray *theThing;
+	
 }
+
+@property (nonatomic, copy) NSArray *theThing;
 
 @property (nonatomic, copy) NSString *string;
 
 @property (nonatomic, retain) id <HONetworkDelegate> delegate;
 
-@property (readonly) MYBonjourBrowser *myServiceBrowser;
+@property (nonatomic, retain) MYBonjourBrowser *myServiceBrowser;
 
-@property (readonly) NSArray *serviceList;
+@property (nonatomic, copy) NSArray *serviceList;
 
 - (id) initWithDelegate:(id <HONetworkDelegate>)delegate;
+
+- (BOOL) isConnected;
 
 - (BOOL) sendItem:(HOItem *)item;
 
 - (void) gotResponse: (BLIPResponse*)response;
-
-- (void) makeConnection;
 
 /* Opens a BLIP connection to the given address. */
 - (void)openConnection: (MYBonjourService*)service;

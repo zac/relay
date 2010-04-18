@@ -11,12 +11,20 @@
 #import "IPAddress.h"
 #import "BLIP.h"
 #import "Target.h"
+#import "MYDNSService.h"
+#import "MYBonjourBrowser.h"
+#import "MYAddressLookup.h"
+#import "CollectionUtils.h"
 
 #import "HOItem.h"
 
 @implementation HONetwork
 
-@synthesize string, delegate, myServiceBrowser, serviceList;
+@synthesize theThing;
+
+@synthesize string, delegate, myServiceBrowser;
+
+@synthesize serviceList;
 
 - (id) initWithDelegate:(id <HONetworkDelegate>)theDelegate
 {
@@ -30,18 +38,49 @@
 		myListener.bonjourServiceType = @"_blipecho._tcp";
 		[myListener open];
 		
-		[self.myServiceBrowser start];
+		self.myServiceBrowser = [[MYBonjourBrowser alloc] initWithServiceType: @"_blipecho._tcp."];
 		
+		[self.myServiceBrowser addObserver: self forKeyPath: @"services" options: NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context: NULL];
+		
+		[self.myServiceBrowser start];
 		self.delegate = theDelegate;
+		
+		self.serviceList = [NSArray array];
+		self.theThing = [NSArray array];
+
 	}
 	return self;
 }
 
-- (BOOL) sendItem:(HOItem *)item {
-		
-	if ( !myConnection ) {
-		[self makeConnection];
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if( $equal(keyPath,@"services") ) {
+        if( [[change objectForKey: NSKeyValueChangeKindKey] intValue]==NSKeyValueChangeInsertion ) {
+            NSSet *newServices = [change objectForKey: NSKeyValueChangeNewKey];
+            for( MYBonjourService *service in newServices ) {
+                NSLog(@"##### %@ : at %@:%hu, TXT=%@", 
+					service, service.hostname, service.port, service.txtRecord);
+                service.addressLookup.continuous = YES;
+                [service.addressLookup addObserver: self
+                                        forKeyPath: @"addresses"
+                                           options: NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew
+                                           context: NULL];
+                //[service queryForRecord: kDNSServiceType_NULL];
+            }
+			self.serviceList = [newServices.allObjects sortedArrayUsingSelector: @selector(compare:)];
+			self.theThing = [[newServices.allObjects sortedArrayUsingSelector: @selector(compare:)] copy];
+        }
+    }
+}
+
+- (BOOL) isConnected {
+	if ( myConnection ) {
+		return YES;
 	}
+	return NO;
+}
+
+- (BOOL) sendItem:(HOItem *)item {
 	
 	BLIPRequest *requestToSend = [item blipRequest];
 	[requestToSend setConnection:myConnection];
@@ -61,32 +100,8 @@
 	NSLog(@"Got Response: %@", response);
 }
 
-- (MYBonjourBrowser*) myServiceBrowser {
-    if (!myServiceBrowser)
-        myServiceBrowser = [[MYBonjourBrowser alloc] initWithServiceType: @"_blipecho._tcp."];
-    return myServiceBrowser;
-}
-
-- (NSArray*) serviceList {
-    return [myServiceBrowser.services.allObjects sortedArrayUsingSelector: @selector(compare:)];
-}
-
 + (NSArray*) keyPathsForValuesAffectingServiceList {
     return [NSArray arrayWithObject: @"serviceBrowser.services"];
-}
-
-- (void) makeConnection {
-	if ( self.serviceList ) {
-		MYBonjourService *service = [self.serviceList objectAtIndex:0];
-		if ( service ) {
-			[self openConnection: service];
-			NSLog(@"%@", service.fullName);
-		} else {
-			NSLog(@"No Bonjour Found.");
-		}
-	} else {
-		NSLog(@"No Bonjour Started.");
-	}
 }
 
 
@@ -95,19 +110,17 @@
 
 - (void) listenerDidOpen: (TCPListener*)listener
 {
-    self.string = [NSString stringWithFormat: @"Listening on port %i",listener.port];
+    NSLog(@"Listening on port %i",listener.port);
 }
 
 - (void) listener: (TCPListener*)listener failedToOpen: (NSError*)error
 {
-    self.string = [NSString stringWithFormat: @"Failed to open listener on port %i: %@",
-                  listener.port,error];
+    NSLog(@"Failed to open listener on port %i: %@", listener.port,error);
 }
 
 - (void) listener: (TCPListener*)listener didAcceptConnection: (TCPConnection*)connection
 {
-    self.string = [NSString stringWithFormat: @"Accepted connection from %@",
-                  connection.address];
+    NSLog(@"Accepted connection from %@", connection.address);
     connection.delegate = self;
 }
 
@@ -115,8 +128,9 @@
 
 - (void) connection: (TCPConnection*)connection failedToOpen: (NSError*)error
 {
-    self.string = [NSString stringWithFormat: @"Failed to open connection from %@: %@",
-                  connection.address,error];
+    NSLog(@"Failed to open connection from %@: %@", connection.address,error);
+	[self.delegate didDropConnectionOnNetwork: self];
+	
 }
 
 - (BOOL) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request
@@ -132,8 +146,10 @@
 
 - (void) connectionDidClose: (TCPConnection*)connection;
 {
-    self.string = [NSString stringWithFormat: @"Connection closed from %@",
-                  connection.address];
+    NSLog(@"Connection closed from %@", connection.address);
+	if ( self.delegate ) {
+		[self.delegate didDropConnectionOnNetwork: self];
+	}
 }
 
 

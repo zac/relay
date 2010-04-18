@@ -10,8 +10,12 @@
 
 #import "HOItemTableViewCell.h"
 
+#import "HOConnectionChooser.h"
+
 #import "HOItem.h"
 #import "HONetwork.h"
+
+#import "HandoffAppDelegate.h"
 
 #import <MediaPlayer/MediaPlayer.h>
 
@@ -36,6 +40,20 @@
 	self.networkController = [[[HONetwork alloc] initWithDelegate:self] autorelease];
 
 	return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	if ( ![self.networkController isConnected] ) {
+		[self didDropConnectionOnNetwork: self.networkController];
+	}
+}
+
+- (void)didDropConnectionOnNetwork:(HONetwork *)theNetwork {
+	HOConnectionChooser *chooser = [[HOConnectionChooser alloc] initWithNetwork: self.networkController];
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:chooser];
+	navController.modalPresentationStyle = UIModalPresentationFormSheet;
+	navController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+	[((HandoffAppDelegate*)[UIApplication sharedApplication].delegate).viewController presentModalViewController:navController animated:YES];
 }
 
 - (void)discoverCurrentSong {
