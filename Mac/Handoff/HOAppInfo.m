@@ -63,6 +63,10 @@ url_list"
 		NSMutableDictionary *properties = [NSMutableDictionary dictionary];
 		[properties setObject:[tabURLs objectAtIndex:0] forKey:@"actionURL"];
 		ret.properties = properties;
+		
+		ret.command = HOItemCommandTypeWebpage;
+		ret.itemTitle = @"Webpage";
+		ret.itemDescription = [tabURLs objectAtIndex:0];
 	}
 	return ret;
 }
