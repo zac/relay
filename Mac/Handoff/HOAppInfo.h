@@ -14,4 +14,5 @@ extern NSString *const kDraggedAppIdentifier;
 
 }
 +(HOItem *)draggedAppInfo;
++(NSDictionary *)iTunesProperties;
 @end
