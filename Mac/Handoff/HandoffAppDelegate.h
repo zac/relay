@@ -31,12 +31,17 @@ extern NSString *const kScreenEdgeChoiceKey;
 	PTKeyCombo *lastCombo;
 	NSInteger screenEdgeChoiceValue;
 	HONetwork *network;
+	BOOL inPaste;
 }
 @property (nonatomic, retain) PTHotKey *lastKey;
 @property (nonatomic, retain) PTKeyCombo *lastCombo;
 @property (nonatomic, retain) HONetwork *network;
+@property (assign) BOOL	inPaste;
+
+-(void)hideFrontmostApp;
 
 -(IBAction)showPrefsWindow:(id)sender;
 -(IBAction)setChoice:(id)sender;
+-(IBAction)pasteToiPad:(id)sender;
 
 @end

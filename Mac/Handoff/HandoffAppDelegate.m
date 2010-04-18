@@ -11,16 +11,19 @@
 #import "PTHotKeyCenter.h"
 #import "PTKeyCombo.h"
 #import <ApplicationServices/ApplicationServices.h>
+#import <Carbon/Carbon.h>
 #import "HOAppInfo.h"
 #import "HOItem.h"
 
 CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon);
+OSStatus PasteToiPhone(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData);
 static CGEventType lastEventType = 0;
 NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 @implementation HandoffAppDelegate
 @synthesize lastKey;
 @synthesize lastCombo;
 @synthesize network;
+@synthesize inPaste;
 
 -(void)awakeFromNib
 {
@@ -28,6 +31,16 @@ NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+	EventHotKeyRef myHotKeyRef;	
+    EventHotKeyID myHotKeyID;
+    EventTypeSpec eventType;
+	eventType.eventClass=kEventClassKeyboard;
+	eventType.eventKind=kEventHotKeyPressed;
+	InstallApplicationEventHandler(&PasteToiPhone,1,&eventType,self,NULL);
+	myHotKeyID.signature='mhk1';
+    myHotKeyID.id=1;
+	RegisterEventHotKey(9, cmdKey+optionKey+controlKey, myHotKeyID, GetApplicationEventTarget(), 0, &myHotKeyRef);
+	
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
 	
 	[statusItem setHighlightMode:YES];
@@ -51,6 +64,7 @@ NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 	CFRunLoopSourceRef source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0);
 	CFRunLoopAddSource(CFRunLoopGetMain(), source, kCFRunLoopCommonModes);
 	network = [[HONetwork alloc] initWithDelegate:self];
+	inPaste = NO;
 
 }
 -(IBAction)setChoice:(id)sender
@@ -61,10 +75,33 @@ NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 {
 	[preferencesWindow makeKeyAndOrderFront:sender];
 }
+-(IBAction)pasteToiPad:(id)sender
+{
+	NSPasteboard *clipboard = [NSPasteboard generalPasteboard];
+	NSData *clipData = [clipboard dataForType:NSStringPboardType];
+	NSString *clipString = [[NSString alloc] initWithData:clipData encoding:NSUTF8StringEncoding];
+	HOItem *toSend = [[HOItem alloc] init];
+	[toSend setCommand:HOItemCommandTypeClipboard];
+	NSDictionary *props = [NSDictionary dictionaryWithObject:clipString forKey:@"string"];
+	[toSend setProperties:props];
+	[network sendItem:toSend];
+	[toSend release];
+	[clipString release];
+}
 - (void)network:(HONetwork *)theNetwork didReceiveItem:(HOItem *)theItem
 {
 	return; //TODO: later
 }
+- (void)network:(HONetwork *)theNetwork didReceiveResponse:(BLIPResponse *)theResponse
+{
+	if (!inPaste)
+	{
+		[self hideFrontmostApp];
+	}
+	inPaste = NO;
+	return;
+}
+
 -(void)hideFrontmostApp
 {
 	NSAppleScript *hideScript = [[NSAppleScript alloc] initWithSource:@"tell application \"System Events\" to keystroke \"h\" using command down"];
@@ -168,8 +205,8 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 						case screenEdgeLeftChoice:
 							if (focusedWindowLocation.x < 0.0)
 							{
+								self.inPaste = YES;
 								[self.network sendItem:[HOAppInfo draggedAppInfo]];
-								[self hideFrontmostApp];
 							}
 							else 
 							{
@@ -179,8 +216,8 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 						case screenEdgeRightChoice:
 							if (focusedWindowLocation.x+focusedWindowSize.width > screenRect.size.width)
 							{
+								self.inPaste = YES;
 								[self.network sendItem:[HOAppInfo draggedAppInfo]];
-								[self hideFrontmostApp];
 
 							}
 							else 
@@ -191,8 +228,8 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 						case screenEdgeBottomChoice:
 							if (focusedWindowLocation.y < 0.0)
 							{
+								self.inPaste = YES;
 								[self.network sendItem:[HOAppInfo draggedAppInfo]];
-								[self hideFrontmostApp];
 							}
 							else 
 							{
@@ -208,4 +245,10 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 		}//end hit test success
 	}
 	return NULL;
+}
+OSStatus PasteToiPhone(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData)
+{
+	id self = (id)userData;
+	[self pasteToiPad:self];
+    return noErr;	
 }
