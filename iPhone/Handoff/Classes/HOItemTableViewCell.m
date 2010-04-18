@@ -20,6 +20,18 @@
 	return self;
 }
 
+- (void)hideContents {
+	self.imageView.hidden = YES;
+	self.textLabel.hidden = YES;
+	self.detailTextLabel.hidden = YES;
+}
+
+- (void)showContents {
+	self.imageView.hidden = NO;
+	self.textLabel.hidden = NO;
+	self.detailTextLabel.hidden = NO;
+}
+
 #pragma mark -
 #define MARGIN 10.0
 

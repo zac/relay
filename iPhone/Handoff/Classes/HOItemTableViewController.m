@@ -132,8 +132,8 @@
 	[self.networkController sendItem:[self.items objectAtIndex:indexPath.row]];
 	
 	CGAffineTransform transform = CGAffineTransformMakeScale(.3, .3);
-	
-	[UIView beginAnimations:nil context:flyWindow];
+		
+	[UIView beginAnimations:nil context:[[NSArray arrayWithObjects:flyWindow, tableCell, nil] retain]];
     [UIView setAnimationDuration:.5];
     [UIView setAnimationDelegate:self];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -157,13 +157,15 @@
 	
 	NSIndexPath *lastPath = [NSIndexPath indexPathForRow:[self.items count]-1 inSection:0];
 	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:lastPath]
-						  withRowAnimation:UITableViewRowAnimationTop];
-	CGRect lastRowRect = [self.tableView rectForRowAtIndexPath:lastPath];
-	lastRowRect = CGRectMake(-lastRowRect.size.width, lastRowRect.origin.y, lastRowRect.size.width, lastRowRect.size.height);
+						  withRowAnimation:UITableViewRowAnimationRight];
+	CGRect lastRowRect = [[self.view window] convertRect:[self.tableView rectForRowAtIndexPath:lastPath]
+												fromView:self.tableView];
 	
 	HOItemTableViewCell *tableCell = (HOItemTableViewCell *)[self.tableView cellForRowAtIndexPath:lastPath];
 	
 	UIWindow *flyWindow = [tableCell windowForCell];
+	
+	[tableCell hideContents];
 	
 	//convert to the window's coordinate system.
 	CGRect rowFrame = [[self.tableView window] convertRect:[self.tableView rectForRowAtIndexPath:lastPath] fromView:self.tableView];
@@ -173,15 +175,15 @@
 	flyWindow.transform = CGAffineTransformMakeScale(.3, .3);
 	flyWindow.alpha = 0.5;
 	
-	[UIView beginAnimations:nil context:flyWindow];
+	[UIView beginAnimations:nil context:[[NSArray arrayWithObjects:flyWindow, tableCell, nil] retain]];
     [UIView setAnimationDuration:.5];
     [UIView setAnimationDelegate:self];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
 	
-	flyWindow.frame = lastRowRect;
 	flyWindow.transform = CGAffineTransformMakeScale(1.0, 1.0);
+	flyWindow.frame = lastRowRect;
 	flyWindow.alpha = 1.0;
 	
     [UIView commitAnimations];	
@@ -192,7 +194,15 @@
 }
 
 - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
-	[(UIWindow *)context removeFromSuperview];
+	UIWindow *theWindow = [(NSArray *)context objectAtIndex:0];
+	HOItemTableViewCell *cell = [(NSArray *)context objectAtIndex:1];
+	
+	[theWindow resignKeyWindow];
+	[theWindow release];
+	
+	[cell showContents];
+	
+	[(NSArray *)context release];
 }
 
 

@@ -19,6 +19,8 @@
 @property (nonatomic, retain) HOItem *item;
 @property (nonatomic, retain) UIButton *actionButton;
 
+- (void)hideContents;
+- (void)showContents;
 
 - (void)setItem:(HOItem *)theItem;
 - (UIWindow *)windowForCell;
