@@ -8,21 +8,32 @@
 
 #import <Foundation/Foundation.h>
 
+NSString *const HOItemCommandTypeSong;
+NSString *const HOItemCommandTypeWebpage;
+NSString *const HOItemCommandTypeClipboard;
+NSString *const HOItemCommandTypeDocument;
 
 @interface HOItem : NSObject {
 	UIImage *itemIcon;
+	
+	NSString *command;
+	
 	NSString *itemTitle;
 	NSString *itemDescription;
 	
-	NSURL *actionURL;
-	NSData *context;
+	NSDictionary *properties;
+	
+	NSData *body;
 }
 
 @property (nonatomic, retain) UIImage *itemIcon;
+
+@property (nonatomic, copy) NSString *command;
+
 @property (nonatomic, copy) NSString *itemTitle;
 @property (nonatomic, copy) NSString *itemDescription;
 
-@property (nonatomic, retain) NSURL *actionURL;
-@property (nonatomic, copy) NSData *context;
+@property (nonatomic, copy) NSDictionary *properties;
+@property (nonatomic, copy) NSData *body;
 
 @end
