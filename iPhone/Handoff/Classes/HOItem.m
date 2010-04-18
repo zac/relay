@@ -11,6 +11,7 @@
 NSString *const HOTypeCommand = @"command";
 NSString *const HOTypeActionUrl = @"webpage";
 NSString *const HOTypeIconData = @"iconData";
+NSString *const HOTypeTitle = @"title";
 
 NSString *const HOItemCommandTypeSong = @"song";
 NSString *const HOItemCommandTypeWebpage = @"webpage";
@@ -41,8 +42,11 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	
 	self.command = [props valueOfProperty:HOTypeCommand];
 	
+	self.properties = [props allProperties];
+	
 	//String iconData = [props valueOfProperty:HOTypeIconData];
 	//self.itemIcon = 
+	self.itemTitle = [props valueOfProperty:HOTypeTitle];
 	
 	if(self.command == HOItemCommandTypeSong)
 	{
@@ -52,6 +56,11 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	{
 		self.actionUrl = [props valueOfProperty:HOTypeActionUrl];
 	}
+}
+
+- (BLIPProperties *)getBLIPProperties
+{
+	return nil;
 }
 
 @end
