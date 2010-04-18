@@ -8,6 +8,7 @@
 
 #import "HOAppInfo.h"
 #import "Safari.h"
+#import "iTunes.h"
 #import "HOItem.h"
 #import <ScriptingBridge/ScriptingBridge.h>
 
@@ -17,6 +18,7 @@ NSString *const kDraggedAppIdentifier = @"HODraggedAppIdentifier";
 +(HOItem *)draggedAppInfo
 {
 	HOItem *ret = [[HOItem alloc] init];
+	NSMutableDictionary *properties = [NSMutableDictionary dictionary];
 	NSDictionary *activeAppDict = [[NSWorkspace sharedWorkspace] activeApplication];
 	//NSString *strApplication = [activeAppDict objectForKey:@"NSApplicationName"];
 	NSString *strApplicationBundleIdentifier = [activeAppDict objectForKey:@"NSApplicationBundleIdentifier"];
@@ -60,7 +62,6 @@ url_list"
 		{
 			[tabURLs addObject:[tab URL]];
 		}
-		NSMutableDictionary *properties = [NSMutableDictionary dictionary];
 		[properties setObject:[tabURLs objectAtIndex:0] forKey:@"actionURL"];
 		ret.properties = properties;
 		
@@ -68,6 +69,23 @@ url_list"
 		ret.itemTitle = @"Webpage";
 		ret.itemDescription = [tabURLs objectAtIndex:0];
 	}
+	else if ([strApplicationBundleIdentifier isEqualToString:@"com.apple.iTunes"])
+	{
+		[properties addEntriesFromDictionary:[self iTunesProperties]];
+	}
+	ret.properties = properties;
+
 	return ret;
+}
++(NSDictionary *)iTunesProperties
+{
+	NSMutableDictionary *props = [NSMutableDictionary dictionary];
+	iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+	iTunesTrack *track = [iTunes currentTrack];
+	NSInteger seconds = [iTunes playerPosition];
+	[props setObject:[track artist] forKey:@"artist"];
+	[props setObject:[track name] forKey:@"track"];
+	[props setObject:[NSNumber numberWithInt:seconds] forKey:@"seconds"];
+	return props;
 }
 @end

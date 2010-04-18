@@ -152,6 +152,7 @@
 		BCED94EC117AD0F900608A28 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Test.m; path = ../../myutilities/Test.m; sourceTree = SOURCE_ROOT; };
 		BCED9655117AD7DE00608A28 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
 		BCED966B117AD83600608A28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		BCED968A117ADF4B00608A28 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +174,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BCED968A117ADF4B00608A28 /* iTunes.h */,
 				BC08839B117ABD620083B777 /* Safari.h */,
 				BC0883B5117AC0C30083B777 /* HOItem.h */,
 				BC0883B4117AC0C30083B777 /* HOItem.m */,
