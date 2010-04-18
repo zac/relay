@@ -15,12 +15,10 @@ NSString *const HOItemCommandTypeDocument;
 
 #import "BLIP.h"
 
-
 @interface HOItem : NSObject {
 	UIImage *itemIcon;
 	
 	NSString *command;
-	NSString *actionUrl;
 	
 	NSString *itemTitle;
 	NSString *itemDescription;
@@ -31,11 +29,13 @@ NSString *const HOItemCommandTypeDocument;
 }
 
 - (id) initWithBLIPMessage: (BLIPMessage*)message;
+- (BLIPProperties *)getBLIPProperties;
+- (id)initWithBLIPRequest:(BLIPRequest *)request;
+
 
 @property (nonatomic, retain) UIImage *itemIcon;
 
 @property (nonatomic, copy) NSString *command;
-@property (nonatomic, copy) NSString *actionUrl;
 
 @property (nonatomic, copy) NSString *itemTitle;
 @property (nonatomic, copy) NSString *itemDescription;

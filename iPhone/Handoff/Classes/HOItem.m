@@ -8,9 +8,13 @@
 
 #import "HOItem.h"
 
+#import "Base64.h"
+
 NSString *const HOTypeCommand = @"command";
 NSString *const HOTypeActionUrl = @"webpage";
-NSString *const HOTypeIconData = @"iconData";
+NSString *const HOTypeTitle = @"title";
+NSString *const HOTypeDescription = @"description";
+NSString *const HOTypeIconData = @"icon";
 
 NSString *const HOItemCommandTypeSong = @"song";
 NSString *const HOItemCommandTypeWebpage = @"webpage";
@@ -19,7 +23,54 @@ NSString *const HOItemCommandTypeDocument = @"document";
 
 @implementation HOItem
 
-@synthesize command, itemIcon, itemTitle, itemDescription, properties, body, actionUrl;
+@synthesize command, itemIcon, itemTitle, itemDescription, properties, body;
+
+
+
+- (id)initWithBLIPRequest:(BLIPRequest *)request
+{
+	if (!(self = [super init])) return nil;
+	
+	BLIPProperties *props = [request properties];
+	
+	self.body = request.body;
+	
+	self.command = [props valueOfProperty:HOTypeCommand];
+	
+	NSString *iconDataString = [props valueOfProperty:HOTypeIconData];
+	NSData *decodedData = [Base64 decode:iconDataString];
+	self.itemIcon = [UIImage imageWithData:decodedData];
+	
+	self.itemTitle = [props valueOfProperty:HOTypeTitle];
+	self.itemDescription = [props valueOfProperty:HOTypeDescription];
+	
+	NSMutableDictionary *restOfProperties = [[NSMutableDictionary alloc] initWithDictionary:[props allProperties]];
+	[restOfProperties removeObjectsForKeys:[NSArray arrayWithObjects:HOTypeCommand, HOTypeTitle, HOTypeDescription, HOTypeIconData, nil]];
+	self.properties = restOfProperties;
+	return self;
+}
+- (id)initWithBLIPMessage:(BLIPMessage *)message
+{		
+	if (!(self = [super init])) return nil;
+	
+	BLIPProperties *props = [message properties];
+	
+	self.body = message.body;
+	
+	self.command = [props valueOfProperty:HOTypeCommand];
+	
+	NSString *iconDataString = [props valueOfProperty:HOTypeIconData];
+	NSData *decodedData = [Base64 decode:iconDataString];
+	self.itemIcon = [UIImage imageWithData:decodedData];
+	
+	self.itemTitle = [props valueOfProperty:HOTypeIconData];
+	self.itemDescription = [props valueOfProperty:HOTypeDescription];
+	
+	NSMutableDictionary *restOfProperties = [[NSMutableDictionary alloc] initWithDictionary:[props allProperties]];
+	[restOfProperties removeObjectsForKeys:[NSArray arrayWithObjects:HOTypeCommand, HOTypeTitle, HOTypeDescription, HOTypeIconData, nil]];
+	
+	return self;
+}
 
 - (void)dealloc {
 	
@@ -29,29 +80,14 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	self.itemDescription = nil;
 	self.properties = nil;
 	self.body = nil;
-	self.actionUrl = nil;
 	
 	[super dealloc];
 }
-- (id)initWithBLIPMessage:(BLIPMessage *)message
+
+
+- (BLIPProperties *)getBLIPProperties
 {
-	BLIPProperties *props = [message properties];
-	
-	self.body = message.body;
-	
-	self.command = [props valueOfProperty:HOTypeCommand];
-	
-	//String iconData = [props valueOfProperty:HOTypeIconData];
-	//self.itemIcon = 
-	
-	if(self.command == HOItemCommandTypeSong)
-	{
-		
-	}
-	else if(command == HOItemCommandTypeWebpage)
-	{
-		self.actionUrl = [props valueOfProperty:HOTypeActionUrl];
-	}
+	return nil;
 }
 
 @end
