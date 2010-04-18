@@ -7,11 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+@class HOItem;
 extern NSString *const kDraggedAppName;
 extern NSString *const kDraggedAppIdentifier;
 @interface HOAppInfo : NSObject {
 
 }
-+(NSDictionary *)draggedAppInfo;
++(HOItem *)draggedAppInfo;
 @end

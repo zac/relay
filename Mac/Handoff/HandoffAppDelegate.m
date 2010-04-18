@@ -12,6 +12,7 @@
 #import "PTKeyCombo.h"
 #import <ApplicationServices/ApplicationServices.h>
 #import "HOAppInfo.h"
+#import "HOItem.h"
 
 CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon);
 static CGEventType lastEventType = 0;
@@ -19,6 +20,7 @@ NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 @implementation HandoffAppDelegate
 @synthesize lastKey;
 @synthesize lastCombo;
+@synthesize network;
 
 -(void)awakeFromNib
 {
@@ -44,10 +46,11 @@ NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 									kCGEventTapOptionListenOnly,
 									CGEventMaskBit(kCGEventLeftMouseUp) | CGEventMaskBit(kCGEventLeftMouseDragged),
 									CheckForMouseupInTargetArea,
-									NULL
+									self
 	);
 	CFRunLoopSourceRef source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0);
 	CFRunLoopAddSource(CFRunLoopGetMain(), source, kCFRunLoopCommonModes);
+	network = [[HONetwork alloc] initWithDelegate:self];
 
 }
 -(IBAction)setChoice:(id)sender
@@ -58,14 +61,21 @@ NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 {
 	[preferencesWindow makeKeyAndOrderFront:sender];
 }
+- (void)network:(HONetwork *)theNetwork didReceiveItem:(HOItem *)theItem
+{
+	return; //TODO: later
+}
+
 -(void)dealloc
 {
 	[statusItem release];
+	[network release];
 	[super dealloc];
 }
 @end
 CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon)
 {
+	HandoffAppDelegate *self = (HandoffAppDelegate *)refcon;
 	if (lastEventType != kCGEventLeftMouseDragged && type != kCGEventLeftMouseDragged)
 	{
 		lastEventType = type;
@@ -106,7 +116,6 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 		if (NSPointInRect(nsMouseUpPoint, targetRect))
 		{
 			NSLog(@"Registered hit in the preferenced area");
-			NSDictionary *appInfo = [HOAppInfo draggedAppInfo];
 			//NSArray *windowInfoDictionaries = (NSArray *)CGWindowListCopyWindowInfo(kCGWindowListExcludeDesktopElements, kCGNullWindowID);
 			//for (NSDictionary *dict in windowInfoDictionaries)
 			//{
@@ -154,7 +163,7 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 						case screenEdgeLeftChoice:
 							if (focusedWindowLocation.x < 0.0)
 							{
-								NSLog(@"send to iPad code goes here");
+								[self.network sendItem:[HOAppInfo draggedAppInfo]];
 							}
 							else 
 							{
@@ -164,7 +173,7 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 						case screenEdgeRightChoice:
 							if (focusedWindowLocation.x+focusedWindowSize.width > screenRect.size.width)
 							{
-								NSLog(@"send to iPad code goes here");
+								[self.network sendItem:[HOAppInfo draggedAppInfo]];
 							}
 							else 
 							{
@@ -174,7 +183,7 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 						case screenEdgeBottomChoice:
 							if (focusedWindowLocation.y < 0.0)
 							{
-								NSLog(@"send to iPad code goes here");
+								[self.network sendItem:[HOAppInfo draggedAppInfo]];
 							}
 							else 
 							{

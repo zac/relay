@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "HONetwork.h"
 
 @class PTHotKey;
 @class PTHotKeyCenter;
@@ -20,7 +21,7 @@ enum screenEdges {
 };
 extern NSString *const kScreenEdgeChoiceKey; 
 
-@interface HandoffAppDelegate : NSObject {
+@interface HandoffAppDelegate : NSObject <HONetworkDelegate> {
 	NSStatusItem *statusItem;
 	
 	IBOutlet NSWindow *preferencesWindow;
@@ -29,9 +30,11 @@ extern NSString *const kScreenEdgeChoiceKey;
 	PTHotKey *lastKey;
 	PTKeyCombo *lastCombo;
 	NSInteger screenEdgeChoiceValue;
+	HONetwork *network;
 }
 @property (nonatomic, retain) PTHotKey *lastKey;
 @property (nonatomic, retain) PTKeyCombo *lastCombo;
+@property (nonatomic, retain) HONetwork *network;
 
 -(IBAction)showPrefsWindow:(id)sender;
 -(IBAction)setChoice:(id)sender;
