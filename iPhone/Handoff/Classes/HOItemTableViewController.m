@@ -38,10 +38,6 @@
 	return self;
 }
 
-- (void) messageReceived:(NSString*)message {
-
-}
-
 - (void)discoverCurrentSong {
 	MPMusicPlayerController *iPodPlayer = [MPMusicPlayerController iPodMusicPlayer];
 	MPMediaItem *currentItem = iPodPlayer.nowPlayingItem;
@@ -153,10 +149,6 @@
 	[flyWindow makeKeyAndVisible];
 }
 
-- (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
-	[(UIWindow *)context removeFromSuperview];
-}
-
 - (void)network:(HONetwork *)theNetwork didReceiveItem:(HOItem *)theItem {
 	[self.items addObject:theItem];
 	
@@ -185,13 +177,16 @@
 	[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
 	
 	flyWindow.frame = lastRowRect;
-	flyWindow.transform = CGAffineTransformMakeScale(.3, .3);
+	flyWindow.transform = CGAffineTransformMakeScale(1.0, 1.0);
 	flyWindow.alpha = 1.0;
 	
     [UIView commitAnimations];	
 	
 	[flyWindow makeKeyAndVisible];
-	
+}
+
+- (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+	[(UIWindow *)context removeFromSuperview];
 }
 
 #pragma mark -

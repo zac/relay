@@ -19,6 +19,4 @@
 @property (nonatomic, retain) HONetwork *networkController;
 @property (nonatomic, retain) NSMutableArray *items;
 
-- (void) messageReceived:(NSString*)message;
-
 @end

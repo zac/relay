@@ -25,7 +25,7 @@ NSString *const HOItemCommandTypeDocument = @"document";
 @synthesize command, itemIcon, itemTitle, itemDescription, properties, body;
 
 - (id)initWithBLIPRequest:(BLIPRequest *)message
-{		
+{
 	if (!(self = [super init])) return nil;
 	
 	BLIPProperties *props = [message properties];
@@ -38,7 +38,7 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	NSData *decodedData = [Base64 decode:iconDataString];
 	self.itemIcon = [UIImage imageWithData:decodedData];
 	
-	self.itemTitle = [props valueOfProperty:HOItemPropertyKeyIconData];
+	self.itemTitle = [props valueOfProperty:HOItemPropertyKeyTitle];
 	self.itemDescription = [props valueOfProperty:HOItemPropertyKeyDescription];
 	
 	NSMutableDictionary *restOfProperties = [[NSMutableDictionary alloc] initWithDictionary:[props allProperties]];
@@ -57,7 +57,9 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	if (self.command) [requestProperties setObject:self.command forKey:HOItemPropertyKeyCommand];
 	if (self.itemTitle) [requestProperties setObject:self.itemTitle forKey:HOItemPropertyKeyTitle];
 	if (self.itemDescription) [requestProperties setObject:self.itemDescription forKey:HOItemPropertyKeyDescription];
-	if (self.itemIcon) [requestProperties setObject:self.itemIcon forKey:HOItemPropertyKeyIconData];
+	
+	NSString *iconString = [Base64 encode:UIImagePNGRepresentation(self.itemIcon)];
+	if (self.itemIcon) [requestProperties setObject:iconString forKey:HOItemPropertyKeyIconData];
 	if (self.properties) [requestProperties addEntriesFromDictionary:self.properties];
 	
 	BLIPRequest *message = [BLIPRequest requestWithBody:self.body properties:requestProperties];
