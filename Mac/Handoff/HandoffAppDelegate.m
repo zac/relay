@@ -65,7 +65,12 @@ NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 {
 	return; //TODO: later
 }
-
+-(void)hideFrontmostApp
+{
+	NSAppleScript *hideScript = [[NSAppleScript alloc] initWithSource:@"tell application \"System Events\" to keystroke \"h\" using command down"];
+	[hideScript executeAndReturnError:NULL];
+	return;
+}
 -(void)dealloc
 {
 	[statusItem release];
@@ -164,6 +169,7 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 							if (focusedWindowLocation.x < 0.0)
 							{
 								[self.network sendItem:[HOAppInfo draggedAppInfo]];
+								[self hideFrontmostApp];
 							}
 							else 
 							{
@@ -174,6 +180,8 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 							if (focusedWindowLocation.x+focusedWindowSize.width > screenRect.size.width)
 							{
 								[self.network sendItem:[HOAppInfo draggedAppInfo]];
+								[self hideFrontmostApp];
+
 							}
 							else 
 							{
@@ -184,6 +192,7 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 							if (focusedWindowLocation.y < 0.0)
 							{
 								[self.network sendItem:[HOAppInfo draggedAppInfo]];
+								[self hideFrontmostApp];
 							}
 							else 
 							{
