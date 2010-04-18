@@ -23,15 +23,6 @@
 #pragma mark -
 #define MARGIN 10.0
 
-- (void)layoutSubviews {
-	
-	[super layoutSubviews];
-	
-	CGFloat contentHeight = self.contentView.frame.size.height - 2 * MARGIN;
-	
-	self.imageView.frame = CGRectMake(MARGIN, MARGIN, contentHeight, contentHeight);
-}
-
 - (UIWindow *)windowForCell {
 	UIWindow *theWindow = [[UIWindow alloc] initWithFrame:self.contentView.bounds];
 	

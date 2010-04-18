@@ -9,7 +9,6 @@
 #import "HandoffViewController.h"
 #import "HOItemTableViewController.h"
 
-
 @implementation HandoffViewController
 
 @synthesize tableViewController, textField, network;
@@ -20,10 +19,11 @@
 	return self;
 }
 
+
 - (void)viewDidLoad {
 	
 	[super viewDidLoad];
-		
+	
 	if (!self.tableViewController) {
 		self.tableViewController = [[[HOItemTableViewController alloc] init] autorelease];
 	}
@@ -31,7 +31,6 @@
 	self.tableViewController.view.frame = CGRectMake(0, 0, 300, 1004);
 	
 	[self.view addSubview:self.tableViewController.view];
-	
 		
 	textField.text = @"Opening listener socket...";
 		

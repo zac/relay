@@ -52,7 +52,6 @@ NSString *const HOItemCommandTypeDocument = @"document";
 }
 
 - (BLIPRequest *)blipRequest {
-	//fill out the blip message.
 	
 	NSMutableDictionary *requestProperties = [NSMutableDictionary dictionary];
 	[requestProperties setObject:self.command forKey:HOItemPropertyKeyCommand];
