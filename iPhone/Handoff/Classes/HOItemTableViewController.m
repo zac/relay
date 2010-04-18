@@ -53,7 +53,7 @@
 	nowPlayingItem.itemDescription = desc;
 	nowPlayingItem.itemTitle = @"Current iPod Song";
 	MPMediaItemArtwork *artwork = [currentItem valueForProperty:MPMediaItemPropertyArtwork];
-	nowPlayingItem.itemIcon = [artwork imageWithSize:CGSizeMake(45.0, 45.0)];
+	nowPlayingItem.itemIconData = UIImagePNGRepresentation([artwork imageWithSize:CGSizeMake(45.0, 45.0)]);
 	
 	
 	//make it the first object.
@@ -187,6 +187,18 @@
 
 - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
 	[(UIWindow *)context removeFromSuperview];
+}
+
+
+//HOItemCommandTypeSong
+//HOItemCommandTypeWebpage
+//HOItemCommandTypeClipboard
+//HOItemCommandTypeDocument
+
+- (void)performActionForItem:(HOItem *)theItem {
+	if ([theItem.command isEqualToString:HOItemCommandTypeWebpage]) {
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[theItem.properties objectForKey:@"actionURL"]]];
+	}
 }
 
 #pragma mark -

@@ -58,7 +58,7 @@
 	
 	self.textLabel.text = theItem.itemTitle;
 	self.detailTextLabel.text = theItem.itemDescription;
-	self.imageView.image = theItem.itemIcon;
+	self.imageView.image = [UIImage imageWithData:theItem.itemIconData];
 }
 
 
