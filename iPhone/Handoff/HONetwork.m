@@ -14,7 +14,7 @@
 
 @synthesize string, delegate;
 
-- (id) initWithDelegate:(id <HONetworkDelegate>)delegate
+- (id) initWithDelegate:(id <HONetworkDelegate>)theDelegate
 {
 	self = [super init];
     if (self != nil) {
@@ -26,9 +26,15 @@
 		_listener.bonjourServiceType = @"_blipecho._tcp";
 		[_listener open];
 		
-		self.delegate = delegate;
+		self.delegate = theDelegate;
 	}
 	return self;
+}
+
+- (BOOL) sendMessage:(NSString*)message {
+
+	[_listener ];
+	return YES;
 }
 
 #pragma mark BLIP Listener Delegate:

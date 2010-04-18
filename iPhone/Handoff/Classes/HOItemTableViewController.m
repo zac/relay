@@ -32,9 +32,13 @@
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	self.tableView.rowHeight = 65.0;
 	
-	self.networkController = [[[HONetwork alloc] init] autorelease];
-	
+	self.networkController = [[[HONetwork alloc] initWithDelegate:self] autorelease];
+
 	return self;
+}
+
+- (void) messageReceived:(NSString*)message {
+
 }
 
 - (void)discoverCurrentSong {

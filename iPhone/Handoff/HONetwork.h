@@ -31,4 +31,6 @@
 
 - (id) initWithDelegate:(id <HONetworkDelegate>)delegate;
 
+- (BOOL) sendMessage:(NSString*)message;
+
 @end
