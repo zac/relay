@@ -12,7 +12,7 @@
 
 @implementation HandoffViewController
 
-@synthesize tableViewController;
+@synthesize tableViewController, textField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) return nil;

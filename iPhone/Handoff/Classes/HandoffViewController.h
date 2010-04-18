@@ -13,10 +13,12 @@
 @interface HandoffViewController : UIViewController {
 	HOItemTableViewController *tableViewController;
 
+	UITextField *textField;
 }
 
 @property (nonatomic, retain) HOItemTableViewController *tableViewController;
 
+@property (nonatomic, retain) UITextField *textField;
 
 @end
 
