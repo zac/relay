@@ -56,6 +56,7 @@
 		28D7ACF80DDB3853001CB0EB /* HandoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* HandoffViewController.m */; };
 		97ACF028117A2DB1005F4046 /* HONetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 97ACF027117A2DB1005F4046 /* HONetwork.m */; };
 		97ACF0E7117A68C1005F4046 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 97ACF0E6117A68C1005F4046 /* Base64.m */; };
+		CE2E3FCD117A319500505133 /* HOMyNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2E3FCC117A319500505133 /* HOMyNetworkController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +151,8 @@
 		97ACF027117A2DB1005F4046 /* HONetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HONetwork.m; sourceTree = "<group>"; };
 		97ACF0E5117A68C1005F4046 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		97ACF0E6117A68C1005F4046 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		CE2E3FCB117A319500505133 /* HOMyNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HOMyNetworkController.h; path = Classes/HOMyNetworkController.h; sourceTree = "<group>"; };
+		CE2E3FCC117A319500505133 /* HOMyNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HOMyNetworkController.m; path = Classes/HOMyNetworkController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +377,8 @@
 		97ACF00A1179706C005F4046 /* HONetwork */ = {
 			isa = PBXGroup;
 			children = (
+				CE2E3FCC117A319500505133 /* HOMyNetworkController.m */,
+				CE2E3FCB117A319500505133 /* HOMyNetworkController.h */,
 				97ACF026117A2DB1005F4046 /* HONetwork.h */,
 				97ACF027117A2DB1005F4046 /* HONetwork.m */,
 				97ACF0E5117A68C1005F4046 /* Base64.h */,
@@ -487,6 +492,7 @@
 				11BC222F117A4D5A00F87F30 /* HOItem.m in Sources */,
 				11BC223C117A50D500F87F30 /* HOItemTableViewController.m in Sources */,
 				11BC22B4117A58FB00F87F30 /* HOItemTableViewCell.m in Sources */,
+				CE2E3FCD117A319500505133 /* HOMyNetworkController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
