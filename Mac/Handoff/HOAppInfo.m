@@ -10,6 +10,7 @@
 #import "Safari.h"
 #import "iTunes.h"
 #import "HOItem.h"
+#import "Base64.h"
 #import <ScriptingBridge/ScriptingBridge.h>
 
 NSString *const kDraggedAppName = @"HODraggedAppName";
@@ -63,7 +64,6 @@ url_list"
 			[tabURLs addObject:[tab URL]];
 		}
 		[properties setObject:[tabURLs objectAtIndex:0] forKey:@"actionURL"];
-		ret.properties = properties;
 		
 		ret.command = HOItemCommandTypeWebpage;
 		ret.itemTitle = @"Webpage";
@@ -71,21 +71,68 @@ url_list"
 	}
 	else if ([strApplicationBundleIdentifier isEqualToString:@"com.apple.iTunes"])
 	{
-		[properties addEntriesFromDictionary:[self iTunesProperties]];
+		ret.command = HOItemCommandTypeSong;
+		ret.itemTitle = @"Current iTunes Song";
+		NSDictionary *iTunesProperties = [self iTunesProperties];
+		ret.itemDescription = [NSString stringWithFormat:@"%@ by %@",
+							   [iTunesProperties objectForKey:@"track"],
+							   [iTunesProperties objectForKey:@"artist"]];
+		[properties addEntriesFromDictionary:iTunesProperties];
 	}
 	ret.properties = properties;
 
 	return ret;
 }
+
 +(NSDictionary *)iTunesProperties
 {
 	NSMutableDictionary *props = [NSMutableDictionary dictionary];
 	iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
 	iTunesTrack *track = [iTunes currentTrack];
+	
+	SBElementArray *artworks = [track artworks];
+	
+	NSImage *mainArtwork = nil;
+	if ([artworks count]) {
+		mainArtwork = [(iTunesArtwork *)[artworks objectAtIndex:0] data];
+	}
+	
+	/* Get a smaller version of the image to send over the wire. */
+	if (mainArtwork) {
+		CGFloat resizeWidth = 45.0;
+		CGFloat resizeHeight = 45.0;
+		
+		NSImage *resizedImage = [[NSImage alloc] initWithSize: NSMakeSize(resizeWidth, resizeHeight)];
+		
+		NSSize originalSize = [mainArtwork size];
+		
+		[resizedImage lockFocus];
+		[mainArtwork drawInRect: NSMakeRect(0, 0, resizeWidth, resizeHeight)
+					   fromRect: NSMakeRect(0, 0, originalSize.width, originalSize.height)
+					  operation: NSCompositeSourceOver
+					   fraction: 1.0];
+		[resizedImage unlockFocus];
+		
+		NSData *resizedData = [resizedImage TIFFRepresentation];
+		
+		[props setObject:[Base64 encode:resizedData] forKey:HOItemPropertyKeyIconData];
+		
+		[resizedImage release];
+	}	
+	
+	iTunesEPlS playerState = [iTunes playerState];
+	
+	NSString *playingString = @"1";
+	if (playerState == iTunesEPlSStopped || playerState == iTunesEPlSPaused){
+		playingString = @"0";
+	}
+	
 	NSInteger seconds = [iTunes playerPosition];
 	[props setObject:[track artist] forKey:@"artist"];
 	[props setObject:[track name] forKey:@"track"];
-	[props setObject:[NSNumber numberWithInt:seconds] forKey:@"seconds"];
+	[props setObject:[NSString stringWithFormat:@"%d",seconds] forKey:@"seconds"];
+	[props setObject:playingString forKey:@"playbackState"];
+	
 	return props;
 }
 @end
