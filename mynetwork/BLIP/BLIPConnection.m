@@ -101,7 +101,10 @@ NSError *BLIPMakeError( int errorCode, NSString *message, ... )
             [request respondWithData: nil contentType: nil];
         }
     }@catch( NSException *x ) {
-        MYReportException(x,@"Dispatching BLIP request");
+		
+		NSLog(@"exception! %@", x);
+		
+        //MYReportException(x,@"Dispatching BLIP request");
         [request respondWithException: x];
     }
 }
