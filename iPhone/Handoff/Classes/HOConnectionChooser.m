@@ -18,6 +18,8 @@
 		self.network = theNetwork;
 		
 		self.items = self.network.theThing;
+		
+		[self.network addObserver:self forKeyPath:@"theThing" options:NSKeyValueObservingOptionNew context: nil];
 	}
 	return self;
 }
@@ -36,8 +38,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	[self.network addObserver:self forKeyPath:@"theThing" options:NSKeyValueObservingOptionNew context: nil];
     
 	// Uncomment the following line to preserve selection between presentations.
     //self.clearsSelectionOnViewWillAppear = NO;

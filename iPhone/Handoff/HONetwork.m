@@ -67,7 +67,7 @@
                                            context: NULL];
                 //[service queryForRecord: kDNSServiceType_NULL];
             }
-			self.serviceList = [newServices.allObjects sortedArrayUsingSelector: @selector(compare:)];
+			//self.serviceList = [newServices.allObjects sortedArrayUsingSelector: @selector(compare:)];
 			self.theThing = [[newServices.allObjects sortedArrayUsingSelector: @selector(compare:)] copy];
         }
     }
