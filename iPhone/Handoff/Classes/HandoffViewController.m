@@ -7,38 +7,45 @@
 //
 
 #import "HandoffViewController.h"
+#import "HOItemTableViewController.h"
+
 
 @implementation HandoffViewController
 
+@synthesize tableViewController, textField, network;
 
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        // Custom initialization
-    }
-    return self;
+	if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) return nil;
+	
+	return self;
 }
-*/
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
-}
-*/
+	
+	[super viewDidLoad];
+		
+	if (!self.tableViewController) {
+		self.tableViewController = [[[HOItemTableViewController alloc] init] autorelease];
+	}
+	
+	self.tableViewController.view.frame = CGRectMake(0, 0, 300, 1004);
+	
+	[self.view addSubview:self.tableViewController.view];
+	
+		
+	textField.text = @"Opening listener socket...";
+		
+	network = [[HONetwork alloc] initWithDelegate:self];
 
+}
+
+- (void) messageReceived:(NSString*)message {
+	textField.text = message;
+}
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
+    return (interfaceOrientation == UIDeviceOrientationPortrait);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,6 +62,11 @@
 
 
 - (void)dealloc {
+	
+	self.tableViewController = nil;
+	
+	self.network = nil;
+	
     [super dealloc];
 }
 

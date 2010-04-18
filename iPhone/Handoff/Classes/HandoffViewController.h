@@ -7,10 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HONetwork.h"
 
-@interface HandoffViewController : UIViewController {
+@class HOItemTableViewController;
 
+@interface HandoffViewController : UIViewController <HONetworkDelegate> {
+	HOItemTableViewController *tableViewController;
+	
+	IBOutlet UITextField *textField;
+	
+	HONetwork *network;
 }
+
+@property (nonatomic, retain) HOItemTableViewController *tableViewController;
+
+@property (nonatomic, retain) UITextField *textField;
+
+@property (nonatomic, retain) HONetwork *network;
+
+- (void) messageReceived:(NSString*)message;
 
 @end
 

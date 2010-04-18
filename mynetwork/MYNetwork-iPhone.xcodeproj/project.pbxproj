@@ -118,18 +118,18 @@
 		270E9ABD0EE61113003F17CA /* BLIPWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPWriter.h; sourceTree = "<group>"; };
 		270E9ABE0EE61113003F17CA /* BLIPWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPWriter.m; sourceTree = "<group>"; };
 		270E9ABF0EE61113003F17CA /* BLIP_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIP_Internal.h; sourceTree = "<group>"; };
-		270E9ACE0EE6111A003F17CA /* MYUtilitiesTest_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYUtilitiesTest_main.m; sourceTree = "<group>"; };
-		270E9ACF0EE6111A003F17CA /* MYUtilities_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYUtilities_Prefix.pch; sourceTree = "<group>"; };
-		270E9AD00EE6111A003F17CA /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionUtils.h; sourceTree = "<group>"; };
-		270E9AD10EE6111A003F17CA /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionUtils.m; sourceTree = "<group>"; };
-		270E9AD20EE6111A003F17CA /* ExceptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExceptionUtils.h; sourceTree = "<group>"; };
-		270E9AD30EE6111A003F17CA /* ExceptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExceptionUtils.m; sourceTree = "<group>"; };
-		270E9AD40EE6111A003F17CA /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
-		270E9AD50EE6111A003F17CA /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logging.m; sourceTree = "<group>"; };
-		270E9AD60EE6111A003F17CA /* Target.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target.h; sourceTree = "<group>"; };
-		270E9AD70EE6111A003F17CA /* Target.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target.m; sourceTree = "<group>"; };
-		270E9AD80EE6111A003F17CA /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
-		270E9AD90EE6111A003F17CA /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		270E9ACE0EE6111A003F17CA /* MYUtilitiesTest_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYUtilitiesTest_main.m; path = ../myutilities/MYUtilitiesTest_main.m; sourceTree = SOURCE_ROOT; };
+		270E9ACF0EE6111A003F17CA /* MYUtilities_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYUtilities_Prefix.pch; path = ../myutilities/MYUtilities_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		270E9AD00EE6111A003F17CA /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionUtils.h; path = ../myutilities/CollectionUtils.h; sourceTree = SOURCE_ROOT; };
+		270E9AD10EE6111A003F17CA /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionUtils.m; path = ../myutilities/CollectionUtils.m; sourceTree = SOURCE_ROOT; };
+		270E9AD20EE6111A003F17CA /* ExceptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExceptionUtils.h; path = ../myutilities/ExceptionUtils.h; sourceTree = SOURCE_ROOT; };
+		270E9AD30EE6111A003F17CA /* ExceptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExceptionUtils.m; path = ../myutilities/ExceptionUtils.m; sourceTree = SOURCE_ROOT; };
+		270E9AD40EE6111A003F17CA /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Logging.h; path = ../myutilities/Logging.h; sourceTree = SOURCE_ROOT; };
+		270E9AD50EE6111A003F17CA /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Logging.m; path = ../myutilities/Logging.m; sourceTree = SOURCE_ROOT; };
+		270E9AD60EE6111A003F17CA /* Target.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Target.h; path = ../myutilities/Target.h; sourceTree = SOURCE_ROOT; };
+		270E9AD70EE6111A003F17CA /* Target.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Target.m; path = ../myutilities/Target.m; sourceTree = SOURCE_ROOT; };
+		270E9AD80EE6111A003F17CA /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Test.h; path = ../myutilities/Test.h; sourceTree = SOURCE_ROOT; };
+		270E9AD90EE6111A003F17CA /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Test.m; path = ../myutilities/Test.m; sourceTree = SOURCE_ROOT; };
 		270E9ADB0EE6111A003F17CA /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		270E9ADC0EE6111A003F17CA /* GTMNSData+zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSData+zlib.h"; sourceTree = "<group>"; };
 		270E9ADD0EE6111A003F17CA /* GTMNSData+zlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSData+zlib.m"; sourceTree = "<group>"; };
@@ -146,8 +146,8 @@
 		278C1B2B0F9F865800954AE1 /* MYPortMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPortMapper.h; sourceTree = "<group>"; };
 		278C1B2C0F9F865800954AE1 /* MYPortMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPortMapper.m; sourceTree = "<group>"; };
 		278C1B2D0F9F865800954AE1 /* PortMapperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortMapperTest.m; sourceTree = "<group>"; };
-		278C1B330F9F86A100954AE1 /* MYUtilities_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = MYUtilities_Debug.xcconfig; sourceTree = "<group>"; };
-		278C1B340F9F86A100954AE1 /* MYUtilities_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = MYUtilities_Release.xcconfig; sourceTree = "<group>"; };
+		278C1B330F9F86A100954AE1 /* MYUtilities_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = MYUtilities_Debug.xcconfig; path = ../myutilities/MYUtilities_Debug.xcconfig; sourceTree = SOURCE_ROOT; };
+		278C1B340F9F86A100954AE1 /* MYUtilities_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = MYUtilities_Release.xcconfig; path = ../myutilities/MYUtilities_Release.xcconfig; sourceTree = SOURCE_ROOT; };
 		27C6A22A0FC5D92000EFF2A7 /* TCPEndpoint+Certs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TCPEndpoint+Certs.m"; sourceTree = "<group>"; };
 		27D915BB0FA8EABC002B0DEC /* MYDNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYDNSService.h; path = PortMapper/MYDNSService.h; sourceTree = "<group>"; };
 		27D915BC0FA8EABC002B0DEC /* MYDNSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYDNSService.m; path = PortMapper/MYDNSService.m; sourceTree = "<group>"; };
@@ -164,8 +164,13 @@
 		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = iPhone/main.m; sourceTree = "<group>"; };
 		384A72A90FB0050B006A0B19 /* libMYNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMYNetwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
+<<<<<<< HEAD:mynetwork/MYNetwork-iPhone.xcodeproj/project.pbxproj
 		384A72B50FB0062C006A0B19 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConcurrentOperation.h; path = /Users/danielhd/src/handoff/myutilities/ConcurrentOperation.h; sourceTree = "<absolute>"; };
 		384A72B60FB0062C006A0B19 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConcurrentOperation.m; path = /Users/danielhd/src/handoff/myutilities/ConcurrentOperation.m; sourceTree = "<absolute>"; };
+=======
+		384A72B50FB0062C006A0B19 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConcurrentOperation.h; path = ../myutilities/ConcurrentOperation.h; sourceTree = SOURCE_ROOT; };
+		384A72B60FB0062C006A0B19 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConcurrentOperation.m; path = ../myutilities/ConcurrentOperation.m; sourceTree = SOURCE_ROOT; };
+>>>>>>> d3b63e2b487558beca93659cd4eacbd7e6490a4d:mynetwork/MYNetwork-iPhone.xcodeproj/project.pbxproj
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -301,8 +306,9 @@
 				270E9ADC0EE6111A003F17CA /* GTMNSData+zlib.h */,
 				270E9ADD0EE6111A003F17CA /* GTMNSData+zlib.m */,
 			);
-			path = GoogleToolboxSubset;
-			sourceTree = "<group>";
+			name = GoogleToolboxSubset;
+			path = ../myutilities/GoogleToolboxSubset;
+			sourceTree = SOURCE_ROOT;
 		};
 		270E9B9C0EE64B4E003F17CA /* Classes */ = {
 			isa = PBXGroup;
