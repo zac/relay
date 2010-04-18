@@ -10,11 +10,10 @@
 
 #import "Base64.h"
 
-NSString *const HOTypeCommand = @"command";
-NSString *const HOTypeActionUrl = @"webpage";
-NSString *const HOTypeTitle = @"title";
-NSString *const HOTypeDescription = @"description";
-NSString *const HOTypeIconData = @"icon";
+NSString *const HOItemPropertyKeyCommand = @"command";
+NSString *const HOItemPropertyKeyTitle = @"title";
+NSString *const HOItemPropertyKeyDescription = @"description";
+NSString *const HOItemPropertyKeyIconData = @"icon";
 
 NSString *const HOItemCommandTypeSong = @"song";
 NSString *const HOItemCommandTypeWebpage = @"webpage";
@@ -25,7 +24,7 @@ NSString *const HOItemCommandTypeDocument = @"document";
 
 @synthesize command, itemIcon, itemTitle, itemDescription, properties, body;
 
-- (id)initWithBLIPMessage:(BLIPMessage *)message
+- (id)initWithBLIPRequest:(BLIPRequest *)message
 {		
 	if (!(self = [super init])) return nil;
 	
@@ -33,24 +32,38 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	
 	self.body = message.body;
 	
-	self.command = [props valueOfProperty:HOTypeCommand];
+	self.command = [props valueOfProperty:HOItemPropertyKeyCommand];
 	
-	NSString *iconDataString = [props valueOfProperty:HOTypeIconData];
+	NSString *iconDataString = [props valueOfProperty:HOItemPropertyKeyIconData];
 	NSData *decodedData = [Base64 decode:iconDataString];
 	self.itemIcon = [UIImage imageWithData:decodedData];
 	
-	self.itemTitle = [props valueOfProperty:HOTypeIconData];
-	self.itemDescription = [props valueOfProperty:HOTypeDescription];
+	self.itemTitle = [props valueOfProperty:HOItemPropertyKeyIconData];
+	self.itemDescription = [props valueOfProperty:HOItemPropertyKeyDescription];
 	
 	NSMutableDictionary *restOfProperties = [[NSMutableDictionary alloc] initWithDictionary:[props allProperties]];
-	[restOfProperties removeObjectsForKeys:[NSArray arrayWithObjects:HOTypeCommand, HOTypeTitle, HOTypeDescription, HOTypeIconData, nil]];
+	[restOfProperties removeObjectsForKeys:[NSArray arrayWithObjects:HOItemPropertyKeyCommand,
+											HOItemPropertyKeyTitle,
+											HOItemPropertyKeyDescription,
+											HOItemPropertyKeyIconData,
+											nil]];
 	
 	return self;
 }
 
-- (BLIPMessage *)blipMessage {
+- (BLIPRequest *)blipRequest {
 	//fill out the blip message.
-	return nil;
+	
+	NSMutableDictionary *requestProperties = [NSMutableDictionary dictionary];
+	[requestProperties setObject:self.command forKey:HOItemPropertyKeyCommand];
+	[requestProperties setObject:self.itemTitle forKey:HOItemPropertyKeyTitle];
+	[requestProperties setObject:self.itemDescription forKey:HOItemPropertyKeyDescription];
+	[requestProperties setObject:self.itemIcon forKey:HOItemPropertyKeyIconData];
+	[requestProperties addEntriesFromDictionary:self.properties];
+	
+	BLIPRequest *message = [BLIPRequest requestWithBody:self.body properties:requestProperties];
+	
+	return message;
 }
 
 - (void)dealloc {
@@ -63,12 +76,6 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	self.body = nil;
 	
 	[super dealloc];
-}
-
-
-- (BLIPProperties *)getBLIPProperties
-{
-	return nil;
 }
 
 @end

@@ -12,9 +12,13 @@
 
 @interface HOItemTableViewCell : UITableViewCell {
 	HOItem *item;
+	
+	UIButton *actionButton;
 }
 
 @property (nonatomic, retain) HOItem *item;
+@property (nonatomic, retain) UIButton *actionButton;
+
 
 - (void)setItem:(HOItem *)theItem;
 - (UIWindow *)windowForCell;

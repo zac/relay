@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+NSString *const HOItemPropertyKeyCommand;
+NSString *const HOItemPropertyKeyTitle;
+NSString *const HOItemPropertyKeyDescription;
+NSString *const HOItemPropertyKeyIconData;
+
 NSString *const HOItemCommandTypeSong;
 NSString *const HOItemCommandTypeWebpage;
 NSString *const HOItemCommandTypeClipboard;
@@ -28,8 +33,8 @@ NSString *const HOItemCommandTypeDocument;
 	NSData *body;
 }
 
-- (id) initWithBLIPMessage: (BLIPMessage*)message;
-- (BLIPProperties *)getBLIPProperties;
+- (id)initWithBLIPRequest: (BLIPRequest *)message;
+- (BLIPRequest *)blipRequest;
 
 
 @property (nonatomic, retain) UIImage *itemIcon;

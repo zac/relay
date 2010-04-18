@@ -12,7 +12,7 @@
 
 @implementation HOItemTableViewCell
 
-@synthesize item;
+@synthesize item, actionButton;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	if (!(self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier])) return nil;
@@ -80,6 +80,10 @@
 
 
 - (void)dealloc {
+	
+	self.item = nil;
+	self.actionButton = nil;
+	
     [super dealloc];
 }
 
