@@ -9,10 +9,11 @@
 #import "HOItemTableViewCell.h"
 
 #import "HOItem.h"
+#import "HOItemTableViewController.h"
 
 @implementation HOItemTableViewCell
 
-@synthesize item, actionButton;
+@synthesize item, actionButton, parentController;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	if (!(self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier])) return nil;
@@ -83,6 +84,8 @@
 
 
 - (void)dealloc {
+	
+	self.parentController = nil;
 	
 	self.item = nil;
 	self.actionButton = nil;

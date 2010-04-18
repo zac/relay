@@ -17,7 +17,7 @@
 
 @implementation HOItemTableViewController
 
-@synthesize items, networkController;
+@synthesize items, builtInItems, networkController;
 
 #pragma mark -
 #pragma mark Initialization
@@ -25,9 +25,8 @@
 - (id)init {
 	if (!(self = [self initWithNibName:nil bundle:nil])) return nil;
 	
-	NSMutableArray *itemArray = [NSMutableArray array];
-	
-	self.items = itemArray;
+	self.items = [NSMutableArray array];
+	self.builtInItems = [NSMutableArray array];
 	
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	self.tableView.backgroundColor = [UIColor colorWithWhite:.9 alpha:1.0];
@@ -55,10 +54,10 @@
 	MPMediaItemArtwork *artwork = [currentItem valueForProperty:MPMediaItemPropertyArtwork];
 	nowPlayingItem.itemIconData = UIImagePNGRepresentation([artwork imageWithSize:CGSizeMake(45.0, 45.0)]);
 	
-	
 	//make it the first object.
-	[self.items insertObject:nowPlayingItem atIndex:0];
-	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+	[self.builtInItems insertObject:nowPlayingItem atIndex:0];
+	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]]
+						  withRowAnimation:UITableViewRowAnimationTop];
 }
 
 - (void)discoverCurrentClipboard {
@@ -69,10 +68,10 @@
 	UIPasteboard *general = [UIPasteboard generalPasteboard];
 	clipboardItem.itemDescription = [general string];
 	
-	[self.items addObject:clipboardItem];
+	[self.builtInItems addObject:clipboardItem];
 	[clipboardItem release];
 	
-	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.items.count-1 inSection:0]]
+	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.builtInItems.count-1 inSection:0]]
 						  withRowAnimation:UITableViewRowAnimationTop];
 }
 
@@ -92,11 +91,16 @@
 #pragma mark -
 #pragma mark Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return [self.items count];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)theTableView {
+	return 2;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+	if (section == 1) return [self.items count];
+	
+	return [self.builtInItems count];
+}
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -110,10 +114,15 @@
     
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
-	cell.item = (HOItem *)[self.items objectAtIndex:indexPath.row];
+	cell.parentController = self;
 	
-    // Configure the cell...
-    
+	if (indexPath.section == 0) {
+		//we're in the built in section.
+		cell.item = (HOItem *)[self.builtInItems objectAtIndex:indexPath.row];
+	} else {
+		cell.item = (HOItem *)[self.items objectAtIndex:indexPath.row];
+	}
+	
     return cell;
 }
 
@@ -122,17 +131,21 @@
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	HOItemTableViewCell *tableCell = (HOItemTableViewCell *)[theTableView cellForRowAtIndexPath:indexPath];
-		
+	
+	HOItem *theItem = nil;
+	if (indexPath.section == 1) [self.items objectAtIndex:indexPath.row];
+	else [self.builtInItems objectAtIndex:indexPath.row];
+	
 	UIWindow *flyWindow = [tableCell windowForCell];
 	
 	//convert to the window's coordinate system.
 	CGRect rowFrame = [[self.view window] convertRect:[theTableView rectForRowAtIndexPath:indexPath] fromView:theTableView];
 	flyWindow.frame = rowFrame;
 	
-	[self.networkController sendItem:[self.items objectAtIndex:indexPath.row]];
+	[self.networkController sendItem:theItem];
 	
 	CGAffineTransform transform = CGAffineTransformMakeScale(.3, .3);
-		
+	
 	[UIView beginAnimations:nil context:[[NSArray arrayWithObjects:flyWindow, tableCell, nil] retain]];
     [UIView setAnimationDuration:.5];
     [UIView setAnimationDelegate:self];
@@ -145,7 +158,7 @@
 	flyWindow.alpha = .5;
 	
     [UIView commitAnimations];	
-		
+	
 	[flyWindow makeKeyAndVisible];
 }
 
@@ -243,6 +256,7 @@
 
 - (void)dealloc {
 	
+	self.builtInItems = nil;
 	self.items = nil;
 	
     [super dealloc];

@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@class HOItem;
+@class HOItem, HOItemTableViewController;
 
 @interface HOItemTableViewCell : UITableViewCell {
 	HOItem *item;
 	
+	HOItemTableViewController *parentController;
+	
 	UIButton *actionButton;
 }
+
+@property (nonatomic, assign) HOItemTableViewController *parentController;
 
 @property (nonatomic, retain) HOItem *item;
 @property (nonatomic, retain) UIButton *actionButton;
