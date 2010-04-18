@@ -30,6 +30,7 @@
 	self.items = itemArray;
 	
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	self.tableView.backgroundColor = [UIColor colorWithWhite:.9 alpha:1.0];
 	self.tableView.rowHeight = 65.0;
 	
 	self.networkController = [[[HONetwork alloc] initWithDelegate:self] autorelease];
@@ -49,7 +50,11 @@
 	
 	HOItem *nowPlayingItem = [[HOItem alloc] init];
 	nowPlayingItem.command = HOItemCommandTypeSong;
-	nowPlayingItem.itemDescription = [currentItem valueForProperty:MPMediaItemPropertyTitle];
+	
+	NSString *desc = [NSString stringWithFormat:@"%@ by %@",
+					  [currentItem valueForProperty:MPMediaItemPropertyTitle],
+					  [currentItem valueForProperty:MPMediaItemPropertyArtist]];
+	nowPlayingItem.itemDescription = desc;
 	nowPlayingItem.itemTitle = @"Current iPod Song";
 	MPMediaItemArtwork *artwork = [currentItem valueForProperty:MPMediaItemPropertyArtwork];
 	nowPlayingItem.itemIcon = [artwork imageWithSize:CGSizeMake(45.0, 45.0)];
