@@ -25,19 +25,11 @@
 - (id)init {
 	if (!(self = [self initWithNibName:nil bundle:nil])) return nil;
 	
-	NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:10];
-	
-	for (int i = 0; i < 10; i++) {
-		HOItem *item = [[HOItem alloc] init];
-		item.itemTitle = [NSString stringWithFormat:@"Item %d", i];
-		item.itemDescription = [NSString stringWithFormat:@"This is a description of %d", i];
-		item.itemIcon = [UIImage imageNamed:@"icon-test.png"];
-		[itemArray addObject:item];
-		[item release];
-	}
+	NSMutableArray *itemArray = [NSMutableArray array];
 	
 	self.items = itemArray;
 	
+	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	self.tableView.rowHeight = 65.0;
 	
 	self.networkController = [[[HONetwork alloc] init] autorelease];
@@ -65,17 +57,18 @@
 }
 
 - (void)discoverCurrentClipboard {
-//	HOItem *nowPlayingItem = [[HOItem alloc] init];
-//	nowPlayingItem.command = HOItemCommandTypeSong;
-//	nowPlayingItem.itemDescription = [currentItem valueForProperty:MPMediaItemPropertyTitle];
-//	nowPlayingItem.itemTitle = @"Current iPod Song";
-//	MPMediaItemArtwork *artwork = [currentItem valueForProperty:MPMediaItemPropertyArtwork];
-//	nowPlayingItem.itemIcon = [artwork imageWithSize:CGSizeMake(45.0, 45.0)];
-//	
-//	
-//	//make it the first object.
-//	[self.items insertObject:nowPlayingItem atIndex:0];
-//	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];	
+	
+	HOItem *clipboardItem = [[HOItem alloc] init];
+	clipboardItem.command = HOItemCommandTypeClipboard;
+	clipboardItem.itemTitle = @"Clipboard";
+	UIPasteboard *general = [UIPasteboard generalPasteboard];
+	clipboardItem.itemDescription = [general string];
+	
+	[self.items addObject:clipboardItem];
+	[clipboardItem release];
+	
+	[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.items.count-1 inSection:0]]
+						  withRowAnimation:UITableViewRowAnimationTop];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
