@@ -25,6 +25,30 @@ NSString *const HOItemCommandTypeDocument = @"document";
 
 @synthesize command, itemIcon, itemTitle, itemDescription, properties, body;
 
+
+
+- (id)initWithBLIPRequest:(BLIPRequest *)request
+{
+	if (!(self = [super init])) return nil;
+	
+	BLIPProperties *props = [request properties];
+	
+	self.body = request.body;
+	
+	self.command = [props valueOfProperty:HOTypeCommand];
+	
+	NSString *iconDataString = [props valueOfProperty:HOTypeIconData];
+	NSData *decodedData = [Base64 decode:iconDataString];
+	self.itemIcon = [UIImage imageWithData:decodedData];
+	
+	self.itemTitle = [props valueOfProperty:HOTypeTitle];
+	self.itemDescription = [props valueOfProperty:HOTypeDescription];
+	
+	NSMutableDictionary *restOfProperties = [[NSMutableDictionary alloc] initWithDictionary:[props allProperties]];
+	[restOfProperties removeObjectsForKeys:[NSArray arrayWithObjects:HOTypeCommand, HOTypeTitle, HOTypeDescription, HOTypeIconData, nil]];
+	self.properties = restOfProperties;
+	return self;
+}
 - (id)initWithBLIPMessage:(BLIPMessage *)message
 {		
 	if (!(self = [super init])) return nil;
@@ -46,11 +70,6 @@ NSString *const HOItemCommandTypeDocument = @"document";
 	[restOfProperties removeObjectsForKeys:[NSArray arrayWithObjects:HOTypeCommand, HOTypeTitle, HOTypeDescription, HOTypeIconData, nil]];
 	
 	return self;
-}
-
-- (BLIPMessage *)blipMessage {
-	//fill out the blip message.
-	return nil;
 }
 
 - (void)dealloc {
