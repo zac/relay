@@ -31,6 +31,16 @@
 	self.tableViewController.view.frame = CGRectMake(0, 0, 300, 1004);
 	
 	[self.view addSubview:self.tableViewController.view];
+	
+		
+	textField.text = @"Opening listener socket...";
+		
+	network = [[HONetwork alloc] initWithDelegate:self];
+
+}
+
+- (void) messageReceived:(NSString*)message {
+	textField.text = message;
 }
 
 // Override to allow orientations other than the default portrait orientation.
@@ -54,6 +64,8 @@
 - (void)dealloc {
 	
 	self.tableViewController = nil;
+	
+	self.network = nil;
 	
     [super dealloc];
 }

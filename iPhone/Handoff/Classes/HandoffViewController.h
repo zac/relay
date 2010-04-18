@@ -11,7 +11,7 @@
 
 @class HOItemTableViewController;
 
-@interface HandoffViewController : UIViewController {
+@interface HandoffViewController : UIViewController <HONetworkDelegate> {
 	HOItemTableViewController *tableViewController;
 
 	IBOutlet UITextField *textField;
@@ -25,6 +25,7 @@
 
 @property (nonatomic, retain) HONetwork *network;
 
+- (void) messageReceived:(NSString*)message;
 
 @end
 

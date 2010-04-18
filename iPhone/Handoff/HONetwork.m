@@ -1,5 +1,5 @@
 //
-//  HandNetwork.m
+//  HONetwork.m
 //  Handoff
 //
 //  Created by Barry Burton on 4/17/10.
@@ -12,9 +12,9 @@
 
 @implementation HONetwork
 
-@synthesize string;
+@synthesize string, delegate;
 
-- (id) init
+- (id) initWithDelegate:(id <HONetworkDelegate>)delegate
 {
 	self = [super init];
     if (self != nil) {
@@ -25,12 +25,10 @@
 		_listener.pickAvailablePort = YES;
 		_listener.bonjourServiceType = @"_blipecho._tcp";
 		[_listener open];
+		
+		self.delegate = delegate;
 	}
 	return self;
-}
-
-- (void)updateString {
-	
 }
 
 #pragma mark BLIP Listener Delegate:
@@ -64,6 +62,9 @@
 {
     NSString *message = [[NSString alloc] initWithData: request.body encoding: NSUTF8StringEncoding];
     self.string = [NSString stringWithFormat: @"Echoed:\n“%@”",message];
+	if ( self.delegate ) {
+		[self.delegate messageReceived: self.string];
+	}
     [request respondWithData: request.body contentType: request.contentType];
 	[message release];
 	return YES;
