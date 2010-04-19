@@ -1,15 +1,15 @@
 //
-//  HandoffAppDelegate.m
-//  Handoff
+//  RelayAppDelegate.m
+//  Relay
 //
 //  Created by Zac White on 4/16/10.
 //  Copyright Gravity Mobile 2010. All rights reserved.
 //
 
-#import "HandoffAppDelegate.h"
-#import "HandoffViewController.h"
+#import "RelayAppDelegate.h"
+#import "RelayViewController.h"
 
-@implementation HandoffAppDelegate
+@implementation RelayAppDelegate
 
 @synthesize window;
 @synthesize viewController;

@@ -59,16 +59,16 @@
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		11BDB64C117BA7350043C3C1 /* HONetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HONetwork.h; sourceTree = "<group>"; };
-		11BDB64D117BA7350043C3C1 /* HONetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HONetwork.m; sourceTree = "<group>"; };
+		11BDB64C117BA7350043C3C1 /* HONetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HONetwork.h; path = ../Handoff/Classes/HONetwork.h; sourceTree = "<group>"; };
+		11BDB64D117BA7350043C3C1 /* HONetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HONetwork.m; path = ../Handoff/Classes/HONetwork.m; sourceTree = "<group>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		32CA4F630368D1EE00C91783 /* Handoff_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Handoff_Prefix.pch; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Relay_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Relay_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* Handoff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handoff.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* Relay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC088007117963360083B777 /* HandoffAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoffAppDelegate.h; sourceTree = "<group>"; };
 		BC088008117963360083B777 /* HandoffAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoffAppDelegate.m; sourceTree = "<group>"; };
 		BC088072117A250F0083B777 /* PTKeyCombo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyCombo.h; sourceTree = "<group>"; };
@@ -82,17 +82,17 @@
 		BC08833B117A778B0083B777 /* HOAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOAppInfo.h; sourceTree = "<group>"; };
 		BC08833C117A778B0083B777 /* HOAppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOAppInfo.m; sourceTree = "<group>"; };
 		BC08839B117ABD620083B777 /* Safari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Safari.h; sourceTree = "<group>"; };
-		BC0883B0117AC0B50083B777 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = ../../iPhone/Handoff/Base64.m; sourceTree = SOURCE_ROOT; };
-		BC0883B1117AC0B50083B777 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = ../../iPhone/Handoff/Base64.h; sourceTree = SOURCE_ROOT; };
-		BC0883B4117AC0C30083B777 /* HOItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HOItem.m; path = ../../iPhone/Handoff/Classes/HOItem.m; sourceTree = SOURCE_ROOT; };
-		BC0883B5117AC0C30083B777 /* HOItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HOItem.h; path = ../../iPhone/Handoff/Classes/HOItem.h; sourceTree = SOURCE_ROOT; };
-		BCED94A5117AD0F900608A28 /* MYNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYNetwork.h; path = ../../mynetwork/MYNetwork.h; sourceTree = SOURCE_ROOT; };
-		BCED94A7117AD0F900608A28 /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPAddress.h; path = ../../mynetwork/IPAddress.h; sourceTree = SOURCE_ROOT; };
-		BCED94A8117AD0F900608A28 /* IPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPAddress.m; path = ../../mynetwork/IPAddress.m; sourceTree = SOURCE_ROOT; };
-		BCED94A9117AD0F900608A28 /* MYDNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYDNSService.h; path = ../../mynetwork/PortMapper/MYDNSService.h; sourceTree = SOURCE_ROOT; };
-		BCED94AA117AD0F900608A28 /* MYDNSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYDNSService.m; path = ../../mynetwork/PortMapper/MYDNSService.m; sourceTree = SOURCE_ROOT; };
-		BCED94AB117AD0F900608A28 /* MYAddressLookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYAddressLookup.h; path = ../../mynetwork/Bonjour/MYAddressLookup.h; sourceTree = SOURCE_ROOT; };
-		BCED94AC117AD0F900608A28 /* MYAddressLookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYAddressLookup.m; path = ../../mynetwork/Bonjour/MYAddressLookup.m; sourceTree = SOURCE_ROOT; };
+		BC0883B0117AC0B50083B777 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = ../Handoff/Classes/Base64.m; sourceTree = SOURCE_ROOT; };
+		BC0883B1117AC0B50083B777 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = ../Handoff/Classes/Base64.h; sourceTree = SOURCE_ROOT; };
+		BC0883B4117AC0C30083B777 /* HOItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HOItem.m; path = ../Handoff/Classes/HOItem.m; sourceTree = SOURCE_ROOT; };
+		BC0883B5117AC0C30083B777 /* HOItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HOItem.h; path = ../Handoff/Classes/HOItem.h; sourceTree = SOURCE_ROOT; };
+		BCED94A5117AD0F900608A28 /* MYNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYNetwork.h; path = ../Handoff/mynetwork/MYNetwork.h; sourceTree = SOURCE_ROOT; };
+		BCED94A7117AD0F900608A28 /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAddress.h; sourceTree = "<group>"; };
+		BCED94A8117AD0F900608A28 /* IPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPAddress.m; sourceTree = "<group>"; };
+		BCED94A9117AD0F900608A28 /* MYDNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYDNSService.h; path = PortMapper/MYDNSService.h; sourceTree = "<group>"; };
+		BCED94AA117AD0F900608A28 /* MYDNSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYDNSService.m; path = PortMapper/MYDNSService.m; sourceTree = "<group>"; };
+		BCED94AB117AD0F900608A28 /* MYAddressLookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYAddressLookup.h; path = Bonjour/MYAddressLookup.h; sourceTree = "<group>"; };
+		BCED94AC117AD0F900608A28 /* MYAddressLookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYAddressLookup.m; path = Bonjour/MYAddressLookup.m; sourceTree = "<group>"; };
 		BCED94AE117AD0F900608A28 /* MYPortMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPortMapper.h; sourceTree = "<group>"; };
 		BCED94AF117AD0F900608A28 /* MYPortMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPortMapper.m; sourceTree = "<group>"; };
 		BCED94B0117AD0F900608A28 /* PortMapperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortMapperTest.m; sourceTree = "<group>"; };
@@ -132,24 +132,24 @@
 		BCED94D5117AD0F900608A28 /* BLIPWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPWriter.h; sourceTree = "<group>"; };
 		BCED94D6117AD0F900608A28 /* BLIPWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPWriter.m; sourceTree = "<group>"; };
 		BCED94D7117AD0F900608A28 /* BLIP_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIP_Internal.h; sourceTree = "<group>"; };
-		BCED94D9117AD0F900608A28 /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionUtils.h; path = ../../myutilities/CollectionUtils.h; sourceTree = SOURCE_ROOT; };
-		BCED94DA117AD0F900608A28 /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionUtils.m; path = ../../myutilities/CollectionUtils.m; sourceTree = SOURCE_ROOT; };
-		BCED94DB117AD0F900608A28 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConcurrentOperation.h; path = ../../myutilities/ConcurrentOperation.h; sourceTree = SOURCE_ROOT; };
-		BCED94DC117AD0F900608A28 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConcurrentOperation.m; path = ../../myutilities/ConcurrentOperation.m; sourceTree = SOURCE_ROOT; };
-		BCED94DD117AD0F900608A28 /* ExceptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExceptionUtils.h; path = ../../myutilities/ExceptionUtils.h; sourceTree = SOURCE_ROOT; };
-		BCED94DE117AD0F900608A28 /* ExceptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExceptionUtils.m; path = ../../myutilities/ExceptionUtils.m; sourceTree = SOURCE_ROOT; };
+		BCED94D9117AD0F900608A28 /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionUtils.h; path = ../Handoff/myutilities/CollectionUtils.h; sourceTree = SOURCE_ROOT; };
+		BCED94DA117AD0F900608A28 /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionUtils.m; path = ../Handoff/myutilities/CollectionUtils.m; sourceTree = SOURCE_ROOT; };
+		BCED94DB117AD0F900608A28 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConcurrentOperation.h; path = ../Handoff/myutilities/ConcurrentOperation.h; sourceTree = SOURCE_ROOT; };
+		BCED94DC117AD0F900608A28 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConcurrentOperation.m; path = ../Handoff/myutilities/ConcurrentOperation.m; sourceTree = SOURCE_ROOT; };
+		BCED94DD117AD0F900608A28 /* ExceptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExceptionUtils.h; path = ../Handoff/myutilities/ExceptionUtils.h; sourceTree = SOURCE_ROOT; };
+		BCED94DE117AD0F900608A28 /* ExceptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExceptionUtils.m; path = ../Handoff/myutilities/ExceptionUtils.m; sourceTree = SOURCE_ROOT; };
 		BCED94E0117AD0F900608A28 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		BCED94E1117AD0F900608A28 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSData+zlib.h"; sourceTree = "<group>"; };
 		BCED94E2117AD0F900608A28 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSData+zlib.m"; sourceTree = "<group>"; };
-		BCED94E3117AD0F900608A28 /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Logging.h; path = ../../myutilities/Logging.h; sourceTree = SOURCE_ROOT; };
-		BCED94E4117AD0F900608A28 /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Logging.m; path = ../../myutilities/Logging.m; sourceTree = SOURCE_ROOT; };
-		BCED94E5117AD0F900608A28 /* MYUtilities_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = MYUtilities_Debug.xcconfig; path = ../../myutilities/MYUtilities_Debug.xcconfig; sourceTree = SOURCE_ROOT; };
-		BCED94E6117AD0F900608A28 /* MYUtilities_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYUtilities_Prefix.pch; path = ../../myutilities/MYUtilities_Prefix.pch; sourceTree = SOURCE_ROOT; };
-		BCED94E7117AD0F900608A28 /* MYUtilities_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = MYUtilities_Release.xcconfig; path = ../../myutilities/MYUtilities_Release.xcconfig; sourceTree = SOURCE_ROOT; };
-		BCED94E9117AD0F900608A28 /* Target.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Target.h; path = ../../myutilities/Target.h; sourceTree = SOURCE_ROOT; };
-		BCED94EA117AD0F900608A28 /* Target.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Target.m; path = ../../myutilities/Target.m; sourceTree = SOURCE_ROOT; };
-		BCED94EB117AD0F900608A28 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Test.h; path = ../../myutilities/Test.h; sourceTree = SOURCE_ROOT; };
-		BCED94EC117AD0F900608A28 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Test.m; path = ../../myutilities/Test.m; sourceTree = SOURCE_ROOT; };
+		BCED94E3117AD0F900608A28 /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Logging.h; path = ../Handoff/myutilities/Logging.h; sourceTree = SOURCE_ROOT; };
+		BCED94E4117AD0F900608A28 /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Logging.m; path = ../Handoff/myutilities/Logging.m; sourceTree = SOURCE_ROOT; };
+		BCED94E5117AD0F900608A28 /* MYUtilities_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = MYUtilities_Debug.xcconfig; path = ../Handoff/myutilities/MYUtilities_Debug.xcconfig; sourceTree = SOURCE_ROOT; };
+		BCED94E6117AD0F900608A28 /* MYUtilities_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYUtilities_Prefix.pch; path = ../Handoff/myutilities/MYUtilities_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		BCED94E7117AD0F900608A28 /* MYUtilities_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = MYUtilities_Release.xcconfig; path = ../Handoff/myutilities/MYUtilities_Release.xcconfig; sourceTree = SOURCE_ROOT; };
+		BCED94E9117AD0F900608A28 /* Target.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Target.h; path = ../Handoff/myutilities/Target.h; sourceTree = SOURCE_ROOT; };
+		BCED94EA117AD0F900608A28 /* Target.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Target.m; path = ../Handoff/myutilities/Target.m; sourceTree = SOURCE_ROOT; };
+		BCED94EB117AD0F900608A28 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Test.h; path = ../Handoff/myutilities/Test.h; sourceTree = SOURCE_ROOT; };
+		BCED94EC117AD0F900608A28 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Test.m; path = ../Handoff/myutilities/Test.m; sourceTree = SOURCE_ROOT; };
 		BCED9655117AD7DE00608A28 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
 		BCED966B117AD83600608A28 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		BCED968A117ADF4B00608A28 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
@@ -176,12 +176,6 @@
 			children = (
 				BCED968A117ADF4B00608A28 /* iTunes.h */,
 				BC08839B117ABD620083B777 /* Safari.h */,
-				11BDB64C117BA7350043C3C1 /* HONetwork.h */,
-				11BDB64D117BA7350043C3C1 /* HONetwork.m */,
-				BC0883B5117AC0C30083B777 /* HOItem.h */,
-				BC0883B4117AC0C30083B777 /* HOItem.m */,
-				BC0883B1117AC0B50083B777 /* Base64.h */,
-				BC0883B0117AC0B50083B777 /* Base64.m */,
 				BC08833B117A778B0083B777 /* HOAppInfo.h */,
 				BC08833C117A778B0083B777 /* HOAppInfo.m */,
 				BC088072117A250F0083B777 /* PTKeyCombo.h */,
@@ -221,7 +215,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* Handoff.app */,
+				8D1107320486CEB800E47090 /* Relay.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,8 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
-				BCED94D8117AD0F900608A28 /* MYUtilities */,
-				BCED94A4117AD0F900608A28 /* MYNetwork */,
+				97ACF57E117CBC85005F4046 /* Handoff */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -243,7 +236,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* Handoff_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* Relay_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -266,6 +259,29 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		97ACF57E117CBC85005F4046 /* Handoff */ = {
+			isa = PBXGroup;
+			children = (
+				97ACF581117CBCB5005F4046 /* Classes */,
+				BCED94D8117AD0F900608A28 /* MYUtilities */,
+				BCED94A4117AD0F900608A28 /* MYNetwork */,
+			);
+			name = Handoff;
+			sourceTree = "<group>";
+		};
+		97ACF581117CBCB5005F4046 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				11BDB64C117BA7350043C3C1 /* HONetwork.h */,
+				11BDB64D117BA7350043C3C1 /* HONetwork.m */,
+				BC0883B5117AC0C30083B777 /* HOItem.h */,
+				BC0883B4117AC0C30083B777 /* HOItem.m */,
+				BC0883B1117AC0B50083B777 /* Base64.h */,
+				BC0883B0117AC0B50083B777 /* Base64.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		BCED94A4117AD0F900608A28 /* MYNetwork */ = {
@@ -292,6 +308,7 @@
 				BCED94AC117AD0F900608A28 /* MYAddressLookup.m */,
 			);
 			name = Addressing;
+			path = ../Handoff/mynetwork;
 			sourceTree = "<group>";
 		};
 		BCED94AD117AD0F900608A28 /* PortMapper */ = {
@@ -302,7 +319,7 @@
 				BCED94B0117AD0F900608A28 /* PortMapperTest.m */,
 			);
 			name = PortMapper;
-			path = ../../mynetwork/PortMapper;
+			path = ../Handoff/mynetwork/PortMapper;
 			sourceTree = SOURCE_ROOT;
 		};
 		BCED94B1117AD0F900608A28 /* Bonjour */ = {
@@ -318,7 +335,7 @@
 				BCED94B9117AD0F900608A28 /* MYBonjourRegistration.m */,
 			);
 			name = Bonjour;
-			path = ../../mynetwork/Bonjour;
+			path = ../Handoff/mynetwork/Bonjour;
 			sourceTree = SOURCE_ROOT;
 		};
 		BCED94BA117AD0F900608A28 /* TCP */ = {
@@ -338,7 +355,7 @@
 				BCED94C6117AD0F900608A28 /* TCP_Internal.h */,
 			);
 			name = TCP;
-			path = ../../mynetwork/TCP;
+			path = ../Handoff/mynetwork/TCP;
 			sourceTree = SOURCE_ROOT;
 		};
 		BCED94C7117AD0F900608A28 /* BLIP */ = {
@@ -362,7 +379,7 @@
 				BCED94D7117AD0F900608A28 /* BLIP_Internal.h */,
 			);
 			name = BLIP;
-			path = ../../mynetwork/BLIP;
+			path = ../Handoff/mynetwork/BLIP;
 			sourceTree = SOURCE_ROOT;
 		};
 		BCED94D8117AD0F900608A28 /* MYUtilities */ = {
@@ -396,15 +413,15 @@
 				BCED94E2117AD0F900608A28 /* GTMNSData+zlib.m */,
 			);
 			name = GoogleToolboxSubset;
-			path = ../../myutilities/GoogleToolboxSubset;
+			path = ../Handoff/myutilities/GoogleToolboxSubset;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* Handoff */ = {
+		8D1107260486CEB800E47090 /* Relay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Handoff" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Relay" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
@@ -414,10 +431,10 @@
 			);
 			dependencies = (
 			);
-			name = Handoff;
+			name = Relay;
 			productInstallPath = "$(HOME)/Applications";
 			productName = Handoff;
-			productReference = 8D1107320486CEB800E47090 /* Handoff.app */;
+			productReference = 8D1107320486CEB800E47090 /* Relay.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -425,14 +442,14 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Handoff" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Relay" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Handoff */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* Handoff */,
+				8D1107260486CEB800E47090 /* Relay */,
 			);
 		};
 /* End PBXProject section */
@@ -529,14 +546,14 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Handoff_Prefix.pch;
+				GCC_PREFIX_HEADER = Relay_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
-				PRODUCT_NAME = Handoff;
+				PRODUCT_NAME = Relay;
 			};
 			name = Debug;
 		};
@@ -547,14 +564,14 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Handoff_Prefix.pch;
+				GCC_PREFIX_HEADER = Relay_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
-				PRODUCT_NAME = Handoff;
+				PRODUCT_NAME = Relay;
 			};
 			name = Release;
 		};
@@ -588,7 +605,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Handoff" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Relay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
@@ -597,7 +614,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Handoff" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Relay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

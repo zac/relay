@@ -1,6 +1,6 @@
 //
-//  HandoffViewController.h
-//  Handoff
+//  RelayViewController.h
+//  Relay
 //
 //  Created by Zac White on 4/16/10.
 //  Copyright Gravity Mobile 2010. All rights reserved.
@@ -10,7 +10,7 @@
 
 @class HOItemTableViewController;
 
-@interface HandoffViewController : UIViewController {
+@interface RelayViewController : UIViewController {
 	HOItemTableViewController *tableViewController;
 
 	UITextField *textField;

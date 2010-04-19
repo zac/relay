@@ -102,7 +102,9 @@ NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 	inPaste = NO;
 	return;
 }
-
+- (void)didDropConnectionOnNetwork:(HONetwork *)theNetwork {
+	
+}
 -(void)hideFrontmostApp
 {
 	NSAppleScript *hideScript = [[NSAppleScript alloc] initWithSource:@"tell application \"System Events\" to keystroke \"h\" using command down"];

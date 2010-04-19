@@ -1,6 +1,6 @@
 //
 //  HOConnectionChooser.m
-//  Handoff
+//  Relay
 //
 //  Created by Barry Burton on 4/18/10.
 //  Copyright 2010 Gravity Mobile. All rights reserved.

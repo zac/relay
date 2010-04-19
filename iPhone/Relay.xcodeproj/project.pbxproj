@@ -46,45 +46,45 @@
 		11E40BD21179654800F21A68 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E40BD11179654800F21A68 /* Security.framework */; };
 		11E40BD41179654E00F21A68 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E40BD31179654E00F21A68 /* CFNetwork.framework */; };
 		11E40C1911796E5600F21A68 /* imac.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E40C1811796E5600F21A68 /* imac.png */; };
-		1D3623260D0F684500981E51 /* HandoffAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* HandoffAppDelegate.m */; };
+		1D3623260D0F684500981E51 /* RelayAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* RelayAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		2899E5220DE3E06400AC0155 /* HandoffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* HandoffViewController.xib */; };
+		2899E5220DE3E06400AC0155 /* RelayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* RelayViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		28D7ACF80DDB3853001CB0EB /* HandoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* HandoffViewController.m */; };
+		28D7ACF80DDB3853001CB0EB /* RelayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* RelayViewController.m */; };
 		97ACF028117A2DB1005F4046 /* HONetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 97ACF027117A2DB1005F4046 /* HONetwork.m */; };
 		97ACF0E7117A68C1005F4046 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 97ACF0E6117A68C1005F4046 /* Base64.m */; };
 		97ACF301117B763C005F4046 /* HOConnectionChooser.m in Sources */ = {isa = PBXBuildFile; fileRef = 97ACF2FF117B763C005F4046 /* HOConnectionChooser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		11BC222D117A4D5A00F87F30 /* HOItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOItem.h; sourceTree = "<group>"; };
-		11BC222E117A4D5A00F87F30 /* HOItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOItem.m; sourceTree = "<group>"; };
+		11BC222D117A4D5A00F87F30 /* HOItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HOItem.h; path = ../../Handoff/Classes/HOItem.h; sourceTree = "<group>"; };
+		11BC222E117A4D5A00F87F30 /* HOItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HOItem.m; path = ../../Handoff/Classes/HOItem.m; sourceTree = "<group>"; };
 		11BC223A117A50D500F87F30 /* HOItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOItemTableViewController.h; sourceTree = "<group>"; };
 		11BC223B117A50D500F87F30 /* HOItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOItemTableViewController.m; sourceTree = "<group>"; };
 		11BC22B2117A58FB00F87F30 /* HOItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOItemTableViewCell.h; sourceTree = "<group>"; };
 		11BC22B3117A58FB00F87F30 /* HOItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOItemTableViewCell.m; sourceTree = "<group>"; };
 		11BC23B0117A72D000F87F30 /* icon-test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-test.png"; path = "Resources/icon-test.png"; sourceTree = "<group>"; };
 		11BC241B117A798800F87F30 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		11E40B2C1179634100F21A68 /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPAddress.h; path = ../../mynetwork/IPAddress.h; sourceTree = SOURCE_ROOT; };
-		11E40B2D1179634100F21A68 /* IPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPAddress.m; path = ../../mynetwork/IPAddress.m; sourceTree = SOURCE_ROOT; };
-		11E40B2E1179634100F21A68 /* MYDNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYDNSService.h; path = ../../mynetwork/PortMapper/MYDNSService.h; sourceTree = SOURCE_ROOT; };
-		11E40B2F1179634100F21A68 /* MYDNSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYDNSService.m; path = ../../mynetwork/PortMapper/MYDNSService.m; sourceTree = SOURCE_ROOT; };
-		11E40B301179634100F21A68 /* MYAddressLookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYAddressLookup.h; path = ../../mynetwork/Bonjour/MYAddressLookup.h; sourceTree = SOURCE_ROOT; };
-		11E40B311179634100F21A68 /* MYAddressLookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYAddressLookup.m; path = ../../mynetwork/Bonjour/MYAddressLookup.m; sourceTree = SOURCE_ROOT; };
+		11E40B2C1179634100F21A68 /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAddress.h; sourceTree = "<group>"; };
+		11E40B2D1179634100F21A68 /* IPAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPAddress.m; sourceTree = "<group>"; };
+		11E40B2E1179634100F21A68 /* MYDNSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYDNSService.h; path = PortMapper/MYDNSService.h; sourceTree = "<group>"; };
+		11E40B2F1179634100F21A68 /* MYDNSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYDNSService.m; path = PortMapper/MYDNSService.m; sourceTree = "<group>"; };
+		11E40B301179634100F21A68 /* MYAddressLookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYAddressLookup.h; path = Bonjour/MYAddressLookup.h; sourceTree = "<group>"; };
+		11E40B311179634100F21A68 /* MYAddressLookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYAddressLookup.m; path = Bonjour/MYAddressLookup.m; sourceTree = "<group>"; };
 		11E40B331179634100F21A68 /* MYPortMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPortMapper.h; sourceTree = "<group>"; };
 		11E40B341179634100F21A68 /* MYPortMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPortMapper.m; sourceTree = "<group>"; };
 		11E40B351179634100F21A68 /* PortMapperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortMapperTest.m; sourceTree = "<group>"; };
-		11E40B371179634100F21A68 /* MYBonjourBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYBonjourBrowser.h; path = ../../mynetwork/Bonjour/MYBonjourBrowser.h; sourceTree = SOURCE_ROOT; };
-		11E40B381179634100F21A68 /* MYBonjourBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYBonjourBrowser.m; path = ../../mynetwork/Bonjour/MYBonjourBrowser.m; sourceTree = SOURCE_ROOT; };
-		11E40B391179634100F21A68 /* MYBonjourService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYBonjourService.h; path = ../../mynetwork/Bonjour/MYBonjourService.h; sourceTree = SOURCE_ROOT; };
-		11E40B3A1179634100F21A68 /* MYBonjourService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYBonjourService.m; path = ../../mynetwork/Bonjour/MYBonjourService.m; sourceTree = SOURCE_ROOT; };
-		11E40B3B1179634100F21A68 /* MYBonjourQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYBonjourQuery.h; path = ../../mynetwork/Bonjour/MYBonjourQuery.h; sourceTree = SOURCE_ROOT; };
-		11E40B3C1179634100F21A68 /* MYBonjourQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYBonjourQuery.m; path = ../../mynetwork/Bonjour/MYBonjourQuery.m; sourceTree = SOURCE_ROOT; };
-		11E40B3D1179634100F21A68 /* MYBonjourRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYBonjourRegistration.h; path = ../../mynetwork/Bonjour/MYBonjourRegistration.h; sourceTree = SOURCE_ROOT; };
-		11E40B3E1179634100F21A68 /* MYBonjourRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYBonjourRegistration.m; path = ../../mynetwork/Bonjour/MYBonjourRegistration.m; sourceTree = SOURCE_ROOT; };
+		11E40B371179634100F21A68 /* MYBonjourBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYBonjourBrowser.h; path = Bonjour/MYBonjourBrowser.h; sourceTree = "<group>"; };
+		11E40B381179634100F21A68 /* MYBonjourBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYBonjourBrowser.m; path = Bonjour/MYBonjourBrowser.m; sourceTree = "<group>"; };
+		11E40B391179634100F21A68 /* MYBonjourService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYBonjourService.h; path = Bonjour/MYBonjourService.h; sourceTree = "<group>"; };
+		11E40B3A1179634100F21A68 /* MYBonjourService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYBonjourService.m; path = Bonjour/MYBonjourService.m; sourceTree = "<group>"; };
+		11E40B3B1179634100F21A68 /* MYBonjourQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYBonjourQuery.h; path = Bonjour/MYBonjourQuery.h; sourceTree = "<group>"; };
+		11E40B3C1179634100F21A68 /* MYBonjourQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYBonjourQuery.m; path = Bonjour/MYBonjourQuery.m; sourceTree = "<group>"; };
+		11E40B3D1179634100F21A68 /* MYBonjourRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYBonjourRegistration.h; path = Bonjour/MYBonjourRegistration.h; sourceTree = "<group>"; };
+		11E40B3E1179634100F21A68 /* MYBonjourRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYBonjourRegistration.m; path = Bonjour/MYBonjourRegistration.m; sourceTree = "<group>"; };
 		11E40B401179634100F21A68 /* TCPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPConnection.h; sourceTree = "<group>"; };
 		11E40B411179634100F21A68 /* TCPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPConnection.m; sourceTree = "<group>"; };
 		11E40B421179634100F21A68 /* TCPEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPEndpoint.h; sourceTree = "<group>"; };
@@ -113,21 +113,21 @@
 		11E40B5A1179634100F21A68 /* BLIPWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIPWriter.h; sourceTree = "<group>"; };
 		11E40B5B1179634100F21A68 /* BLIPWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLIPWriter.m; sourceTree = "<group>"; };
 		11E40B5C1179634100F21A68 /* BLIP_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLIP_Internal.h; sourceTree = "<group>"; };
-		11E40B911179637200F21A68 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConcurrentOperation.h; path = ../../myutilities/ConcurrentOperation.h; sourceTree = SOURCE_ROOT; };
-		11E40B921179637200F21A68 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConcurrentOperation.m; path = ../../myutilities/ConcurrentOperation.m; sourceTree = SOURCE_ROOT; };
-		11E40B96117963A100F21A68 /* MYUtilities_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYUtilities_Prefix.pch; path = ../../myutilities/MYUtilities_Prefix.pch; sourceTree = SOURCE_ROOT; };
-		11E40B97117963A600F21A68 /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionUtils.h; path = ../../myutilities/CollectionUtils.h; sourceTree = SOURCE_ROOT; };
-		11E40B98117963A600F21A68 /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionUtils.m; path = ../../myutilities/CollectionUtils.m; sourceTree = SOURCE_ROOT; };
-		11E40B9A117963AC00F21A68 /* ExceptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExceptionUtils.h; path = ../../myutilities/ExceptionUtils.h; sourceTree = SOURCE_ROOT; };
-		11E40B9B117963AC00F21A68 /* ExceptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExceptionUtils.m; path = ../../myutilities/ExceptionUtils.m; sourceTree = SOURCE_ROOT; };
-		11E40B9D117963B400F21A68 /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Logging.h; path = ../../myutilities/Logging.h; sourceTree = SOURCE_ROOT; };
-		11E40B9E117963B400F21A68 /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Logging.m; path = ../../myutilities/Logging.m; sourceTree = SOURCE_ROOT; };
-		11E40BA0117963BB00F21A68 /* Target.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Target.h; path = ../../myutilities/Target.h; sourceTree = SOURCE_ROOT; };
-		11E40BA1117963BB00F21A68 /* Target.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Target.m; path = ../../myutilities/Target.m; sourceTree = SOURCE_ROOT; };
-		11E40BA3117963BF00F21A68 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Test.h; path = ../../myutilities/Test.h; sourceTree = SOURCE_ROOT; };
-		11E40BA4117963BF00F21A68 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Test.m; path = ../../myutilities/Test.m; sourceTree = SOURCE_ROOT; };
-		11E40BA6117963C900F21A68 /* MYUtilities_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = MYUtilities_Debug.xcconfig; path = ../../myutilities/MYUtilities_Debug.xcconfig; sourceTree = SOURCE_ROOT; };
-		11E40BA7117963C900F21A68 /* MYUtilities_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = MYUtilities_Release.xcconfig; path = ../../myutilities/MYUtilities_Release.xcconfig; sourceTree = SOURCE_ROOT; };
+		11E40B911179637200F21A68 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConcurrentOperation.h; path = ../Handoff/myutilities/ConcurrentOperation.h; sourceTree = SOURCE_ROOT; };
+		11E40B921179637200F21A68 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConcurrentOperation.m; path = ../Handoff/myutilities/ConcurrentOperation.m; sourceTree = SOURCE_ROOT; };
+		11E40B96117963A100F21A68 /* MYUtilities_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYUtilities_Prefix.pch; path = ../Handoff/myutilities/MYUtilities_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		11E40B97117963A600F21A68 /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionUtils.h; path = ../Handoff/myutilities/CollectionUtils.h; sourceTree = SOURCE_ROOT; };
+		11E40B98117963A600F21A68 /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionUtils.m; path = ../Handoff/myutilities/CollectionUtils.m; sourceTree = SOURCE_ROOT; };
+		11E40B9A117963AC00F21A68 /* ExceptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExceptionUtils.h; path = ../Handoff/myutilities/ExceptionUtils.h; sourceTree = SOURCE_ROOT; };
+		11E40B9B117963AC00F21A68 /* ExceptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExceptionUtils.m; path = ../Handoff/myutilities/ExceptionUtils.m; sourceTree = SOURCE_ROOT; };
+		11E40B9D117963B400F21A68 /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Logging.h; path = ../Handoff/myutilities/Logging.h; sourceTree = SOURCE_ROOT; };
+		11E40B9E117963B400F21A68 /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Logging.m; path = ../Handoff/myutilities/Logging.m; sourceTree = SOURCE_ROOT; };
+		11E40BA0117963BB00F21A68 /* Target.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Target.h; path = ../Handoff/myutilities/Target.h; sourceTree = SOURCE_ROOT; };
+		11E40BA1117963BB00F21A68 /* Target.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Target.m; path = ../Handoff/myutilities/Target.m; sourceTree = SOURCE_ROOT; };
+		11E40BA3117963BF00F21A68 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Test.h; path = ../Handoff/myutilities/Test.h; sourceTree = SOURCE_ROOT; };
+		11E40BA4117963BF00F21A68 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Test.m; path = ../Handoff/myutilities/Test.m; sourceTree = SOURCE_ROOT; };
+		11E40BA6117963C900F21A68 /* MYUtilities_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = MYUtilities_Debug.xcconfig; path = ../Handoff/myutilities/MYUtilities_Debug.xcconfig; sourceTree = SOURCE_ROOT; };
+		11E40BA7117963C900F21A68 /* MYUtilities_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = MYUtilities_Release.xcconfig; path = ../Handoff/myutilities/MYUtilities_Release.xcconfig; sourceTree = SOURCE_ROOT; };
 		11E40BAB117963D300F21A68 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		11E40BAC117963D300F21A68 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSData+zlib.h"; sourceTree = "<group>"; };
 		11E40BAD117963D300F21A68 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSData+zlib.m"; sourceTree = "<group>"; };
@@ -135,22 +135,22 @@
 		11E40BD31179654E00F21A68 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		11E40C1811796E5600F21A68 /* imac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imac.png; path = Resources/imac.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* HandoffAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoffAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* HandoffAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoffAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* Handoff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handoff.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D3623240D0F684500981E51 /* RelayAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelayAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* RelayAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelayAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* Relay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2899E5210DE3E06400AC0155 /* HandoffViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HandoffViewController.xib; sourceTree = "<group>"; };
+		2899E5210DE3E06400AC0155 /* RelayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelayViewController.xib; sourceTree = "<group>"; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		28D7ACF60DDB3853001CB0EB /* HandoffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoffViewController.h; sourceTree = "<group>"; };
-		28D7ACF70DDB3853001CB0EB /* HandoffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoffViewController.m; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* RelayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelayViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* RelayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelayViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* Handoff_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Handoff_Prefix.pch; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* Handoff-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Handoff-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		97ACF026117A2DB1005F4046 /* HONetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HONetwork.h; sourceTree = "<group>"; };
-		97ACF027117A2DB1005F4046 /* HONetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HONetwork.m; sourceTree = "<group>"; };
-		97ACF0E5117A68C1005F4046 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
-		97ACF0E6117A68C1005F4046 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Relay_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Relay_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Relay-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Relay-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		97ACF026117A2DB1005F4046 /* HONetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HONetwork.h; path = ../../Handoff/Classes/HONetwork.h; sourceTree = "<group>"; };
+		97ACF027117A2DB1005F4046 /* HONetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HONetwork.m; path = ../../Handoff/Classes/HONetwork.m; sourceTree = "<group>"; };
+		97ACF0E5117A68C1005F4046 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = ../../Handoff/Classes/Base64.h; sourceTree = "<group>"; };
+		97ACF0E6117A68C1005F4046 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = ../../Handoff/Classes/Base64.m; sourceTree = "<group>"; };
 		97ACF2FE117B763C005F4046 /* HOConnectionChooser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOConnectionChooser.h; sourceTree = "<group>"; };
 		97ACF2FF117B763C005F4046 /* HOConnectionChooser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOConnectionChooser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,20 +175,17 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* HandoffAppDelegate.h */,
-				1D3623250D0F684500981E51 /* HandoffAppDelegate.m */,
-				28D7ACF60DDB3853001CB0EB /* HandoffViewController.h */,
-				28D7ACF70DDB3853001CB0EB /* HandoffViewController.m */,
+				1D3623240D0F684500981E51 /* RelayAppDelegate.h */,
+				1D3623250D0F684500981E51 /* RelayAppDelegate.m */,
+				28D7ACF60DDB3853001CB0EB /* RelayViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* RelayViewController.m */,
 				11BC223A117A50D500F87F30 /* HOItemTableViewController.h */,
 				11BC223B117A50D500F87F30 /* HOItemTableViewController.m */,
 				11BC22B2117A58FB00F87F30 /* HOItemTableViewCell.h */,
 				11BC22B3117A58FB00F87F30 /* HOItemTableViewCell.m */,
 				97ACF2FE117B763C005F4046 /* HOConnectionChooser.h */,
 				97ACF2FF117B763C005F4046 /* HOConnectionChooser.m */,
-				97ACF17D117A7C76005F4046 /* Models */,
-				97ACF00A1179706C005F4046 /* HONetwork */,
-				11E40B5D1179634100F21A68 /* MYUtilities */,
-				11E40B2A1179634100F21A68 /* MYNetwork */,
+				97ACF00A1179706C005F4046 /* HandOff */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -203,6 +200,7 @@
 				11E40B2B1179634100F21A68 /* Addressing */,
 			);
 			name = MYNetwork;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		11E40B2B1179634100F21A68 /* Addressing */ = {
@@ -216,6 +214,7 @@
 				11E40B311179634100F21A68 /* MYAddressLookup.m */,
 			);
 			name = Addressing;
+			path = ../../Handoff/mynetwork;
 			sourceTree = "<group>";
 		};
 		11E40B321179634100F21A68 /* PortMapper */ = {
@@ -226,7 +225,7 @@
 				11E40B351179634100F21A68 /* PortMapperTest.m */,
 			);
 			name = PortMapper;
-			path = ../../mynetwork/PortMapper;
+			path = ../Handoff/mynetwork/PortMapper;
 			sourceTree = SOURCE_ROOT;
 		};
 		11E40B361179634100F21A68 /* Bonjour */ = {
@@ -242,6 +241,7 @@
 				11E40B3E1179634100F21A68 /* MYBonjourRegistration.m */,
 			);
 			name = Bonjour;
+			path = ../../Handoff/mynetwork;
 			sourceTree = "<group>";
 		};
 		11E40B3F1179634100F21A68 /* TCP */ = {
@@ -261,7 +261,7 @@
 				11E40B4B1179634100F21A68 /* TCP_Internal.h */,
 			);
 			name = TCP;
-			path = ../../mynetwork/TCP;
+			path = ../Handoff/mynetwork/TCP;
 			sourceTree = SOURCE_ROOT;
 		};
 		11E40B4C1179634100F21A68 /* BLIP */ = {
@@ -285,7 +285,7 @@
 				11E40B5C1179634100F21A68 /* BLIP_Internal.h */,
 			);
 			name = BLIP;
-			path = ../../mynetwork/BLIP;
+			path = ../Handoff/mynetwork/BLIP;
 			sourceTree = SOURCE_ROOT;
 		};
 		11E40B5D1179634100F21A68 /* MYUtilities */ = {
@@ -309,6 +309,7 @@
 				11E40BAA117963D300F21A68 /* GoogleToolboxSubset */,
 			);
 			name = MYUtilities;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		11E40BAA117963D300F21A68 /* GoogleToolboxSubset */ = {
@@ -319,13 +320,13 @@
 				11E40BAD117963D300F21A68 /* GTMNSData+zlib.m */,
 			);
 			name = GoogleToolboxSubset;
-			path = ../../myutilities/GoogleToolboxSubset;
+			path = ../Handoff/myutilities/GoogleToolboxSubset;
 			sourceTree = SOURCE_ROOT;
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Handoff.app */,
+				1D6058910D05DD3D006BFB54 /* Relay.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -345,7 +346,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* Handoff_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* Relay_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -356,9 +357,9 @@
 			children = (
 				11BC23B0117A72D000F87F30 /* icon-test.png */,
 				11E40C1811796E5600F21A68 /* imac.png */,
-				2899E5210DE3E06400AC0155 /* HandoffViewController.xib */,
+				2899E5210DE3E06400AC0155 /* RelayViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* Handoff-Info.plist */,
+				8D1107310486CEB800E47090 /* Relay-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -376,33 +377,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		97ACF00A1179706C005F4046 /* HONetwork */ = {
+		97ACF00A1179706C005F4046 /* HandOff */ = {
 			isa = PBXGroup;
 			children = (
+				97ACF17D117A7C76005F4046 /* Classes */,
+				11E40B2A1179634100F21A68 /* MYNetwork */,
+				11E40B5D1179634100F21A68 /* MYUtilities */,
+			);
+			name = HandOff;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		97ACF17D117A7C76005F4046 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				11BC222D117A4D5A00F87F30 /* HOItem.h */,
+				11BC222E117A4D5A00F87F30 /* HOItem.m */,
 				97ACF026117A2DB1005F4046 /* HONetwork.h */,
 				97ACF027117A2DB1005F4046 /* HONetwork.m */,
 				97ACF0E5117A68C1005F4046 /* Base64.h */,
 				97ACF0E6117A68C1005F4046 /* Base64.m */,
 			);
-			name = HONetwork;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		97ACF17D117A7C76005F4046 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				11BC222D117A4D5A00F87F30 /* HOItem.h */,
-				11BC222E117A4D5A00F87F30 /* HOItem.m */,
-			);
-			name = Models;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* Handoff */ = {
+		1D6058900D05DD3D006BFB54 /* Relay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Handoff" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Relay" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -412,9 +416,9 @@
 			);
 			dependencies = (
 			);
-			name = Handoff;
+			name = Relay;
 			productName = Handoff;
-			productReference = 1D6058910D05DD3D006BFB54 /* Handoff.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Relay.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -422,14 +426,14 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Handoff" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Relay" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* Handoff */,
+				1D6058900D05DD3D006BFB54 /* Relay */,
 			);
 		};
 /* End PBXProject section */
@@ -440,7 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				2899E5220DE3E06400AC0155 /* HandoffViewController.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* RelayViewController.xib in Resources */,
 				11E40BA8117963C900F21A68 /* MYUtilities_Debug.xcconfig in Resources */,
 				11E40BA9117963C900F21A68 /* MYUtilities_Release.xcconfig in Resources */,
 				11E40C1911796E5600F21A68 /* imac.png in Resources */,
@@ -456,8 +460,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* HandoffAppDelegate.m in Sources */,
-				28D7ACF80DDB3853001CB0EB /* HandoffViewController.m in Sources */,
+				1D3623260D0F684500981E51 /* RelayAppDelegate.m in Sources */,
+				28D7ACF80DDB3853001CB0EB /* RelayViewController.m in Sources */,
 				11E40B6F1179634100F21A68 /* IPAddress.m in Sources */,
 				11E40B701179634100F21A68 /* MYDNSService.m in Sources */,
 				11E40B711179634100F21A68 /* MYAddressLookup.m in Sources */,
@@ -507,10 +511,10 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Handoff_Prefix.pch;
-				INFOPLIST_FILE = "Handoff-Info.plist";
+				GCC_PREFIX_HEADER = Relay_Prefix.pch;
+				INFOPLIST_FILE = "Relay-Info.plist";
 				OTHER_LDFLAGS = "-lz";
-				PRODUCT_NAME = Handoff;
+				PRODUCT_NAME = Relay;
 			};
 			name = Debug;
 		};
@@ -520,9 +524,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Handoff_Prefix.pch;
-				INFOPLIST_FILE = "Handoff-Info.plist";
-				PRODUCT_NAME = Handoff;
+				GCC_PREFIX_HEADER = Relay_Prefix.pch;
+				INFOPLIST_FILE = "Relay-Info.plist";
+				PRODUCT_NAME = Relay;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -561,7 +565,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Handoff" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Relay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -570,7 +574,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Handoff" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Relay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

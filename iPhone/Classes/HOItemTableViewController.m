@@ -1,6 +1,6 @@
 //
 //  HOHandItemTableViewController.m
-//  Handoff
+//  Relay
 //
 //  Created by Zac White on 4/17/10.
 //  Copyright 2010 Gravity Mobile. All rights reserved.
@@ -15,7 +15,7 @@
 #import "HOItem.h"
 #import "HONetwork.h"
 
-#import "HandoffAppDelegate.h"
+#import "RelayAppDelegate.h"
 
 #import <MediaPlayer/MediaPlayer.h>
 
@@ -52,7 +52,7 @@
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:chooser];
 	navController.modalPresentationStyle = UIModalPresentationFormSheet;
 	navController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	[((HandoffAppDelegate*)[UIApplication sharedApplication].delegate).viewController presentModalViewController:navController animated:YES];
+	[((RelayAppDelegate*)[UIApplication sharedApplication].delegate).viewController presentModalViewController:navController animated:YES];
 }
 
 - (void)discoverCurrentSong {

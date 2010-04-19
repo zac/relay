@@ -1,15 +1,15 @@
 //
-//  HandoffViewController.m
-//  Handoff
+//  RelayViewController.m
+//  Relay
 //
 //  Created by Zac White on 4/16/10.
 //  Copyright Gravity Mobile 2010. All rights reserved.
 //
 
-#import "HandoffViewController.h"
+#import "RelayViewController.h"
 #import "HOItemTableViewController.h"
 
-@implementation HandoffViewController
+@implementation RelayViewController
 
 @synthesize tableViewController, textField;
 
