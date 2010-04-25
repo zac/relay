@@ -20,34 +20,27 @@
 
 @implementation HONetwork
 
-@synthesize theThing;
-
-@synthesize string, delegate, myServiceBrowser;
-
-@synthesize serviceList;
+@synthesize theServiceList, theServiceBrowser, theListener, theConnection;
 
 - (id) initWithDelegate:(NSObject<HONetworkDelegate> *)theDelegate
 {
 	self = [super init];
     if (self != nil) {
-		self.string = @"Opening listener socket...";
-		
-		myListener = [[BLIPListener alloc] initWithPort: 12345];
-		myListener.delegate = self;
-		myListener.pickAvailablePort = YES;
-		myListener.bonjourServiceType = @"_blipecho._tcp";
-		[myListener open];
-		
-		self.myServiceBrowser = [[MYBonjourBrowser alloc] initWithServiceType: @"_blipecho._tcp."];
-		
-		[self.myServiceBrowser addObserver: self forKeyPath: @"services" options: NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context: NULL];
-		
-		[self.myServiceBrowser start];
 		self.delegate = theDelegate;
 		
-		self.serviceList = [NSArray array];
-		self.theThing = [NSArray array];
-
+		myListener = [[[BLIPListener alloc] initWithPort: 12345] autorelease];
+		myListener.delegate = self;
+		myListener.pickAvailablePort = YES;
+		myListener.bonjourServiceType = @"_handoffblip._tcp";
+		[myListener open];
+		
+		self.theServiceBrowser = [[[MYBonjourBrowser alloc] initWithServiceType: @"__handoffblip._tcp."] autorelease];
+		
+		[self.theServiceBrowser addObserver: self forKeyPath: @"services" options: NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context: NULL];
+		
+		[self.theServiceBrowser start];
+		
+		self.theServiceList = [NSArray array];
 	}
 	return self;
 }
@@ -67,8 +60,7 @@
                                            context: NULL];
                 //[service queryForRecord: kDNSServiceType_NULL];
             }
-			//self.serviceList = [newServices.allObjects sortedArrayUsingSelector: @selector(compare:)];
-			self.theThing = [[newServices.allObjects sortedArrayUsingSelector: @selector(compare:)] copy];
+			self.theServiceList = [[newServices.allObjects sortedArrayUsingSelector: @selector(compare:)] copy];
         }
     }
 }
