@@ -14,13 +14,13 @@ The UI metaphor we are currently using is that of flinging (or slinging? maybe t
 
 Some YouTube video demos of this interaction:
 
-[Transferring watching a YouTube video from a Mac to an iPad](http://www.youtube.com/watch?v=oYpL6a2GDYA)
+#### [Transferring watching a YouTube video from a Mac to an iPad](http://www.youtube.com/watch?v=oYpL6a2GDYA)
 
-<object width="853" height="505"><param name="movie" value="http://www.youtube.com/v/oYpL6a2GDYA&hl=en_US&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/oYpL6a2GDYA&hl=en_US&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="853" height="505"></embed></object>
+<object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/oYpL6a2GDYA&hl=en_US&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/oYpL6a2GDYA&hl=en_US&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
 
-[Transferring a Google Map from a Mac to an iPad](http://www.youtube.com/watch?v=6xZkCSeVun0)
+#### [Transferring a Google Map from a Mac to an iPad](http://www.youtube.com/watch?v=6xZkCSeVun0)
 
-<object width="853" height="505"><param name="movie" value="http://www.youtube.com/v/6xZkCSeVun0&hl=en_US&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/6xZkCSeVun0&hl=en_US&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="853" height="505"></embed></object>
+<object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/6xZkCSeVun0&hl=en_US&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/6xZkCSeVun0&hl=en_US&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
 
 
 ### Project Particulars
