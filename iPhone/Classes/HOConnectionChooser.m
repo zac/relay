@@ -17,7 +17,7 @@
 	if ( self = [self initWithNibName:nil bundle:nil] ) {
 		self.network = theNetwork;
 		
-		self.items = self.network.theThing;
+		self.items = self.network.theServiceList;
 		
 		[self.network addObserver:self forKeyPath:@"theThing" options:NSKeyValueObservingOptionNew context: nil];
 	}
@@ -27,7 +27,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	NSLog(@"Observe");
 	if ( object == self.network ) {
-		self.items = self.network.theThing;
+		self.items = self.network.theServiceList;
 		[self.tableView reloadData];
 	}
 }
