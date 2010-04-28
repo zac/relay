@@ -1,6 +1,6 @@
 ---
 layout: pages
-title: Services
+title: About
 ---
 
 TBD.
