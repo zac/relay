@@ -16,7 +16,7 @@
 <body>
 	<div id="wrapper">
 	    <div id="header">
-            <h1><a href="/">Relay</a></h1>
+            <h1><a href="{{ site.path }}/">Relay</a></h1>
             <ul id="navigation">
             {% for page in site.posts reversed %} 
                 <li><a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a></li>
