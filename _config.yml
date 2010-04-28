@@ -1,3 +1,4 @@
 markdown: maruku
 pygments: true
+permalink: none
 path: /relay

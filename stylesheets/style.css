@@ -4,3 +4,8 @@ div#wrapper {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+ul#navigation li {
+	display: inline;
+	list-style-type: none;
+}
