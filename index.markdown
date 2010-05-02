@@ -23,9 +23,13 @@ Some YouTube video demos of this interaction:
 <object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/6xZkCSeVun0&hl=en_US&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/6xZkCSeVun0&hl=en_US&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
 
 
+### Usage
+
+The Mac client requires that _"Enable access for assistive devices"_ is checked in the **Universal Access** System Preference Pane. Make sure to use the master branch if you want to see it work.
+
 ### Project Particulars
 
-At the moment there are clients for both Mac and Windows platforms. At the moment this repository should be considered very unstable but over the next few weeks the master branch should converge to a stable point.
+At the moment there are clients for both Mac and Windows platforms. At the moment this repository should be considered very unstable but over the next few weeks the master branch should converge to a stable point. UPDATE. The master branch should now be slightly more stable and should actually work. Development will continue in the develop branch, with bigger increments to functionality merged over to the master branch every so often. For now the develop branch will be the best place to start from for adding functionality and fixing bugs.
 
 Relay uses the HandOff library for describing and communicating information about tasks. The plan is to develop the HandOff library into a component that can be included in any iPad application so that application can send and receive tasks to and from the HandOff powered Relay client running on a computer. The HandOff library depends on Jens Alfke's [MYNetwork](http://bitbucket.org/snej/mynetwork/wiki/Home) library for network communication. That library implements a lightweight, BEEP like protocol called [BLIP](http://bitbucket.org/snej/mynetwork/wiki/BLIP/Overview).
 
