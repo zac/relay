@@ -15,6 +15,9 @@
 #import "MYBonjourBrowser.h"
 #import "MYAddressLookup.h"
 #import "CollectionUtils.h"
+#import "MYBonjourRegistration.h"
+#import <Foundation/Foundation.h>
+#import <Foundation/NSNetServices.h>
 
 #import "HOItem.h"
 
@@ -55,18 +58,27 @@
 {
     if( $equal(keyPath,@"services") ) {
 		NSLog(@"Services Change.");
-        /* if( [[change objectForKey: NSKeyValueChangeKindKey] intValue]==NSKeyValueChangeInsertion ) { */
-            NSSet *newServices = [change objectForKey: NSKeyValueChangeNewKey];
+		NSSet *newServices = [change objectForKey: NSKeyValueChangeNewKey];
 			
-			for( MYBonjourService *service in newServices ) {
-				service.addressLookup.continuous = YES;
-				[service.addressLookup addObserver: self
-									forKeyPath: @"addresses"
-									   options: NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew
-									   context: NULL];
+		for( MYBonjourService *service in newServices ) {
+			service.addressLookup.continuous = YES;
+		}
+		
+		// TODO Make sure the service lookup completes enough to find the port before doing the filter
+		
+		NSArray *wholeList = [self.theServiceBrowser.services allObjects];
+		NSMutableArray *tempList = [NSMutableArray array];
+		NSNetService *tempService = self.theListener.bonjourService;
+		for ( MYBonjourService *service in wholeList ) {
+			if ( ![service.name isEqualToString: tempService.name] ||
+				![service.domain isEqualToString: tempService.domain] ||
+				![service.type isEqualToString: tempService.type] ||
+				service.port != tempService.port ) {
+				
+				[tempList addObject:service];
 			}
-			self.relayOptions = [[self.theServiceBrowser.services allObjects] sortedArrayUsingSelector: @selector(compare:)];
-       /*} */
+		}
+		self.relayOptions = [tempList sortedArrayUsingSelector: @selector(compare:)];
     }
 }
 
