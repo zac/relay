@@ -19,11 +19,13 @@
 #import "HOItem.h"
 
 #define kHandOffBonjourType @"_handoff-blip._tcp"
-#define kHandOffPortStart (12345)
+#define kHandOffPortStart 12345
 
 @implementation HONetwork
 
-@synthesize theServiceList, theServiceBrowser, theListener, theConnection, delegate;
+@synthesize relayOptions;
+
+@synthesize theServiceBrowser, theListener, theConnection, delegate;
 
 - (id) initWithDelegate:(NSObject<HONetworkDelegate> *)theDelegate
 {
@@ -31,19 +33,20 @@
     if (self != nil) {
 		self.delegate = theDelegate;
 		
-		theListener = [[[BLIPListener alloc] initWithPort: kHandOffPortStart] autorelease];
-		theListener.delegate = self;
-		theListener.pickAvailablePort = YES;
-		theListener.bonjourServiceType = kHandOffBonjourType;
-		[theListener open];
+		self.theServiceBrowser = [[MYBonjourBrowser alloc] initWithServiceType: kHandOffBonjourType];
 		
-		self.theServiceBrowser = [[[MYBonjourBrowser alloc] initWithServiceType: kHandOffBonjourType] autorelease];
+		NSLog(@"Browser Start? %d", [self.theServiceBrowser start]);
 		
-		[self.theServiceBrowser addObserver: self forKeyPath: @"services" options: NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context: NULL];
+		self.relayOptions = [NSArray array];
 		
-		[self.theServiceBrowser start];
+		[self.theServiceBrowser addObserver: self forKeyPath: @"services" options: NSKeyValueObservingOptionNew context: nil];
 		
-		self.theServiceList = [NSArray array];
+		self.theListener = [[BLIPListener alloc] initWithPort: kHandOffPortStart];
+		self.theListener.delegate = self;
+		self.theListener.pickAvailablePort = YES;
+		self.theListener.bonjourServiceType = kHandOffBonjourType;
+		NSLog(@"Listener Open? %d", [self.theListener open]);
+ 
 	}
 	return self;
 }
@@ -52,10 +55,18 @@
 {
     if( $equal(keyPath,@"services") ) {
 		NSLog(@"Services Change.");
-        if( [[change objectForKey: NSKeyValueChangeKindKey] intValue]==NSKeyValueChangeInsertion ) {
+        /* if( [[change objectForKey: NSKeyValueChangeKindKey] intValue]==NSKeyValueChangeInsertion ) { */
             NSSet *newServices = [change objectForKey: NSKeyValueChangeNewKey];
-			self.theServiceList = [newServices allObjects];
-        }
+			
+			for( MYBonjourService *service in newServices ) {
+				service.addressLookup.continuous = YES;
+				[service.addressLookup addObserver: self
+									forKeyPath: @"addresses"
+									   options: NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew
+									   context: NULL];
+			}
+			self.relayOptions = [[self.theServiceBrowser.services allObjects] sortedArrayUsingSelector: @selector(compare:)];
+       /*} */
     }
 }
 
@@ -68,16 +79,17 @@
 
 - (BOOL) sendItem:(HOItem *)item {
 	
-	BLIPRequest *requestToSend = [item blipRequest];
-	[requestToSend setConnection:theConnection];
+	NSLog(@"Send Item!");
 	
-    BLIPResponse *response = [requestToSend send];
-    if (response) {
-		response.onComplete = $target(self,gotResponse:);
+	if ( self.theConnection ) {
+		BLIPRequest *requestToSend = [item blipRequest];
+		[requestToSend setConnection:self.theConnection];
 		
-    }
-	
-	[self closeConnection];
+		BLIPResponse *response = [requestToSend send];
+		if (response) {
+			response.onComplete = $target(self,gotResponse:);
+		}
+	}
 	
 	return YES;
 }
@@ -89,11 +101,6 @@
 		[self.delegate network:self didReceiveResponse:response];
 	}
 }
-
-+ (NSArray*) keyPathsForValuesAffectingServiceList {
-    return [NSArray arrayWithObject: @"serviceBrowser.services"];
-}
-
 
 #pragma mark BLIP Listener Delegate:
 
@@ -112,6 +119,7 @@
 {
     NSLog(@"Accepted connection from %@", connection.address);
     connection.delegate = self;
+	self.theConnection = (BLIPConnection*)connection;
 }
 
 #pragma mark BLIP Connection Delegate
@@ -126,6 +134,7 @@
 - (BOOL) connection: (BLIPConnection*)connection receivedRequest: (BLIPRequest*)request
 {
 	NSArray *allItems = nil;
+	NSLog(@"Received Request!");
 	if ([[[[request properties] allProperties] objectForKey:@"command"] isEqualToString:HOItemCommandTypeWebpage]) {
 		//do something special.
 		NSLog(@"blah: %@", [[request properties] allProperties]);
@@ -164,11 +173,11 @@
 /* Opens a BLIP connection to the given address. */
 - (void)openConnection: (MYBonjourService*)service 
 {
-    //myConnection = [[BLIPConnection alloc] initToBonjourService: service];
-	theConnection = [[BLIPConnection alloc] initToAddress:[[IPAddress alloc] initWithHostname:@"192.168.99.214" port:12345]];
-    if( theConnection ) {
-        theConnection.delegate = self;
-        [theConnection open];
+    self.theConnection = [[BLIPConnection alloc] initToBonjourService: service];
+
+    if( self.theConnection ) {
+        self.theConnection.delegate = self;
+        [self.theConnection open];
     }
 }
 

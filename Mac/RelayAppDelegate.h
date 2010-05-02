@@ -1,6 +1,6 @@
 //
-//  HandoffAppDelegate.h
-//  Handoff
+//  RelayAppDelegate.h
+//  Relay
 //
 //  Created by Daniel DeCovnick on 4/16/10.
 //  Copyright 2010 Softyards Software. All rights reserved.
@@ -21,7 +21,7 @@ enum screenEdges {
 };
 extern NSString *const kScreenEdgeChoiceKey; 
 
-@interface HandoffAppDelegate : NSObject <HONetworkDelegate> {
+@interface RelayAppDelegate : NSObject <HONetworkDelegate> {
 	NSStatusItem *statusItem;
 	
 	IBOutlet NSWindow *preferencesWindow;

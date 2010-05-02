@@ -17,9 +17,7 @@
 	if ( self = [self initWithNibName:nil bundle:nil] ) {
 		self.network = theNetwork;
 		
-		self.items = self.network.theServiceList;
-		
-		[self.network addObserver:self forKeyPath:@"theThing" options:NSKeyValueObservingOptionNew context: nil];
+		self.items = self.network.relayOptions;
 	}
 	return self;
 }
@@ -27,8 +25,9 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	NSLog(@"Observe");
 	if ( object == self.network ) {
-		self.items = self.network.theServiceList;
-		[self.tableView reloadData];
+		self.items = [change objectForKey: NSKeyValueChangeNewKey];
+		
+		if ( self.tableView ) [self.tableView reloadData];
 	}
 }
 
@@ -44,6 +43,9 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 	self.navigationItem.title=@"Relay With...";
+	
+	
+	[self.network addObserver:self forKeyPath:@"relayOptions" options:NSKeyValueObservingOptionNew context: nil];
 
 }
 

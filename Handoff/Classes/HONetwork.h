@@ -25,7 +25,7 @@
 
 @interface HONetwork : NSObject <TCPListenerDelegate, BLIPConnectionDelegate> {
 	
-	NSArray *theServiceList;
+	NSArray *relayOptions;
 	
 	MYBonjourBrowser *theServiceBrowser;
     BLIPListener *theListener;
@@ -34,7 +34,7 @@
 	NSObject<HONetworkDelegate> *delegate;
 }
 
-@property (nonatomic, copy) NSArray *theServiceList;
+@property (nonatomic, retain) NSArray *relayOptions;
 
 @property (nonatomic, retain) MYBonjourBrowser *theServiceBrowser;
 

@@ -1,25 +1,25 @@
 //
-//  HandoffAppDelegate.m
-//  Handoff
+//  RelayAppDelegate.m
+//  Relay
 //
 //  Created by Daniel DeCovnick on 4/16/10.
 //  Copyright 2010 Softyards Software. All rights reserved.
 //
 
-#import "HandoffAppDelegate.h"
+#import "RelayAppDelegate.h"
 #import "PTHotKey.h"
 #import "PTHotKeyCenter.h"
 #import "PTKeyCombo.h"
 #import <ApplicationServices/ApplicationServices.h>
 #import <Carbon/Carbon.h>
-#import "HOAppInfo.h"
+#import "RelayAppInfo.h"
 #import "HOItem.h"
 
 CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon);
 OSStatus PasteToiPhone(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData);
 static CGEventType lastEventType = 0;
 NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
-@implementation HandoffAppDelegate
+@implementation RelayAppDelegate
 @synthesize lastKey;
 @synthesize lastCombo;
 @synthesize network;
@@ -44,7 +44,7 @@ NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
 	
 	[statusItem setHighlightMode:YES];
-	[statusItem setToolTip:@"Handoff"];
+	[statusItem setToolTip:@"Relay"];
 	[statusItem setEnabled:YES];
 	[statusItem setImage:[NSImage imageNamed:@"NSActionTemplate"]];
 	[statusItem setAlternateImage:[NSImage imageNamed:@"NSActionTemplate"]];
@@ -120,7 +120,7 @@ NSString *const kScreenEdgeChoiceKey = @"ScreenEdgeChoiceKey";
 @end
 CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon)
 {
-	HandoffAppDelegate *self = (HandoffAppDelegate *)refcon;
+	RelayAppDelegate *self = (RelayAppDelegate *)refcon;
 	if (lastEventType != kCGEventLeftMouseDragged && type != kCGEventLeftMouseDragged)
 	{
 		lastEventType = type;
@@ -208,7 +208,7 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 						case screenEdgeLeftChoice:
 							if (focusedWindowLocation.x < 0.0)
 							{
-								[self.network sendItem:[HOAppInfo draggedAppInfo]];
+								[self.network sendItem:[RelayAppInfo draggedAppInfo]];
 								CGPoint newLocation; //lower left
 								newLocation.x = screenRect.size.width/2 - focusedWindowSize.width/2;
 								newLocation.y = screenRect.size.height/2 - focusedWindowSize.height/2 - 22;
@@ -227,7 +227,7 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 						case screenEdgeRightChoice:
 							if (focusedWindowLocation.x+focusedWindowSize.width > screenRect.size.width)
 							{
-								[self.network sendItem:[HOAppInfo draggedAppInfo]];
+								[self.network sendItem:[RelayAppInfo draggedAppInfo]];
 								CGPoint newLocation; //lower left
 								newLocation.x = screenRect.size.width/2 - focusedWindowSize.width/2;
 								newLocation.y = screenRect.size.height/2 - focusedWindowSize.height/2 - 22;
@@ -248,7 +248,7 @@ CGEventRef CheckForMouseupInTargetArea(CGEventTapProxy proxy, CGEventType type, 
 						case screenEdgeBottomChoice:
 							if (focusedWindowLocation.y + focusedWindowSize.height > screenRect.size.height)
 							{
-								[self.network sendItem:[HOAppInfo draggedAppInfo]];
+								[self.network sendItem:[RelayAppInfo draggedAppInfo]];
 								CGPoint newLocation; //lower left
 								newLocation.x = screenRect.size.width/2 - focusedWindowSize.width/2;
 								newLocation.y = screenRect.size.height/2 - focusedWindowSize.height/2 - 22;
