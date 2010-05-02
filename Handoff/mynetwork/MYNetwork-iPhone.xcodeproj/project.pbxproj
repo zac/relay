@@ -164,13 +164,8 @@
 		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = iPhone/main.m; sourceTree = "<group>"; };
 		384A72A90FB0050B006A0B19 /* libMYNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMYNetwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
-<<<<<<< HEAD:mynetwork/MYNetwork-iPhone.xcodeproj/project.pbxproj
-		384A72B50FB0062C006A0B19 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConcurrentOperation.h; path = /Users/danielhd/src/handoff/myutilities/ConcurrentOperation.h; sourceTree = "<absolute>"; };
-		384A72B60FB0062C006A0B19 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConcurrentOperation.m; path = /Users/danielhd/src/handoff/myutilities/ConcurrentOperation.m; sourceTree = "<absolute>"; };
-=======
 		384A72B50FB0062C006A0B19 /* ConcurrentOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConcurrentOperation.h; path = ../myutilities/ConcurrentOperation.h; sourceTree = SOURCE_ROOT; };
 		384A72B60FB0062C006A0B19 /* ConcurrentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConcurrentOperation.m; path = ../myutilities/ConcurrentOperation.m; sourceTree = SOURCE_ROOT; };
->>>>>>> d3b63e2b487558beca93659cd4eacbd7e6490a4d:mynetwork/MYNetwork-iPhone.xcodeproj/project.pbxproj
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

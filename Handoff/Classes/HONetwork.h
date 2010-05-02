@@ -24,30 +24,29 @@
 
 
 @interface HONetwork : NSObject <TCPListenerDelegate, BLIPConnectionDelegate> {
-
-	NSString *string;
 	
-    BLIPListener *myListener;
-    MYBonjourBrowser *myServiceBrowser;
-    BLIPConnection *myConnection;
+	NSArray *relayOptions;
 	
-	NSArray *serviceList;
+	NSMutableArray *buildList;
+	
+	MYBonjourBrowser *theServiceBrowser;
+    BLIPListener *theListener;
+    BLIPConnection *theConnection;
 	
 	NSObject<HONetworkDelegate> *delegate;
-	
-	NSArray *theThing;
-	
 }
 
-@property (nonatomic, copy) NSArray *theThing;
+@property (nonatomic, retain) NSArray *relayOptions;
 
-@property (nonatomic, copy) NSString *string;
+@property (nonatomic, retain) NSMutableArray *buildList;
+
+@property (nonatomic, retain) MYBonjourBrowser *theServiceBrowser;
+
+@property (nonatomic, retain) BLIPListener *theListener;
+
+@property (nonatomic, retain) BLIPConnection *theConnection;
 
 @property (nonatomic, retain) NSObject<HONetworkDelegate> *delegate;
-
-@property (nonatomic, retain) MYBonjourBrowser *myServiceBrowser;
-
-@property (nonatomic, copy) NSArray *serviceList;
 
 - (id) initWithDelegate:(NSObject<HONetworkDelegate> *)delegate;
 

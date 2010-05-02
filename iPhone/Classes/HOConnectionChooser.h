@@ -15,7 +15,7 @@
 }
 
 @property (nonatomic, retain) HONetwork *network;
-@property (nonatomic, retain) NSArray *items;
+@property (nonatomic, copy) NSArray *items;
 
 - (id) initWithNetwork: (HONetwork*)theNetwork;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;

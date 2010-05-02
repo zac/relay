@@ -1,6 +1,6 @@
 //
 //  main.m
-//  Handoff
+//  Relay
 //
 //  Created by Daniel DeCovnick on 4/16/10.
 //  Copyright Softyards Software 2010. All rights reserved.
