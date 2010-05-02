@@ -1,12 +1,12 @@
 //
-//  HOAppInfo.m
-//  Handoff
+//  RelayAppInfo.m
+//  Relay
 //
 //  Created by Daniel DeCovnick on 4/17/10.
 //  Copyright 2010 Softyards Software. All rights reserved.
 //
 
-#import "HOAppInfo.h"
+#import "RelayAppInfo.h"
 #import "Safari.h"
 #import "iTunes.h"
 #import "HOItem.h"
@@ -15,7 +15,7 @@
 
 NSString *const kDraggedAppName = @"HODraggedAppName";
 NSString *const kDraggedAppIdentifier = @"HODraggedAppIdentifier";
-@implementation HOAppInfo
+@implementation RelayAppInfo
 +(HOItem *)draggedAppInfo
 {
 	HOItem *ret = [[HOItem alloc] init];

@@ -12,13 +12,13 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		BC088009117963360083B777 /* HandoffAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC088008117963360083B777 /* HandoffAppDelegate.m */; };
+		BC088009117963360083B777 /* RelayAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC088008117963360083B777 /* RelayAppDelegate.m */; };
 		BC088078117A250F0083B777 /* PTHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BC088073117A250F0083B777 /* PTHotKeyCenter.m */; };
 		BC088079117A250F0083B777 /* PTHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC088075117A250F0083B777 /* PTHotKey.m */; };
 		BC08807A117A250F0083B777 /* PTKeyCombo.m in Sources */ = {isa = PBXBuildFile; fileRef = BC088076117A250F0083B777 /* PTKeyCombo.m */; };
 		BC088183117A2BFA0083B777 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC088182117A2BFA0083B777 /* Carbon.framework */; };
 		BC088220117A53AB0083B777 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC08821F117A53AB0083B777 /* ApplicationServices.framework */; };
-		BC08833D117A778B0083B777 /* HOAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BC08833C117A778B0083B777 /* HOAppInfo.m */; };
+		BC08833D117A778B0083B777 /* RelayAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BC08833C117A778B0083B777 /* RelayAppInfo.m */; };
 		BC0883B3117AC0B50083B777 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0883B0117AC0B50083B777 /* Base64.m */; };
 		BC0883B6117AC0C30083B777 /* HOItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0883B4117AC0C30083B777 /* HOItem.m */; };
 		BCED94ED117AD0F900608A28 /* IPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = BCED94A8117AD0F900608A28 /* IPAddress.m */; };
@@ -69,8 +69,8 @@
 		32CA4F630368D1EE00C91783 /* Relay_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Relay_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Relay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relay.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC088007117963360083B777 /* HandoffAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoffAppDelegate.h; sourceTree = "<group>"; };
-		BC088008117963360083B777 /* HandoffAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoffAppDelegate.m; sourceTree = "<group>"; };
+		BC088007117963360083B777 /* RelayAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelayAppDelegate.h; sourceTree = "<group>"; };
+		BC088008117963360083B777 /* RelayAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelayAppDelegate.m; sourceTree = "<group>"; };
 		BC088072117A250F0083B777 /* PTKeyCombo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKeyCombo.h; sourceTree = "<group>"; };
 		BC088073117A250F0083B777 /* PTHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTHotKeyCenter.m; sourceTree = "<group>"; };
 		BC088074117A250F0083B777 /* PTHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKeyCenter.h; sourceTree = "<group>"; };
@@ -79,8 +79,8 @@
 		BC088077117A250F0083B777 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKey.h; sourceTree = "<group>"; };
 		BC088182117A2BFA0083B777 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		BC08821F117A53AB0083B777 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
-		BC08833B117A778B0083B777 /* HOAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOAppInfo.h; sourceTree = "<group>"; };
-		BC08833C117A778B0083B777 /* HOAppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOAppInfo.m; sourceTree = "<group>"; };
+		BC08833B117A778B0083B777 /* RelayAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelayAppInfo.h; sourceTree = "<group>"; };
+		BC08833C117A778B0083B777 /* RelayAppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelayAppInfo.m; sourceTree = "<group>"; };
 		BC08839B117ABD620083B777 /* Safari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Safari.h; sourceTree = "<group>"; };
 		BC0883B0117AC0B50083B777 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = ../Handoff/Classes/Base64.m; sourceTree = SOURCE_ROOT; };
 		BC0883B1117AC0B50083B777 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = ../Handoff/Classes/Base64.h; sourceTree = SOURCE_ROOT; };
@@ -176,16 +176,16 @@
 			children = (
 				BCED968A117ADF4B00608A28 /* iTunes.h */,
 				BC08839B117ABD620083B777 /* Safari.h */,
-				BC08833B117A778B0083B777 /* HOAppInfo.h */,
-				BC08833C117A778B0083B777 /* HOAppInfo.m */,
+				BC08833B117A778B0083B777 /* RelayAppInfo.h */,
+				BC08833C117A778B0083B777 /* RelayAppInfo.m */,
 				BC088072117A250F0083B777 /* PTKeyCombo.h */,
 				BC088076117A250F0083B777 /* PTKeyCombo.m */,
 				BC088073117A250F0083B777 /* PTHotKeyCenter.m */,
 				BC088074117A250F0083B777 /* PTHotKeyCenter.h */,
 				BC088077117A250F0083B777 /* PTHotKey.h */,
 				BC088075117A250F0083B777 /* PTHotKey.m */,
-				BC088007117963360083B777 /* HandoffAppDelegate.h */,
-				BC088008117963360083B777 /* HandoffAppDelegate.m */,
+				BC088007117963360083B777 /* RelayAppDelegate.h */,
+				BC088008117963360083B777 /* RelayAppDelegate.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -474,11 +474,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				BC088009117963360083B777 /* HandoffAppDelegate.m in Sources */,
+				BC088009117963360083B777 /* RelayAppDelegate.m in Sources */,
 				BC088078117A250F0083B777 /* PTHotKeyCenter.m in Sources */,
 				BC088079117A250F0083B777 /* PTHotKey.m in Sources */,
 				BC08807A117A250F0083B777 /* PTKeyCombo.m in Sources */,
-				BC08833D117A778B0083B777 /* HOAppInfo.m in Sources */,
+				BC08833D117A778B0083B777 /* RelayAppInfo.m in Sources */,
 				BC0883B3117AC0B50083B777 /* Base64.m in Sources */,
 				BC0883B6117AC0C30083B777 /* HOItem.m in Sources */,
 				BCED94ED117AD0F900608A28 /* IPAddress.m in Sources */,

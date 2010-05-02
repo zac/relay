@@ -97,8 +97,10 @@ static void browseCallback (DNSServiceRef                       sdRef,
                                                                   type: regtype
                                                                 domain: domain
                                                              interface: interfaceIndex];
+	NSLog(@"%@ heard service %@", self,service);
     if ([_myRegistration isSameAsService: service]) {
         // This is an echo of my own registration, so ignore it
+		NSLog(@"%@ ignoring echo %@", self,service);
         LogTo(Bonjour,@"%@ ignoring echo %@", self,service);
         [service release];
         return;
@@ -106,6 +108,7 @@ static void browseCallback (DNSServiceRef                       sdRef,
     MYBonjourService *existingService = [_services member: service];
     if( existingService ) {
         // Use existing service object instead of creating a new one
+		NSLog(@"%@ ignoring existing service %@", self,service);
         [service release];
         service = [existingService retain];
     }
