@@ -27,6 +27,8 @@
 	
 	NSArray *relayOptions;
 	
+	NSMutableArray *buildList;
+	
 	MYBonjourBrowser *theServiceBrowser;
     BLIPListener *theListener;
     BLIPConnection *theConnection;
@@ -35,6 +37,8 @@
 }
 
 @property (nonatomic, retain) NSArray *relayOptions;
+
+@property (nonatomic, retain) NSMutableArray *buildList;
 
 @property (nonatomic, retain) MYBonjourBrowser *theServiceBrowser;
 

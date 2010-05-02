@@ -18,7 +18,7 @@
 #import "MYBonjourRegistration.h"
 #import <Foundation/Foundation.h>
 #import <Foundation/NSNetServices.h>
-
+#import <dns_sd.h>
 #import "HOItem.h"
 
 #define kHandOffBonjourType @"_handoff-blip._tcp"
@@ -26,9 +26,7 @@
 
 @implementation HONetwork
 
-@synthesize relayOptions;
-
-@synthesize theServiceBrowser, theListener, theConnection, delegate;
+@synthesize relayOptions, buildList, theServiceBrowser, theListener, theConnection, delegate;
 
 - (id) initWithDelegate:(NSObject<HONetworkDelegate> *)theDelegate
 {
@@ -41,6 +39,8 @@
 		NSLog(@"Browser Start? %d", [self.theServiceBrowser start]);
 		
 		self.relayOptions = [NSArray array];
+		
+		self.buildList = [NSMutableArray array];
 		
 		[self.theServiceBrowser addObserver: self forKeyPath: @"services" options: NSKeyValueObservingOptionNew context: nil];
 		
@@ -58,28 +58,48 @@
 {
     if( $equal(keyPath,@"services") ) {
 		NSLog(@"Services Change.");
-		NSSet *newServices = [change objectForKey: NSKeyValueChangeNewKey];
-			
-		for( MYBonjourService *service in newServices ) {
-			service.addressLookup.continuous = YES;
-		}
 		
-		// TODO Make sure the service lookup completes enough to find the port before doing the filter
+		if( [[change objectForKey: NSKeyValueChangeKindKey] intValue]==NSKeyValueChangeInsertion ) {
+            NSSet *newServices = [change objectForKey: NSKeyValueChangeNewKey];
+            for( MYBonjourService *service in newServices ) {
+                NSLog(@"##### %@ : at %@:%hu, TXT=%@", 
+					service, service.hostname, service.port, service.txtRecord);
+                [service.addressLookup addObserver: self
+                                        forKeyPath: @"addresses"
+                                           options: NSKeyValueObservingOptionNew
+                                           context: service];
+                [service queryForRecord: kDNSServiceType_NULL];
+            }
+        } else if( [[change objectForKey: NSKeyValueChangeKindKey] intValue]==NSKeyValueChangeRemoval ) {
+            NSSet *oldServices = [change objectForKey: NSKeyValueChangeOldKey];
+            for( MYBonjourService *service in oldServices ) {
+                NSLog(@"##### REMOVED: %@", service);
+                [service.addressLookup removeObserver: self forKeyPath: @"addresses"];
+				[self.buildList removeObject:service];
+            }
+			self.relayOptions = self.buildList;
+        }
 		
-		NSArray *wholeList = [self.theServiceBrowser.services allObjects];
-		NSMutableArray *tempList = [NSMutableArray array];
+	} else if ( $equal(keyPath,@"addresses") && context ) {
+		MYBonjourService *service = (MYBonjourService *)context;
 		NSNetService *tempService = self.theListener.bonjourService;
-		for ( MYBonjourService *service in wholeList ) {
-			if ( ![service.name isEqualToString: tempService.name] ||
-				![service.domain isEqualToString: tempService.domain] ||
-				![service.type isEqualToString: tempService.type] ||
-				service.port != tempService.port ) {
-				
-				[tempList addObject:service];
+		NSSet *newAddresses = [change objectForKey: NSKeyValueChangeNewKey];
+		NSLog(@"Service Address Resolved");
+		if ( newAddresses ) {
+			for ( HostAddress *resolved in newAddresses ) {
+				if ( ![service.name isEqualToString: tempService.name] ||
+					![service.domain isEqualToString: tempService.domain] ||
+					![service.type isEqualToString: tempService.type] ||
+					resolved.port != tempService.port ) {
+					
+					[self.buildList addObject:service];
+				} else {
+					NSLog(@"Ignoring My Own Bonjour Registration.");
+				}
 			}
+			self.relayOptions = self.buildList;
 		}
-		self.relayOptions = [tempList sortedArrayUsingSelector: @selector(compare:)];
-    }
+	}
 }
 
 - (BOOL) isConnected {
@@ -139,6 +159,7 @@
 - (void) connection: (TCPConnection*)connection failedToOpen: (NSError*)error
 {
     NSLog(@"Failed to open connection from %@: %@", connection.address,error);
+	self.theConnection = nil;
 	[self.delegate didDropConnectionOnNetwork: self];
 	
 }
@@ -173,6 +194,8 @@
 {
     NSLog(@"Connection closed from %@", connection.address);
 	if ( self.delegate ) {
+		[self.theConnection close];
+		self.theConnection = nil;
 		[self.delegate didDropConnectionOnNetwork: self];
 	}
 }
@@ -196,8 +219,8 @@
 /* Closes the currently open BLIP connection. */
 - (void)closeConnection
 {
-    [theConnection close];
-	theConnection = nil;
+    [self.theConnection close];
+	self.theConnection = nil;
 }
 
 /** Called after the connection successfully opens. */
@@ -205,6 +228,13 @@
     if (theConnection==connection) {
 
     }
+}
+
+- (void)dealloc {
+	self.relayOptions = nil;
+	self.buildList = nil;
+	
+	[super dealloc];
 }
 
 @end
