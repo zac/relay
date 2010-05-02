@@ -54,6 +54,8 @@
 		2899E5220DE3E06400AC0155 /* RelayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* RelayViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* RelayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* RelayViewController.m */; };
+		97193F18118E04D3002FDF34 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 97193F16118E04D3002FDF34 /* LICENSE */; };
+		97193F19118E04D3002FDF34 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 97193F17118E04D3002FDF34 /* README.markdown */; };
 		97ACF028117A2DB1005F4046 /* HONetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 97ACF027117A2DB1005F4046 /* HONetwork.m */; };
 		97ACF0E7117A68C1005F4046 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 97ACF0E6117A68C1005F4046 /* Base64.m */; };
 		97ACF301117B763C005F4046 /* HOConnectionChooser.m in Sources */ = {isa = PBXBuildFile; fileRef = 97ACF2FF117B763C005F4046 /* HOConnectionChooser.m */; };
@@ -147,6 +149,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Relay_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Relay_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Relay-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Relay-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		97193F16118E04D3002FDF34 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = SOURCE_ROOT; };
+		97193F17118E04D3002FDF34 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.markdown; path = ../README.markdown; sourceTree = SOURCE_ROOT; };
 		97ACF026117A2DB1005F4046 /* HONetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HONetwork.h; path = ../../Handoff/Classes/HONetwork.h; sourceTree = "<group>"; };
 		97ACF027117A2DB1005F4046 /* HONetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HONetwork.m; path = ../../Handoff/Classes/HONetwork.m; sourceTree = "<group>"; };
 		97ACF0E5117A68C1005F4046 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = ../../Handoff/Classes/Base64.h; sourceTree = "<group>"; };
@@ -355,6 +359,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97193F16118E04D3002FDF34 /* LICENSE */,
+				97193F17118E04D3002FDF34 /* README.markdown */,
 				11BC23B0117A72D000F87F30 /* icon-test.png */,
 				11E40C1811796E5600F21A68 /* imac.png */,
 				2899E5210DE3E06400AC0155 /* RelayViewController.xib */,
@@ -449,6 +455,8 @@
 				11E40BA9117963C900F21A68 /* MYUtilities_Release.xcconfig in Resources */,
 				11E40C1911796E5600F21A68 /* imac.png in Resources */,
 				11BC23B1117A72D000F87F30 /* icon-test.png in Resources */,
+				97193F18118E04D3002FDF34 /* LICENSE in Resources */,
+				97193F19118E04D3002FDF34 /* README.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
