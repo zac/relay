@@ -73,6 +73,37 @@ url_list"
 		ret.itemTitle = @"Webpage";
 		ret.itemDescription = [tabURLs objectAtIndex:0];
 	}
+	else if ([strApplicationBundleIdentifier isEqualToString:@"com.google.Chrome"])
+	{
+		NSLog(@"Chrome dropped");
+		NSAppleScript *tabInfoScript = [[NSAppleScript alloc] initWithSource:@"tell application \"Google Chrome\" to set url_list to URL of tabs of window 1\nurl_list"];
+		NSAppleEventDescriptor *returnDescriptor = [tabInfoScript executeAndReturnError:nil];
+		[tabInfoScript release];
+		NSLog(@"returnDescriptor: %@",returnDescriptor);
+		if ([returnDescriptor descriptorType] && 
+			kAENullEvent != [returnDescriptor descriptorType] &&
+			[returnDescriptor numberOfItems] > 0)
+		{
+			// wtf apple? 1-based array? really?
+			for (int i = 1; i <= [returnDescriptor numberOfItems]; i++) 
+			{
+				NSAppleEventDescriptor *desc = [returnDescriptor descriptorAtIndex:i];
+				if (![desc stringValue]) continue;
+				NSLog(@"Inserting item: %@",[desc stringValue]);
+					
+				if (i == 0)
+				{
+					ret.itemDescription = [desc stringValue];
+					[properties setObject:[desc stringValue] forKey:@"actionURL"];
+				}
+				[properties setObject:[desc stringValue]
+							   forKey:[NSString stringWithFormat:@"actionURL%d",i-1]];
+			}
+		}
+		
+		ret.command = HOItemCommandTypeWebpage;
+		ret.itemTitle = @"Webpage";
+	}
 	else if ([strApplicationBundleIdentifier isEqualToString:@"com.apple.iTunes"])
 	{
 		ret.command = HOItemCommandTypeSong;
